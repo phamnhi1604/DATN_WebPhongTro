@@ -1,0 +1,29 @@
+﻿@model IEnumerable<string>
+
+
+<div class="link-danhmuc-container">
+    <ul class="link-danhmuc-list">
+        @foreach (var quan in Model)
+        {
+            <li><a href="#">@quan</a></li>            
+        }
+    </ul>  
+</div>
+
+<style>
+    .link-danhmuc-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .link-danhmuc-list {
+        width: 70%; /* Chia mỗi mục thành 2 cột */
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .link-danhmuc-list li {
+            margin-bottom: 8px;
+        }
+</style>

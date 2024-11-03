@@ -8,7 +8,7 @@
             <li>
                 <a href="#posts">Bài đăng</a>
                 <ul>
-                    @*@Html.Action("LoaiSanPhamPartial", "LoaiSanPham")*@
+                    @Html.Action("DanhMucPartial", "DanhMuc")
                 </ul>
             </li>
             @*<li><a href="@Url.Action("BaiDangNoiBat","BaiDang",new { page = 1})">nổi bật</a></li>*@
@@ -21,9 +21,7 @@
         <div id="menu-btn" class="fas fa-bars"></div>
         <div id="user-btn" class="fas fa-user"></div>
         <div id="search-btn" class="fas fa-search"></div>
-        <!--<div id="shopping-cart-btn" class="fas fa-shopping-cart">-->
-            @*@Html.Action("SoLuongPartial", "ShoppingCart")*@
-        <!--</div>-->
+        
         <div id="heart-btn" class="fas fa-heart">
             @*@Html.Action("TotalPartial", "FavoriteProduct")*@
         </div>
@@ -57,32 +55,7 @@
     </div>
     @*@Html.Action("GioHangPartial", "ShoppingCart")*@
     @*@Html.Action("FavoriteProductPartial", "FavoriteProduct")*@
-    <div class="account" style="display: none;">
-        <div class="close-btn">×</div>
-        <div class="container" id="container">
-            <div class="form-container sign-up-container">
-                @*@Html.Action("RegisterPartial","Account")*@
-
-            </div>
-            <div class="form-container sign-in-container">
-                @*@Html.Action("LoginPartial", "Account")*@
-            </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-left">
-                        <h1>Chào mừng trở lại!</h1>
-                        <p>Để tiếp tục kết nối với chúng tôi, vui lòng đăng nhập bằng thông tin cá nhân của bạn</p>
-                        <button class="ghost" id="signIn">Đăng nhập</button>
-                    </div>
-                    <div class="overlay-panel overlay-right">
-                        <h1>Xin chào, bạn!</h1>
-                        <p>Nhập thông tin cá nhân của bạn và bắt đầu cuộc hành trình cùng chúng tôi</p>
-                        <button class="ghost" id="signUp">Đăng ký</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </header>
 
 <!-- Header section ends -->

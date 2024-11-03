@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100;1,300&display=swap">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="~/Contents/Images/ImgPost/def_img.jpg" type="image/x-icon">
     <title>@ViewBag.Title</title>
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="~/Contents/Css/Bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Contents/Css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     @RenderSection("Styles", required: false)
     <!-- js -->
@@ -33,43 +35,43 @@
 
 </head>
 
-<body>
-    <!-- Headr section ends -->
-    @RenderPage("_Header.cshtml");
-    <!-- Header section ends -->
+    <body>
+        <!-- Headr section ends -->
+        @RenderPage("_Header.cshtml");
+        <!-- Header section ends -->
 
-    @if (IsIndexPage)
-    {
-        <!-- Home section ends -->
-        @RenderPage("_Home.cshtml")
-        <!-- Home section ends -->
-        <!-- Banner section ends -->
-        @RenderPage("_Banner.cshtml")
-        <!-- Banner section ends -->
-    }
+        @if (IsIndexPage)
+        {
+            <!-- Home section ends -->
+            @RenderPage("_Home.cshtml")
+            <!-- Home section ends -->
+            <!-- Banner section ends -->
+            @RenderPage("_Banner.cshtml")
+            <!-- Banner section ends -->
+        }
 
-    <!-- Product section ends -->
-    @RenderBody()
-    <!-- Product section ends -->
+        <!-- Product section ends -->
+        @RenderBody()
+        <!-- Product section ends -->
 
-    @if (IsIndexPage)
-    {
-        <!-- Deal section ends -->
-        @*@RenderPage("_Deal.cshtml")*@
-        <!-- Deal section ends -->
-        <!-- Contact section ends -->
-        @RenderPage("_Contact.cshtml")
-        <!-- Contact section ends -->
-    }
-    @*@Html.Action("ChatBotPartial","ChatBot")*@
-    <!-- Footer section ends -->
-    @RenderPage("_Footer.cshtml")
-    <!-- Footer section ends -->
-    <script src="~/Contents/Scripts/main.js"></script>
-    @*<script src="~/Contents/shoppingCart.js"></script>
-    <script src="~/Contents/favoriteProduct.js"></script>
-    <script src="~/Contents/ChatBot.js"></script>*@
+        @if (IsIndexPage)
+        {
+            <!-- Deal section ends -->
+            @*@RenderPage("_Deal.cshtml")*@
+            <!-- Deal section ends -->
+            <!-- Contact section ends -->
+            @*@RenderPage("_Contact.cshtml")*@
+            <!-- Contact section ends -->
+        }
+        @*@Html.Action("ChatBotPartial","ChatBot")*@
+        <!-- Footer section ends -->
+        @RenderPage("_Footer.cshtml")
+        <!-- Footer section ends -->
+        <script src="~/Contents/Scripts/main.js"></script>
+        @*<script src="~/Contents/shoppingCart.js"></script>
+        <script src="~/Contents/favoriteProduct.js"></script>
+        <script src="~/Contents/ChatBot.js"></script>*@
 
-</body>
+    </body>
 
 </html>

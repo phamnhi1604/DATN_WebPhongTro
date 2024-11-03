@@ -1,4 +1,11 @@
-﻿.posts {
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900");
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+section{
+    background-color:#f7f7f7;
+}
+.posts {
   padding: 8rem 9% 2rem 9%;
 }
 .posts .container
@@ -26,6 +33,7 @@
   display: flex;
   justify-content: center;
   column-gap: 2rem;
+  background:#fff;
 }
 
 .posts .post-details-left .list-post-image-compact div {
@@ -45,85 +53,76 @@
   width: 98%;
 }
 
-.posts .post-details-right {
+.posts .post-details-contents {
   margin: 1rem;
   padding: 1rem;
+  background:#fff;
 }
-.posts .post-details-right .title-post {
+.posts .post-details-contents .title-post {
   font-size: 3rem;
 }
-.posts .post-details-right .price {
-  padding: 0.5rem 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 1.5rem;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+.post-detail-box .post-details-contents .price h2 {
+    padding: 0.5rem 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 1.5rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #009ade
 }
 
-.posts .post-details-right .price .price {
+.posts .post-details-content .price .price {
   font-size: 2.8rem;
   font-weight: bolder;
   color: #130f40;
 }
 
-.posts .post-details-right .price .cut {
+.posts .post-details-contents .price .cut {
   font-size: 2.2rem;
   text-decoration: line-through;
   color: #666;
 }
 
-.posts .post-details-right .price .offer {
+.posts .post-details-contents .price .offer {
   font-size: 2.6rem;
   color: #eb4d4b;
 }
 
-.posts .post-details-right .stars {
-  font-size: 1.7rem;
-}
 
-.posts .post-details-right .stars i {
-  color: gold;
-}
-
-.posts .post-details-right .stars span {
-  color: #666;
-}
-
-.posts .post-details-right .post-summary {
+.posts .post-details-contentst .post-summary {
 
   margin: 1.3rem 0;
   font-size: 1.8rem;
 }
 
-.posts .post-details-right .size-container {
+.posts .post-details-contentst .size-container {
   margin: 1rem 0;
 }
 
-.posts .post-details-right .size-container label {
+.posts .post-details-contentst .size-container label {
   font-size: 2rem;
   text-decoration: underline;
 }
 
-.posts .post-details-right .size-container select {
+.posts .post-details-contentst .size-container select {
   background-color: #f3f2f2;
   font-size: 2rem;
   border-radius: 5px;
 }
 
-.posts .post-details-right .size-container option {
+.posts .post-details-contents .size-container option {
   font-size: 2rem;
 }
 
-.posts .post-details-right .number-post label {
+.posts .post-details-contents .number-post label {
   font-size: 2rem;
   font-weight: bold;
   margin-right: 1rem;
 }
 
-.posts .post-details-right .number-post input {
+.posts .post-details-contents .number-post input {
   border: 1px solid #ccc;
   font-size: 2rem;
   padding: 0.5rem;
@@ -131,14 +130,65 @@
 }
 
 /* Tùy chỉnh dấu mũi tên */
-.posts .post-details-right .number-post #quantity::-webkit-inner-spin-button,
-.posts .post-details-right .number-post #quantity::-webkit-outer-spin-button {
+.posts .post-details-contentst .number-post #quantity::-webkit-inner-spin-button,
+.posts .post-details-contentst .number-post #quantity::-webkit-outer-spin-button {
   height: 2rem;
   margin: 0.5rem;
 }
+.contact-details {
+    border: 1px solid #ccc;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    background:#fff;
+}
+.contact-image-container img {
+    width: 100%;
+    padding: 4rem 10rem 2rem 10rem;
+}
+
+.contact-opt {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
 
 
-.posts .post-details-right .tabs-title
+}
+
+.contact-opt button{
+    height: 3rem;
+
+}
+.contact-opt h1 {
+    height: 3rem;
+    text-align:center;
+}
+
+.post-detail-map {
+    background-color: #fff;
+    margin: 10rem 0 !important;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.col-1 {
+    width: 33.33%;
+}
+
+.col-2 {
+    width: 66.67%;
+}
+/*
+.posts .post-details-contentst .tabs-title
 {
     display: flex;
     width: 100%;
@@ -149,7 +199,7 @@
     text-align: left;
     list-style: none;
 }
-.posts .post-details-right .tabs-title .tab-link
+.posts .post-details-contentst .tabs-title .tab-link
 {
   position: relative;
   margin: 0;
@@ -158,17 +208,17 @@
   font-weight: 600;
   transition: color ease 0.3s;
 }
-.posts .post-details-right .tabs-title .tab-link h3 span
+.posts .post-details-contentst .tabs-title .tab-link h3 span
 {
   font-size: 1.5rem;
   text-transform: uppercase;
 }
-.posts .post-details-right .tabs-title .tab-link h3 span:hover
+.posts .post-details-contentst .tabs-title .tab-link h3 span:hover
 {
   color: #eb4d4b;
   cursor: pointer;
 }
-.posts .post-details-right .tabs-title .tab-link.current
+.posts .post-details-contentst .tabs-title .tab-link.current
 {
     background: #fff;
     border: 1px solid #ddd;
@@ -176,17 +226,17 @@
     border-bottom: 1px solid #fff;
     margin-bottom: -1px;
 }
-.posts .post-details-right .tabs-title .tab-link h3
+.posts .post-details-contentst .tabs-title .tab-link h3
 {
   color: #363636;
   margin: 0;
   font-size: 2rem;
 }
-.posts .post-details-right .tab-float{
+.posts .post-details-contentst .tab-float{
   margin: 1rem;
   padding: 1rem;
 }
-.posts .post-details-right .tab-float .tab-content {
+.posts .post-details-contentst .tab-float .tab-content {
   display: none;
   font-size: 1.3rem;
-}
+}*/

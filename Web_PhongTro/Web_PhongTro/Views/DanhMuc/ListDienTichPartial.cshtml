@@ -1,0 +1,37 @@
+﻿
+
+<div class="link-danhmuc-container" style=" width: 100%;">
+    <ul class="link-danhmuc-list">
+        <li><a href="#">Dưới 1 triệu</a></li>
+        <li><a href="#">Từ 1 - 2 triệu</a></li>
+        <li><a href="#">Từ 2 - 3 triệu</a></li>
+        <li><a href="#">Từ 3 - 4 triệu</a></li>
+        <li><a href="#">Từ 4 - 5 triệu</a></li>
+        <li><a href="#">Từ 5 - 7 triệu</a></li>
+        <li><a href="#">Từ 7 - 10 triệu</a></li>
+        <li><a href="#">Trên 10 triệu</a></li>
+    </ul>
+</div>
+
+<style>
+    .link-danhmuc-container {
+    }
+
+    .link-danhmuc-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột có chiều rộng bằng nhau */
+        gap: 10px; /* Khoảng cách giữa các mục */
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+        .link-danhmuc-list li {
+            margin-bottom: 8px;
+        }
+
+        .link-danhmuc-list a {
+            text-decoration: none;
+        }
+</style>

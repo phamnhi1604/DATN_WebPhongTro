@@ -14,12 +14,22 @@ namespace Web_PhongTro.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            List<string> tenDanhMucList = db.DanhMucs.Select(ldm => ldm.TenDanhMuc).ToList();
-            foreach(var tenDanhMuc in tenDanhMucList)
-            {
-                ViewData[tenDanhMuc] = GetBaiDangPartial(tenDanhMuc);
-            }
-            return View(tenDanhMucList);
+            //List<string> tenDanhMucList = db.DanhMucs.Select(ldm => ldm.TenDanhMuc).ToList();
+            //foreach(var tenDanhMuc in tenDanhMucList)
+            //{
+            //    ViewData[tenDanhMuc] = GetBaiDangPartial(tenDanhMuc);
+            //}
+            //return View(tenDanhMucList);
+            var query = (from danhMuc in db.DanhMucs
+                         join phongTro in db.PhongTros on danhMuc.IdDanhMuc equals phongTro.IdDanhMuc
+                         join baiDang in db.BaiDangs on phongTro.IdPhongTro equals baiDang.IdPhongTro 
+                         orderby baiDang.IdBaiDang descending
+                         select new BaiDangVM
+                         {
+                             noidungPT = phongTro,
+                             BaiDang = baiDang 
+                         }).Take(4);
+            return View(query);
         }
 
         public List<BaiDangVM> GetBaiDangPartial(string tenDanhMuc)
@@ -32,6 +42,7 @@ namespace Web_PhongTro.Controllers
                           orderby baiDang.IdBaiDang descending
                           select new BaiDangVM
                           {
+                              noidungPT = phongTro,
                               BaiDang  =  baiDang
 
                           }).Take(4);

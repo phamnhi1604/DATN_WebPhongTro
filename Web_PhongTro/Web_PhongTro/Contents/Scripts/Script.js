@@ -20,6 +20,7 @@
         $(this).addClass("current");
     });
 
+
     //Login form
     $.validator.unobtrusive.parse("#loginForm");
 
@@ -38,7 +39,7 @@
                         window.location.href = result.redirectUrl;
                     } else {
                         alert('Đăng nhập thành công');
-                        window.location.reload();
+                        window.location.href = "../Home/Index"
                     }
                 } else {
                     alert(result.message);
@@ -70,7 +71,8 @@
             success: function (result) {
                 if (result.success) {
                     alert('Đăng ký thành công. Vui lòng đăng nhập');
-                    window.location.reload();
+                    //window.location.reload();
+                    window.location.href = '/account/loginV';
                 } else {
                     // Handle failure
                     alert(result.message);
@@ -89,6 +91,7 @@
         });
     });
 
+
     $('#user-btn').on('click', function () {
         $.ajax({
             url: '/Account/CheckAuthentication',
@@ -97,23 +100,33 @@
             success: function (result) {
                 if (result.isAuthenticated) {
                     if (result.isInRoleAdmin) {
-                        window.location.href = result.redirectUrl;
-                    } else {
-                        $('.user-box').css('display', 'unset');
+                        //window.location.href = result.redirectUrlAdmin;
+                        //alert('Đã đăng nhập');
+                    } else if (result.isInRoleNCT)
+                    {
+                        window.location.href = result.redirectUrlNCT;
                     }
+                    $('.user-box').css('display', 'unset');
+                    alert('Đã đăng nhập');
+
                 } else {
-                    $('.account').css('display', 'flex');
+                    alert('Chưa đăng nhập');
+                    console.log(result.isAuthenticated);
+
+                    window.location.href = "/Account/LoginV";
                 }
             },
             error: function () {
                 console.log('Error checking authentication status.');
             }
         });
+        if ($('.user-box').css('display', 'unset')) {
+            $('.user-box').css('display', 'none');
+        }
     });
-
     //close account form
     $('.close-btn').on('click', function () {
-        $('.account').css('display','none')
+        $('.account').css('display', 'none')
     });
     $('#logoutButton').on('click', function () {
         $.ajax({

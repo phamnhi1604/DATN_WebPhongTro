@@ -14,7 +14,7 @@
     <section class="posts" id="post-detail">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-12">
+                <div class="post-detail-box col-lg-8 col-md-12">
                     <div class="post-details-left">
                         <div class="post-image-container">
                             <img id="post-image" src="/Contents/Images/ImgPost/@item.BaiDang.AnhBaiDang" alt="">
@@ -22,127 +22,74 @@
                         <div class="list-post-image-compact">
                             @foreach (var ddAnh in item.listDdAnh)
                             {
-                            <div class="post-image-compact">
-                                <img src="/Contents/Images/ImgPost/@ddAnh" onclick="changeImage('/Contents/Images/ImgPost/@ddAnh')" alt="Image 1">
-                            </div>
+                                <div class="post-image-compact">
+                                    <img src="/Contents/Images/ImgPost/@ddAnh" onclick="changeImage('/Contents/Images/ImgPost/@ddAnh')" alt="Image 1">
+                                </div>
                             }
 
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-8 col-md-12">
-                    <div class="post-details-right">
+                    <div class="post-details-contents">
                         <h1 class="title-post">@item.BaiDang.TieuDe</h1>
-                        @*<div class="price">
-                                <div class="price">@string.Format("{0:N0}", item.Gia) đ</div>
-                                <div class="cut">@string.Format("{0:N0}", item.SanPham.GiaBan) đ</div>
-                                <div class="offer">@item.SanPham.GiamGia% off</div>
-                            </div>*@
-                        <!--<div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>-->
-                        @*<span>(@item.SanPham.SoLuongDanhGia)</span>*@
-                        <!--</div>-->
-                        @*<div class="size-container">
-                                <label for="size">Chọn kích thước:</label>
-                                <select id="size">
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                </select>
-                            </div>*@
-                        @*<div class="button_actions">
-                                <button type="submit" class="btn btn_base btn_add_cart btn-cart add_to_cart post-cart" data-post-id="@item.SanPham.IdSanPham">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    <span class="text_1">Thêm vào giỏ hàng</span>
-                                </button>
-                            </div>*@
-                        <ul class="tabs-title col-lg-12">
-                            <li class="tab-link current" data-tab="tab-1">
-                                <h3><span>Thông tin sản phẩm</span></h3>
-                            </li>
-                            <li class="tab-link" data-tab="tab-2">
-                                <h3><span>Chi Tiết Sản Phẩm</span></h3>
-                            </li>
-                            <li class="tab-link" data-tab="tab-3">
-                                <h3><span>Thanh toán vận chuyển</span></h3>
-                            </li>
-                        </ul>
-                        <div class="tab-float col-lg-12">
-                            <div id="tab-1" class="tab-content" style="display: block;">
-                                <div id="post-content" class="post-content">
-                                    <p style="text-align: justify; font-size: 1.8rem;">
-                                        @*@Html.Raw(item.SanPham.NoiDungSanPham.Replace("\\n", "<br>"))*@
-                                    </p>
-                                </div>
-                            </div>
-                            @*<div id="tab-2" class="tab-content">
-                                    <div id="post-reviews" class="post-reviews">
-                                        <p style="text-align: justify; font-size: 1.8rem;">
-                                            @Html.Raw(item.SanPham.DanhGiaSanPham.Replace("\\n", "<br>"))
-
-                                        </p>
-                                    </div>
-                                </div>*@
-                            @*<div id="tab-3" class="tab-content">
-                                    <div id="payment-shipping" class="payment-shipping">
-                                        <p style="text-align: justify; font-size: 1.8rem;">
-                                            @Html.Raw(item.SanPham.ThanhToanVanChuyen.Replace("\\n", "<br>"))
-                                        </p>
-                                    </div>
-                                </div>*@
+                        <div class="price">
+                            <h2>@item.noidungPT.GiaPhong vnđ</h2>
                         </div>
+                        <h1>Thông tin mô tả</h1>
+                        <p style="text-align: justify; font-size: 1.8rem;">
+                            @Html.Raw(item.BaiDang.NoiDung.Replace("\\n", "<br>"))
+                        </p>
+                        <hr />
+
+                        <h2>Đặc điểm phòng trọ</h2>
+                        <table>
+                            <tr>
+                                <td>Ngày đăng</td>
+                                <td>Row 3, Col 2</td>
+                            </tr>
+                            <tr>
+                                <td class="col-1">Diện tích</td>
+                                <td class="col-2">@item.noidungPT.DienTich <span style="text-transform:lowercase">m</span><sup>2</sup> </td>
+                            </tr>
+                            <tr>
+                                <td>Địa chỉ</td>
+                                <td>Row 2, Col 2</td>
+                            </tr>
+
+                        </table>
+                        <div class="post-detail-map">
+                            <h2>Xem trên bản đồ</h2>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62708.143874355424!2d106.58620995994364!3d10.791465086940724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752bf733e69175%3A0xd8d63453733325fe!2zVMOibiBQaMO6LCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1730214335319!5m2!1svi!2s" width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="contact-details">
+                        <div class="contact-image-container">
+                            <img id="contact-image" src="~/Contents/Images/UserImg.png" alt="">
+                           
+                        </div>
+                        <div class="contact-opt">
+                            <h1> @item.nguoiChoThue.TenNguoiChoThue</h1>
+                            <button id="copyButton" onclick="copyToClipboard();">@item.nguoiChoThue.SoDienThoai</button>
+                            <button><a href="https://zalo.me/@item.nguoiChoThue.SoDienThoai">Nhắn zalo</a></button>
+                            <button><span>Lưu tin Này</span></button>
+
+
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <!--<div class="row">
-                <h1 class="heading">Bạn có thể <span>Thích</span></h1>
-                <div class="slide-container swiper">
-                    <div class="slide-content">
-                        <div class="swiper-wrapper" id="similar-post-list">-->
-            @*@foreach (var item2 in lstImg)
-                {
-                    <div class="col-12 col-md-6 col-lg-3 box swiper-slide">
-                        <div class="icons">
-                            <a href="javascript:void(0)" class="fas fa-shopping-cart post-cart" data-post-id="@item2.SanPham.IdSanPham"></a>
-                            <a href="javascript:void(0)" class="fas fa-heart favorites-post" data-post-id="@item2.SanPham.IdSanPham"></a>
-                            <a href="@Url.Action("GetSanPhamById","SanPham", new { id = item2.SanPham.IdSanPham})" class="fas fa-eye"></a>
-                        </div>
-                        <div class="image">
-                            <img src="~/Content/Images/@item2.SanPham.AnhSP">
-                        </div>
-                        <div class="content">
-                            <h3 class="title-name"><a href="@Url.Action("GetBaiDangById","BaiDang", new { id = item2.SanPham.IdSanPham})">@item2.SanPham.TenSanPham</a></h3>
-                            <div class="box-price">
-                                <div class="price">@string.Format("{0:N0}", item2.SanPham.GiaBan)đ</div>
-                                <div class="cut">@string.Format("{0:N0}", item2.Gia)đ</div>
-                                <div class="offer">@item2.SanPham.GiamGia% off</div>
-                            </div>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>@item2.SanPham.SoLuongDanhGia</span>
-                            </div>
-                        </div>
-                    </div>
-                }*@
-
-            <!--</div>
-                    </div>
-
-                    <div class="swiper-button-next swiper-navBtn"></div>
-                    <div class="swiper-button-prev swiper-navBtn"></div>
-                </div>
-            </div>-->
+                
+                
         </div>
-    </section>}
+            
+  
+    </section>
+}
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
@@ -180,4 +127,19 @@
         },
     });
 
+
+
+
+    function copyToClipboard() {
+        var button = document.getElementById("copyButton");
+        var textToCopy = button.innerText;
+
+        navigator.clipboard.writeText(textToCopy)
+            .then(() => {
+                alert("Copied the text: " + textToCopy);
+            })
+            .catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+    }
 </script>

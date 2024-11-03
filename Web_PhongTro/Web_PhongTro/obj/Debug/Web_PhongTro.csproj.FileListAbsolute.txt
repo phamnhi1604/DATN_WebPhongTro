@@ -142,3 +142,5 @@ F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.csproj.CopyComplete
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.dll
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.pdb
+F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Newtonsoft.Json.dll
+F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Newtonsoft.Json.xml

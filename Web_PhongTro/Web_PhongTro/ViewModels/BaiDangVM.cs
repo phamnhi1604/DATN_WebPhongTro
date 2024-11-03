@@ -11,6 +11,11 @@ namespace Web_PhongTro.ViewModels
         public BaiDang BaiDang { get; set; }
         public List<string> listDdAnh { get; set; }
 
+        public PhongTro noidungPT { get; set; }
+        public DanhMuc danhMuc { get; set; }
+        public DiaChi diachiPT { get; set; }
+        public NguoiChoThue nguoiChoThue { get; set; }
+
         public BaiDangVM() { }
     }
 }
