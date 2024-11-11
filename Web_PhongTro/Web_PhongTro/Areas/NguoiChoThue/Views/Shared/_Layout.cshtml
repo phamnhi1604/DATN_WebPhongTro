@@ -9,6 +9,7 @@
           type="image/x-icon" />
     <title>Dashboard người dùng</title>
     <link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/baidang.css">
+    <link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/Css/Thongtin.css">
 
     @Html.Raw("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.8/css/line.min.css\">")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
@@ -17,7 +18,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="~/Areas/Admin/Scripts/Script.js"></script> 
+    <script src="~/Areas/Admin/Scripts/Script.js"></script>
 
 
     <style>
@@ -36,78 +37,29 @@
         <div class="logo-name">
             <div class="logo-image">
                 <a href="">
-                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fa-solid fa-house-laptop"></i>
                 </a>
             </div>
-            <span class="logo_name">Admin Panel</span>
+            <span class="logo_name">Người dùng</span>
 
         </div>
 
         <div class="menu-items">
             <ul class="nav-links">
+
+                <li>
+                    <a href="@Url.Action("Info","NCTHome", new { page = 1})">
+                        <i class="fa-regular fa-user"></i>
+                        <span class="link-name">Thông tin cá nhân</span>
+                    </a>
+                </li>
                 <li>
                     <a href="@Url.Action("DashBoard","NCTHome")">
-                        <i class="uil uil-estate"></i>
-                        <span class="link-name">Đăng tin mới</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("GetAll","Products", new { page = 1})">
                         <i class="uil uil-files-landscapes"></i>
-                        <span class="link-name">Sản phẩm</span>
+                        <span class="link-name">Bài đăng</span>
                     </a>
                 </li>
 
-                <li>
-                    @*<a href="@Url.Action("GetAllCate","Categories", new { page = 1}))">
-                        <i class="uil uil-shopping-bag"></i>
-                        <span class="link-name">Danh mục</span>
-                    </a>*@
-                </li>
-                <li>
-                    @*<a href="@Url.Action("GetAll","Orders", new { page = 1})">
-                        <i class="uil uil-shopping-cart"></i>
-                        <span class="link-name">Đơn hàng</span>
-                    </a>*@
-                </li>
-                <li>
-                    <a href="~/Admin/Orders/AllOrders">
-                        <i class="uil uil-shopping-cart"></i>
-                        <span class="link-name">Hóa đơn</span>
-                    </a>
-                </li>
-                <li>
-                    @*<a href="@Url.Action("GetAllCustomers","Customers", new { page = 1})">
-                        <i class="uil uil-user"></i>
-                        <span class="link-name">Customer</span>
-                    </a>*@
-                </li>
-                <li>
-                    <a href="~/Admin/Customers/AllCustomers">
-                        <i class="uil uil-book-reader"></i>
-                        <span class="link-name">Nhân viên</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="~/Admin/FeedBacks/AllFeedBacks">
-                        <i class="uil uil-feedback"></i>
-                        <span class="link-name">Phản hồi</span>
-                    </a>
-                </li>
-
-                <li>
-                    @*<a href="@Url.Action("GetAllBranch","Branch", new { page = 1})">
-                        <i class="uil uil-code-branch"></i>
-                        <span class="link-name">Chi nhánh</span>
-                    </a>*@
-                </li>
-
-                <li>
-                    <a href="">
-                        <i class="uil uil uil-estate"></i>
-                        <span class="link-name">Kho hàng</span>
-                    </a>
-                </li>
             </ul>
 
             <ul class="logout-mode">

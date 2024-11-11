@@ -135,7 +135,7 @@
     <Content Include="Areas\NguoiChoThue\Content\baidang.css" />
     <Content Include="Areas\NguoiChoThue\Content\QLBaiDang.css" />
     <Content Include="Areas\NguoiChoThue\Content\Css\style.css" />
-    <Content Include="Areas\NguoiChoThue\Content\Thongtin.css" />
+    <Content Include="Areas\NguoiChoThue\Content\Css\Thongtin.css" />
     <Content Include="Contents\Css\Bootstrap\bootstrap-grid.css" />
     <Content Include="Contents\Css\Bootstrap\bootstrap-grid.min.css" />
     <Content Include="Contents\Css\Bootstrap\bootstrap-grid.rtl.css" />
@@ -246,6 +246,7 @@
     <Content Include="Areas\NguoiChoThue\Views\NCTHome\DashBoard.cshtml" />
     <Content Include="Areas\KiemDuyetVien\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\KiemDuyetVien\Views\KDVHome\DashBoard.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\NCTHome\Info.cshtml" />
     <None Include="Models\PhongTro.dbml.layout">
       <DependentUpon>PhongTro.dbml</DependentUpon>
     </None>

@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Areas/NguoiChoThue/Views/Shared/_Layout.cshtml";
+}
+
+<div class="title">
+    <i class="uil uil-tachometer-fast-alt"></i>
+    <span class="text">Thông tin cá nhân</span>
+</div>
+<div class="" style="padding: 0 15% ">
+    <div class="profile-form-container">
+        <form class="profile-form">
+            <div class="form-group">
+                <label for="fullName">Họ và Tên</label>
+                <input type="text" id="fullName" name="fullName" value="Nguyễn Văn A" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Số Điện Thoại</label>
+                <input type="text" id="phone" name="phone" value="0909 123 456" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="nguyenvana@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Địa Chỉ</label>
+                <input type="text" id="address" name="address" value="123 Đường ABC, Quận 1, TP.HCM" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật Khẩu</label>
+                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu mới">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Xác Nhận Mật Khẩu</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Xác nhận mật khẩu">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn save">Lưu Thay Đổi</button>
+                <button type="button" class="btn cancel" onclick="cancelUpdate()">Hủy</button>
+            </div>
+        </form>
+    </div>
+</div>
