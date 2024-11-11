@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @*<meta charset="UTF-8" />*@
+    @*<meta http-equiv="X-UA-Compatible" content="IE=edge" />*@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/anhvu13/fashion.github.io/main/icon.png"
+          type="image/x-icon" />
+    <title>Trang Kiểm duyệt viên</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    @Html.Raw("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.8/css/line.min.css\">")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="~/Content/Css/Bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Areas/KiemDuyetVien/Contents/Css/main.css">
+    <link rel="stylesheet" href="~/Areas/KiemDuyetVien/Contents/Css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="~/Areas/KiemDuyetVien/Contents/Script/Script.js"></script>
+
+
+    <style>
+        #checkbox {
+            margin-left: -20px;
+            height: 25px;
+            width: 50px;
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <a href="">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+            <span class="logo_name">Admin Panel</span>
+
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li>
+                    <a href="@Url.Action("DashBoard","KDVHome")">
+                        <i class="uil uil-estate"></i>
+                        <span class="link-name">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("GetAll","Products", new { page = 1})">
+                        <i class="uil uil-files-landscapes"></i>
+                        <span class="link-name">Sản phẩm</span>
+                    </a>
+                </li>
+
+                
+            </ul>
+
+            <ul class="logout-mode">
+                <li>
+                    <a href="" id="logoutButton">
+                        <i class="uil uil-signout"></i>
+                        <span class="link-name">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <span class="link-name">Dark Mode</span>
+                    </a>
+
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="admin-profile">
+                <div class="icons">
+                    <i class="fa fa-envelope"></i>
+                    <i class="fa fa-bell"></i>
+                </div>
+                <img src="https://raw.githubusercontent.com/anhvu13/fashion.github.io/main/profiles.svg" alt="">
+                @Html.Action("RoleAndNamePartial", "Account", new { area = "" })
+            </div>
+        </div>
+
+        <div id="dashboard" class="dash-content">
+            @RenderBody()
+        </div>
+
+    </section>
+    @RenderSection("PartialView", required: false)
+    <script src="~/Areas/KiemDuyetVien/Contents/Script/main.js"></script>
+
+    @RenderSection("scriptsFooter", required: false)
+</body>
+
+</html>
+

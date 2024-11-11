@@ -1,0 +1,292 @@
+﻿/* Thiết lập container */
+.container {
+    max-width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Thiết lập phần tiêu đề */
+header {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Thiết lập phần sidebar */
+.sidebar {
+    width: 90%;
+    background-color: #ffffff;
+    padding-right: 30px;
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    height: 100%;
+    flex-direction: column;
+}
+
+/* Thiết lập phần thông tin người dùng */
+.user-info {
+    margin-bottom: 30px;
+    flex-shrink: 0;
+}
+
+    .user-info a {
+        display: block;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+    }
+
+.user_avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+    .user_avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.user_meta {
+    flex-grow: 1;
+}
+
+.user_name {
+    font-weight: bold;
+}
+
+.user_verify {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.user-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+    .user-info ul li {
+        margin-bottom: 5px;
+    }
+
+.user-info .btn {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Thiết lập phần thông tin tin đăng */
+.ad-info {
+    width: 60%;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    margin-left: -18px;
+}
+
+    .ad-info h2 {
+        margin-top: 0;
+    }
+
+/* Thiết lập phần thông tin bổ sung */
+.additional-info {
+    width: 35%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-title {
+    margin-top: 0;
+}
+
+.card ul {
+    list-style-type: square;
+    margin-left: 15px;
+}
+
+
+.nav-sidebar {
+    background-color: #f8f9fa; /* Màu nền cho menu sidebar */
+    padding: 1rem 0; /* Thêm padding trên và dưới */
+}
+
+    .nav-sidebar .nav-item {
+        border-left: 2px solid #c8c8c8; /* Màu xám cho border */
+        transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition cho hiệu ứng */
+        padding: 0.5rem 1rem; /* Thêm padding cho phần tử li */
+        background-color: #6c757d;
+    }
+
+        .nav-sidebar .nav-item:hover {
+            border-left-color: #6c757d; /* Màu xám đậm hơn khi hover */
+            background-color: #e9ecef; /* Màu nền khi hover */
+        }
+
+        .nav-sidebar .nav-item .nav-link {
+            color: #ffffff; /* Màu chữ mặc định */
+            transition: color 0.3s ease; /* Transition cho màu chữ */
+        }
+
+        .nav-sidebar .nav-item:hover .nav-link {
+            color: #333;
+        }
+
+
+/* Thiết lập các nhóm input */
+.form-group {
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 16px;
+    }
+
+    /* Thiết lập nút submit */
+    .form-group button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 3px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+css
+/* Thiết lập phần "Giá cho thuê" */
+.form-group.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-group.row label {
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.form-group.row .input-group {
+    display: flex;
+    align-items: center;
+}
+
+    .form-group.row .input-group .form-control {
+        max-width: 700px;
+        margin-right: 10px;
+    }
+
+        .form-group.row .input-group .form-control.js-gia-cho-thue {
+            flex-grow: 1;
+        }
+
+        .form-group.row .input-group .form-control.js-unit {
+            max-width: 150px;
+        }
+
+.form-group.row .form-text {
+    margin-top: 5px;
+}
+
+.input-group-append .input-group-text {
+    border: 1px solid #6c757d; /* Màu xám cho border */
+    background-color: #f8f9fa; /* Màu nền xám nhạt */
+    color: #000000;
+    padding: 0.5rem 1rem; /* Tăng padding để làm cho nó to hơn */
+    font-size: 1.1rem; /* Tăng kích thước chữ */
+    border-radius: 0 0.25rem 0.25rem 0; /* Bo tròn góc bên phải */
+}
+
+.image-upload-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.image-upload-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    border: 2px dashed #ccc;
+    cursor: pointer;
+}
+
+.image-upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    color: #666;
+}
+
+    .image-upload-label i {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+.image-upload-input {
+    display: none;
+}
+
+.uploaded-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 20px;
+    margin-top: 20px;
+}
+
+    .uploaded-images img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+    }
+
+.uploaded-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.uploaded-image {
+    width: 20px; /* Kích thước chiều rộng */
+    height: 20px; /* Kích thước chiều cao */
+    object-fit: cover; /* Để hình ảnh không bị bóp hoặc căng */
+    margin-right: 10px; /* Khoảng cách giữa các hình ảnh */
+    margin-bottom: 10px; /* Khoảng cách dưới của mỗi hình ảnh */
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+}

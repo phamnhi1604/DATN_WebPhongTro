@@ -128,6 +128,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\KiemDuyetVien\Contents\Css\main.css" />
+    <Content Include="Areas\KiemDuyetVien\Contents\Css\style.css" />
+    <Content Include="Areas\KiemDuyetVien\Contents\Script\main.js" />
+    <Content Include="Areas\KiemDuyetVien\Contents\Script\Script.js" />
+    <Content Include="Areas\NguoiChoThue\Content\baidang.css" />
+    <Content Include="Areas\NguoiChoThue\Content\QLBaiDang.css" />
+    <Content Include="Areas\NguoiChoThue\Content\Css\style.css" />
+    <Content Include="Areas\NguoiChoThue\Content\Thongtin.css" />
     <Content Include="Contents\Css\Bootstrap\bootstrap-grid.css" />
     <Content Include="Contents\Css\Bootstrap\bootstrap-grid.min.css" />
     <Content Include="Contents\Css\Bootstrap\bootstrap-grid.rtl.css" />
@@ -171,6 +179,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\KiemDuyetVien\Controllers\KDVHomeController.cs" />
+    <Compile Include="Areas\KiemDuyetVien\KiemDuyetVienAreaRegistration.cs" />
+    <Compile Include="Areas\NguoiChoThue\Controllers\DangBaiController.cs" />
+    <Compile Include="Areas\NguoiChoThue\Controllers\NCTHomeController.cs" />
+    <Compile Include="Areas\NguoiChoThue\Controllers\QLBaiDangController.cs" />
+    <Compile Include="Areas\NguoiChoThue\Controllers\QLTaiKhoanController.cs" />
+    <Compile Include="Areas\NguoiChoThue\NguoiChoThueAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaiDangController.cs" />
@@ -218,6 +235,17 @@
     <Content Include="Contents\Css\Bootstrap\bootstrap.min.css.map" />
     <Content Include="Contents\Css\Bootstrap\bootstrap.rtl.css.map" />
     <Content Include="Contents\Css\Bootstrap\bootstrap.rtl.min.css.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\AdminHome\DashBoard.cshtml" />
+    <Content Include="Areas\KiemDuyetVien\Views\web.config" />
+    <Content Include="Areas\NguoiChoThue\Views\web.config" />
+    <Content Include="Areas\NguoiChoThue\Views\DangBai\DangBai.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\QLBaiDang\QLBaiDang.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\QlTaiKhoan\ThongTin.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\NCTHome\DashBoard.cshtml" />
+    <Content Include="Areas\KiemDuyetVien\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\KiemDuyetVien\Views\KDVHome\DashBoard.cshtml" />
     <None Include="Models\PhongTro.dbml.layout">
       <DependentUpon>PhongTro.dbml</DependentUpon>
     </None>
@@ -237,6 +265,8 @@
     <Content Include="Views\DanhMuc\DanhMucPartial.cshtml" />
     <Content Include="Views\Account\LoginV.cshtml" />
     <Content Include="Views\Account\RegisterV.cshtml" />
+    <Content Include="Views\Account\RoleAndNamePartial.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -246,8 +276,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\" />
-    <Folder Include="Areas\KiemDuyetVien\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\KiemDuyetVien\Data\" />
+    <Folder Include="Areas\NguoiChoThue\Data\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\FavoritePost\" />
   </ItemGroup>

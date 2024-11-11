@@ -140,11 +140,14 @@ namespace Web_PhongTro.Controllers
                     isAuthenticated = true,
                     //isInRoleCus = roles.Contains("Khách thuê"),
                     isInRoleNCT = roles.Contains("Người cho thuê"),
-                    //isInRoleKDV = roles.Contains("Kiểm duyệt viên"),
-                    //isInRoleAdmin = roles.Contains("Admin"),
+                    isInRoleKDV = roles.Contains("Kiểm duyệt viên"),
+                    isInRoleAdmin = roles.Contains("Admin"),
+                    //isInRoleKT = roles.Contains("Khách thuê") ,
+                    //isInRoleAdmin = !roles.Contains("Khách thuê") || !roles.Contains("Người cho thuê") || !roles.Contains("Kiểm duyệt viên"),
 
-                    isInRoleAdmin = !roles.Contains("Khách thuê") || !roles.Contains("Người cho thuê") || !roles.Contains("Kiểm duyệt viên"),
-                    redirectUrlNCT = Url.Action("BaiDang", "DangBai", new { area = "nguoiChoThue" }),
+                    redirectUrlNCT = Url.Action("DashBoard", "NCTHome", new { area = "NguoiChoThue" }),
+                    redirectUrlKDV = Url.Action("Dashboard", "KDVHome", new { area = "KiemDuyetVien" }),
+                    redirectUrlKT = Url.Action("Dashboard", "Home"),
                     redirectUrlAdmin = Url.Action("DashBoard", "AdminHome", new { area = "Admin" })
                 }, JsonRequestBehavior.AllowGet);
             }

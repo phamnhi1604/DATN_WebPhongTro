@@ -1,0 +1,192 @@
+﻿/* Thiết lập container */
+.container {
+    max-width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Thiết lập phần tiêu đề */
+header {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Thiết lập phần sidebar */
+.sidebar {
+    width: 90%;
+    background-color: #f7f7f7;
+    padding-right: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    flex-direction: column;
+}
+
+/* Thiết lập phần thông tin người dùng */
+.user-info {
+    margin-bottom: 30px;
+    flex-shrink: 0;
+}
+
+    .user-info a {
+        display: block;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+    }
+
+.user_avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+    .user_avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.user_meta {
+    flex-grow: 1;
+}
+
+.user_name {
+    font-weight: bold;
+}
+
+.user_verify {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.user-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+    .user-info ul li {
+        margin-bottom: 5px;
+    }
+
+.user-info .btn {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Thiết lập phần thông tin tin đăng */
+.ad-info {
+    width: 80%;
+    background-color: #f7f7f7;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: -18px;
+}
+
+    .ad-info h2 {
+        margin-top: 0;
+    }
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-title {
+    margin-top: 0;
+}
+
+.card ul {
+    list-style-type: square;
+    margin-left: 15px;
+}
+
+
+.nav-sidebar {
+    background-color: #f8f9fa; /* Màu nền cho menu sidebar */
+    padding: 1rem 0; /* Thêm padding trên và dưới */
+}
+
+    .nav-sidebar .nav-item {
+        border-left: 2px solid #c8c8c8; /* Màu xám cho border */
+        transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition cho hiệu ứng */
+        padding: 0.5rem 1rem; /* Thêm padding cho phần tử li */
+        background-color: #6c757d;
+    }
+
+        .nav-sidebar .nav-item:hover {
+            border-left-color: #6c757d; /* Màu xám đậm hơn khi hover */
+            background-color: #e9ecef; /* Màu nền khi hover */
+        }
+
+        .nav-sidebar .nav-item .nav-link {
+            color: #333; /* Màu chữ mặc định */
+            transition: color 0.3s ease; /* Transition cho màu chữ */
+        }
+
+        .nav-sidebar .nav-item:hover .nav-link {
+            color: #333;
+        }
+
+.table_post_listing {
+    width: 100%;
+    border-collapse: collapse; /* Gộp các border */
+    margin: 20px 0; /* Thêm khoảng cách trên và dưới */
+}
+
+    .table_post_listing th,
+    .table_post_listing td {
+        padding: 12px; /* Thêm padding cho các ô */
+        text-align: left; /* Căn trái cho các ô */
+        border: 1px solid #ddd; /* Border cho các ô */
+    }
+
+    .table_post_listing th {
+        background-color: #f2f2f2; /* Màu nền cho header */
+        color: #333; /* Màu chữ cho header */
+    }
+
+    .table_post_listing tbody tr:hover {
+        background-color: #f5f5f5; /* Màu nền khi hover vào hàng */
+    }
+
+    .table_post_listing a {
+        color: #007bff; /* Màu liên kết */
+        text-decoration: none; /* Bỏ gạch chân */
+    }
+
+.table_post_listing a:hover {
+     text-decoration: underline; /* Gạch chân khi hover */
+}
+
+
+.btn-toolbar {
+    display: flex; /* Sử dụng flexbox để căn chỉnh ngang */
+    justify-content: flex-end; /* Đẩy các thành phần sang bên phải */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin-bottom: 20px; /* Khoảng cách phía dưới */
+}
+
+.input-group-search {
+    margin-right: 10px; /* Khoảng cách giữa ô tìm kiếm và nút lọc */
+}
+
+.btn-success {
+    border-left: 2px solid #c8c8c8; /* Màu xám cho border */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition cho hiệu ứng */
+    padding: 0.5rem 1rem; /* Thêm padding cho phần tử */
+    background-color: #51d6f0; /* Nền xanh nước */
+    color: whitesmoke; /* Chuyển màu chữ thành đen */
+    text-decoration: none;
+}
+
+    .btn-success:hover {
+        background-color: #51d6f0; /* Màu nền khi hover (tùy chọn) */
+        text-decoration: none;
+    }

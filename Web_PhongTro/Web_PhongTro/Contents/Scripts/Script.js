@@ -104,10 +104,9 @@
                         //alert('Đã đăng nhập');
                     } else if (result.isInRoleNCT)
                     {
-                        window.location.href = result.redirectUrlNCT;
+                        //window.location.href = result.redirectUrlNCT;
                     }
                     $('.user-box').css('display', 'unset');
-                    alert('Đã đăng nhập');
 
                 } else {
                     alert('Chưa đăng nhập');
@@ -123,6 +122,37 @@
         if ($('.user-box').css('display', 'unset')) {
             $('.user-box').css('display', 'none');
         }
+    });
+
+    $('#user-information').on('click', function () {
+        $.ajax({
+            url: '/Account/CheckAuthentication',
+            type: 'GET',
+            dataType: 'json',
+            success: function (result) {
+                if (result.isAuthenticated) {
+                    if (result.isInRoleAdmin) {
+                        window.location.href = result.redirectUrlAdmin;
+                    }
+                    else if (result.isInRoleNCT) {
+                        window.location.href = result.redirectUrlNCT;
+                    }
+                    else if (result.isInRoleKDV) {
+                        window.location.href = result.redirectUrlKDV;
+                    } else {
+                        window.location.href = result.redirectUrlKT;
+
+                    }
+
+                }
+                else {
+                    alert('Chưa đăng nhập');
+                }
+            },
+            error: function () {
+                console.log('Error checking authentication status.');
+            }
+        });
     });
     //close account form
     $('.close-btn').on('click', function () {

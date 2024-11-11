@@ -34,19 +34,19 @@
 
 
 
-    <div class="user-box" style="display: none;">
+    <div class="user-box" style="display:none">
         <div class="user-details">
             <div class="image-user">
-                <img src="https://raw.githubusercontent.com/anhvu13/fashion.github.io/main/avatarUser.jpg" alt="Avatar" class="avatar">
+                <img src="~/Content/Images/user.jpg" alt="Avatar" class="avatar">
             </div>
             <div class="user-infor">
-                <h2 class="user-name">Phạm Yến Nhi</h2>
-                <p class="user-email">admin1@gmail.com</p>
+                <h2 class="user-name">@Html.Action("RoleAndNamePartial", "Account")</h2>
+                <p class="user-email">customer1@gmail.com</p>
                 <p class="user-rank">Rank: Vip</p>
             </div>
         </div>
         <div class="logout-box">
-            <a class="user-information">Thông tin người dùng</a>
+            <a class="user-information" id="user-information">Thông tin người dùng</a>
             <button type="button" id="logoutButton" class="logout-button" href="">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Đăng xuất</span>

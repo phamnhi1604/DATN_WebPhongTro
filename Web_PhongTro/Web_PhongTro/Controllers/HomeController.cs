@@ -48,5 +48,10 @@ namespace Web_PhongTro.Controllers
                           }).Take(4);
             return query.ToList();
         }
+
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,230 @@
+﻿.container {
+    max-width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Thiết lập phần tiêu đề */
+header {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Thiết lập phần sidebar */
+.sidebar {
+    width: 90%;
+    background-color: #f7f7f7;
+    padding-right: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    flex-direction: column;
+}
+
+/* Thiết lập phần thông tin người dùng */
+.user-info {
+    margin-bottom: 30px;
+    flex-shrink: 0;
+}
+
+    .user-info a {
+        display: block;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+    }
+
+.user_avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+    .user_avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.user_meta {
+    flex-grow: 1;
+}
+
+.user_name {
+    font-weight: bold;
+}
+
+.user_verify {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.user-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+    .user-info ul li {
+        margin-bottom: 5px;
+    }
+
+.user-info .btn {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Thiết lập phần thông tin tin đăng */
+.ad-info {
+    width: 80%;
+    background-color: #f7f7f7;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: -18px;
+}
+
+    .ad-info h2 {
+        margin-top: 0;
+    }
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-title {
+    margin-top: 0;
+}
+
+.card ul {
+    list-style-type: square;
+    margin-left: 15px;
+}
+
+
+.nav-sidebar {
+    background-color: #f8f9fa; /* Màu nền cho menu sidebar */
+    padding: 1rem 0; /* Thêm padding trên và dưới */
+}
+
+    .nav-sidebar .nav-item {
+        border-left: 2px solid #c8c8c8; /* Màu xám cho border */
+        transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition cho hiệu ứng */
+        padding: 0.5rem 1rem; /* Thêm padding cho phần tử li */
+        background-color: #6c757d;
+    }
+
+        .nav-sidebar .nav-item:hover {
+            border-left-color: #6c757d; /* Màu xám đậm hơn khi hover */
+            background-color: #e9ecef; /* Màu nền khi hover */
+        }
+
+        .nav-sidebar .nav-item .nav-link {
+            color: #333; /* Màu chữ mặc định */
+            transition: color 0.3s ease; /* Transition cho màu chữ */
+        }
+
+        .nav-sidebar .nav-item:hover .nav-link {
+            color: #333;
+        }
+
+/* Chung */
+
+.container-form {
+    width: 100%;
+    max-width: 500px; /* Giới hạn chiều rộng form */
+    background-color: #fff; /* Nền trắng */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 30%;
+}
+
+
+.form-group {
+    margin-bottom: 1.5rem;
+    align-items: center;
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 1rem;
+    width: 100px;
+    text-align: right;
+}
+
+/* Trường nhập liệu */
+.form-control {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    display: flex;
+    width: 90%;
+}
+
+    .form-control:focus {
+        border-color: #80bdff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+/* Ảnh đại diện */
+.avatar-preview {
+    margin-bottom: 1rem;
+}
+
+    .avatar-preview img {
+        max-width: 150px;
+        height: auto;
+        border-radius: 50%;
+    }
+/* Nút */
+.btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    margin-top: 1rem;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+    .btn-primary:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* Ẩn input file */
+.image-upload-input {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Định dạng nút bên ngoài */
+.image-upload-btn {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}

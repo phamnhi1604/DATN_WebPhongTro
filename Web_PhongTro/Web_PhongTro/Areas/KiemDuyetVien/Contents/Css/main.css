@@ -1,0 +1,170 @@
+/* Đặt font chữ và reset mặc định */
+
+
+/* Căn chỉnh container */
+.container {
+    margin-top:20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Thanh điều hướng */
+nav {
+    background-color: #2f3640;
+    padding: 15px 0;
+}
+
+nav h1 {
+    display: inline-block;
+    color: #f5f6fa;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    float: right;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #f5f6fa;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #57606f;
+}
+
+/* Nội dung chính */
+main {
+    padding: 40px 0;
+    background-color: #f1f2f6;
+}
+
+h2 {
+    text-align: center;
+    color: #2f3640;
+    margin-bottom: 30px;
+}
+
+/* Danh sách bài đăng */
+.post-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+/* Bài đăng */
+.post {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.post:hover {
+    transform: translateY(-10px);
+}
+
+.post img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-details {
+    padding: 20px;
+}
+
+.post h3 {
+    color: #2f3640;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.post p {
+    margin-bottom: 8px;
+    color: #636e72;
+}
+
+.post p span {
+    font-weight: bold;
+    color: #e84118;
+}
+
+/* Nút bấm */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button.accept {
+    background-color: #44bd32;
+    color: white;
+}
+
+button.reject {
+    background-color: #e84118;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Footer */
+footer {
+    background-color: #2f3640;
+    color: #f5f6fa;
+    text-align: center;
+    padding: 20px;
+}
+
+.text {
+    max-height: 72px; /* Giới hạn chiều cao (tương đương 3 dòng) */
+    overflow-y: auto; /* Hiển thị thanh cuộn dọc nếu nội dung vượt quá chiều cao */
+    display: block;
+    margin-bottom: 10px;
+    padding-right: 10px; /* Để tránh văn bản bị che bởi thanh cuộn */
+    height: 72px;
+}
+
+
+.toggle-btn {
+    display: none; /* Ẩn nút "Xem thêm" mặc định */
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 5px; /* Khoảng cách nhỏ giữa văn bản và nút */
+    text-align: center; /* Đặt nút "Xem thêm" giữa */
+    /* Remove absolute positioning */
+}
+.text.expanded {
+    -webkit-line-clamp: unset; /* Hiển thị toàn bộ văn bản khi mở rộng */
+    overflow: visible;
+}
+
+.toggle-btn.show {
+    display: block; /* Hiển thị nút "Xem thêm" khi văn bản dài hơn 3 dòng */
+}
