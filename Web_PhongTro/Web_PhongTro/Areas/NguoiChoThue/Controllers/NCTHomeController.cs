@@ -37,7 +37,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                             noidungPT = nd,
                             diachiPT = dc
                             //Gia = db.func_GiaSanPham(sanPham.IdSanPham)
-                        }).Take(1);
+                        });
             }
 
 

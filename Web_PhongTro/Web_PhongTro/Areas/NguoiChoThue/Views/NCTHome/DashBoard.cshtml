@@ -87,9 +87,10 @@
             <img src="~/Content/Images/@item.BaiDang.AnhBaiDang" alt="">
         </td>
         @*<td>@string.Format("{0:N0}", item.Gia) đ</td>*@
-        <td>@item.diachiPT</td>
-        <td></td>
+    <td>@item.diachiPT.Phuong @item.diachiPT.Quan</td>
         <td>@item.BaiDang.SoLuongYeuThich</td>
+        <td>@item.BaiDang.TrangThai</td>
+
         <td>
             <button type="button" class="edit-product-btn" data-product-id="@item.BaiDang.IdBaiDang"><i class="fa fa-wrench"></i></button>
             <button type="button" class="delete-product-btn" data-product-id="@item.BaiDang.IdBaiDang"><i class="fa fa-trash"></i></button>
