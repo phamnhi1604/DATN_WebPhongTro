@@ -16,13 +16,13 @@ namespace Web_PhongTro.Areas.Admin.Controllers
         {
             return View();
         }
-        public ActionResult BaiDang(string productSearchType, string productSearchInput, string sortCol, string sortType, int page = 1)
+        public ActionResult BaiDang(string postSearchType, string postSearchInput, string sortCol, string sortType, int page = 1)
         {
             IEnumerable<BaiDangVM> query = null;
-            if (!string.IsNullOrEmpty(productSearchType) && !string.IsNullOrEmpty(productSearchInput))
+            if (!string.IsNullOrEmpty(postSearchType) && !string.IsNullOrEmpty(postSearchInput))
             {
                 query = db.BaiDangs
-                        .Where(p => p.TieuDe.Contains(productSearchInput))
+                        .Where(p => p.TieuDe.Contains(postSearchInput))
                         .Select(baiDang => new BaiDangVM
                         {
                             BaiDang = baiDang
@@ -92,11 +92,18 @@ namespace Web_PhongTro.Areas.Admin.Controllers
             }
             return View(query);
         }
-        public ActionResult NhanVien()
+        public ActionResult NhanVien(string NhanVienSearchType, string NhanVienSearchInput, string sortCol, string sortType, int page = 1)
         {
             //IEnumerable<BaiDangVM> query = null;
             var query = (from KiemDuyetVien in db.KiemDuyetViens
                          select KiemDuyetVien);
+            int NoOfRecordPerPage = 12;
+            int NoOfPages = (int)Math.Ceiling((double)query.Count() / NoOfRecordPerPage);
+            int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;
+            ViewBag.Page = page;
+            ViewBag.STT = (page - 1) * NoOfRecordPerPage + 1;
+            ViewBag.NoOfPages = NoOfPages;
+            query = query.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage);
             return View(query);
         }
         public ActionResult NguoiChoThue()
@@ -104,6 +111,27 @@ namespace Web_PhongTro.Areas.Admin.Controllers
             //IEnumerable<BaiDangVM> query = null;
             var query = (from NguoiChoThue in db.NguoiChoThues
                          select NguoiChoThue);
+            return View(query);
+        }
+        public ActionResult PhanHoi()
+        {
+            var query = (from PhanHoi in db.PhanHois
+                         select PhanHoi);
+            return View(query);
+        }
+
+        public ActionResult TaiKhoan(string postSearchType, string postSearchInput, string sortCol, string sortType, int page = 1)
+        {
+
+            var query = (from NguoiDung in db.NguoiDungs
+                         select NguoiDung);
+            int NoOfRecordPerPage = 12;
+            int NoOfPages = (int)Math.Ceiling((double)query.Count() / NoOfRecordPerPage);
+            int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;
+            ViewBag.Page = page;
+            ViewBag.STT = (page - 1) * NoOfRecordPerPage + 1;
+            ViewBag.NoOfPages = NoOfPages;
+            query = query.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage);
             return View(query);
         }
     }

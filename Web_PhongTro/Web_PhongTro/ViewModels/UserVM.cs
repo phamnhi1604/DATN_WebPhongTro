@@ -25,5 +25,7 @@ namespace Web_PhongTro.ViewModels
 
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+        public string AccountType { get; set; }
+
     }
 }

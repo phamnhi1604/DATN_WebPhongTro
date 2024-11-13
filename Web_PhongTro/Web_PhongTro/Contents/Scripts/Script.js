@@ -63,6 +63,7 @@
 
     $('#btnRegisterSubmit').on('click', function () {
         var formData = $('#registerForm').serialize();
+
         $.ajax({
             url: '/Account/Register',
             type: 'POST',

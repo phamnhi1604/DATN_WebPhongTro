@@ -1,21 +1,21 @@
-﻿@model IEnumerable<Web_PhongTro.Models.KiemDuyetVien>
+﻿@model IEnumerable<Web_PhongTro.Models.NguoiDung>
 
 @{
-    ViewBag.Title = "NhanVien";
+    ViewBag.Title = "Tài khoản người dùng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <div class="activity" id="posts">
     <div class="title">
         <i class="uil uil-package"></i>
-        <span class="text">Danh sách bài đăng</span>
+        <span class="text">Danh sách người dùng</span>
     </div>
     <div class="activity-data">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <td colspan="8">
-                        @using (Html.BeginForm("NhanVien", "AdminHome", FormMethod.Post, new { id = "post-search-form" }))
+                        @using (Html.BeginForm("TaiKhoan", "AdminHome", FormMethod.Post, new { id = "post-search-form" }))
                         {
             <select class="form-select" name="postsearchType" id="post-search-type" required>
                 <option value="name">Tìm theo tên</option>
@@ -36,15 +36,17 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Tên Nhân Viên</th>
+                    <th>Id tài khoản</th>
 
                     <th>
-                        Địa chỉ
+                        Tên tài khoản
                         <div>
                             @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiaGoc",sortType = "DESC", page = ViewBag.Page})" class="fa fa-solid fa-sort-up"></a>*@
                             @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiaGoc",sortType = "ASC", page = ViewBag.Page})" class="fa fa-solid fa-sort-down"></a>*@
                         </div>
                     </th>
+                    <th>Vai trò</th>
+
                     <!--<th>
                             Giảm giá
                             <div>-->
@@ -52,8 +54,9 @@
                     @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiamGia",sortType = "ASC", page = ViewBag.Page})" class="fa fa-solid fa-sort-down"></a>*@
                     <!--</div>
                     </th>-->
-                    
-                    
+
+                    <th>Trạng thái</th>
+
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -64,16 +67,18 @@
 
                     <tr>
                         <td>@(stt++)</td>
-                        
-                        @*<td>@string.Format("{0:N0}", item.Gia) đ</td>*@
-                        <td>@item.TenKDV</td>
-                        <td>@item.DiaChiKDV</td>
+
+                        <td>@item.IdNguoiDung</td>
+                        <td>@item.TenTaiKhoan</td>
+                        <td>@item.IdVaiTro</td>
+                        <td>@item.TonTai</td>
 
                         <td>
                             <button type="button" class="edit-post-btn" data-post-id="@item"><i class="fa fa-wrench"></i></button>
                             <button type="button" class="delete-post-btn" data-post-id="@item"><i class="fa fa-trash"></i></button>
                         </td>
-                    </tr>}
+                    </tr>
+}
             </tbody>
         </table>
     </div>
@@ -98,13 +103,13 @@
 <div>
     <a href="@Url.Action("GetAll","NCTHome")/?page=@(i+1)" class="buttons active">@(i+1)</a>
 </div> }
-                    else
-                    {
+else
+{
 <div>
     <a href="@Url.Action("GetAll","NCTHome")/?page=@(i+1)" class="buttons">@(i+1)</a>
 </div>}
 
-                }
+}
     <div><a class="buttons next-button" href="@Url.Action("GetAll","NCTHome")/?page=@NextPage">&gt;&gt;</a></div>
 </div>}
 </div>

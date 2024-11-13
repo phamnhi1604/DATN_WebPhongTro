@@ -251,9 +251,10 @@
     <Content Include="Areas\KiemDuyetVien\Views\KDVHome\DashBoard.cshtml" />
     <Content Include="Areas\NguoiChoThue\Views\NCTHome\Info.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminHome\KhachHang.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\BaiDang.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\NhanVien.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\NguoiChoThue.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\TaiKhoan.cshtml" />
     <None Include="Models\PhongTro.dbml.layout">
       <DependentUpon>PhongTro.dbml</DependentUpon>
     </None>

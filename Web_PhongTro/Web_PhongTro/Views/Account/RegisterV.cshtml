@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<divc class="account">
+<div class="account">
     <form method="post" id="registerForm">
         @Html.AntiForgeryToken()
 
@@ -21,8 +21,27 @@
         @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" } })
         @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
 
-        <button type="button" id="btnRegisterSubmit">Đăng ký</button>
+        <div class="form-group">
+            <label>Loại tài khoản</label><br />
+            <label>
+                <input type="radio" name="AccountType" value="Người thuê" /> Người thuê
+            </label>
+            <label>
+                <input type="radio" name="AccountType" value="Người cho thuê" /> Người cho thuê
+            </label>
+        </div>
+        <div class="" style="display:flex">
+
+            <button type="button" id="btnRegisterSubmit">Đăng ký</button>
+            <div style="display: flex; flex-direction: column">
+                <a class="hover-login">Bạn đã có tài khoản?</a>
+                <div class="hover-login" sstyle="display: flex; align-items: center;">
+                    <label style="margin-right: 6px; color: #959898; font-weight: 500;font-size:13px "></label>
+                    @Html.ActionLink("Đăng nhập", "LoginV")
+                </div>
+            </div>
+
+        </div>
+        
     </form>
-</divc>
-
-
+</div>

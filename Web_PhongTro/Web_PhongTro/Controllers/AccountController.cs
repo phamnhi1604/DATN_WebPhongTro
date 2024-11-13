@@ -37,11 +37,12 @@ namespace Web_PhongTro.Controllers
                 }
                 else if (lg.Password == lg.ConfirmPassword)
                 {
+                    int roleId = lg.AccountType == "Người cho thuê" ? 3 : 4;
                     NguoiDung u = new NguoiDung()
                     {
                         TenTaiKhoan = lg.Username,
                         MatKhau = lg.Password,
-                        IdVaiTro = 4,
+                        IdVaiTro = roleId,
                         TonTai = true
                     };
 

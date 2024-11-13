@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="~/Contents/Css/Bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Areas/Admin/Contents/style.css">
+    <link rel="stylesheet" href="~/Content/Css/Bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/Css/style.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -52,11 +54,11 @@
                 </li>
 
                 @*<li>
-                    <a href="@Url.Action("KhachHang","AdminHome")">
-                        <i class="uil uil uil-estate"></i>
-                        <span class="link-name">Khách hàng</span>
-                    </a>
-                </li>*@
+            <a href="@Url.Action("KhachHang","AdminHome")">
+                <i class="uil uil uil-estate"></i>
+                <span class="link-name">Khách hàng</span>
+            </a>
+        </li>*@
 
                 <li>
                     <a href="@Url.Action("NhanVien","AdminHome")">
@@ -69,6 +71,20 @@
                     <a href="@Url.Action("BaiDang","AdminHome")">
                         <i class="uil uil uil-estate"></i>
                         <span class="link-name">Bài đăng</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("TaiKhoan","AdminHome")">
+                        <i class="uil uil uil-estate"></i>
+                        <span class="link-name">Tài khoản</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("PhanHoi","AdminHome")">
+                        <i class="uil uil uil-estate"></i>
+                        <span class="link-name">Phản hồi</span>
                     </a>
                 </li>
             </ul>
