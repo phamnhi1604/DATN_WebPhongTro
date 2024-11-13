@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Web_PhongTro.Models.KiemDuyetVien>
+
+@{
+    ViewBag.Title = "NhanVien";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>NhanVien</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenKDV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChiKDV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdNguoiDung)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenKDV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChiKDV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdNguoiDung)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdKDV }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdKDV }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdKDV })
+        </td>
+    </tr>
+}
+
+</table>

@@ -128,6 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Contents\style.css" />
     <Content Include="Areas\KiemDuyetVien\Contents\Css\main.css" />
     <Content Include="Areas\KiemDuyetVien\Contents\Css\style.css" />
     <Content Include="Areas\KiemDuyetVien\Contents\Script\main.js" />
@@ -136,6 +137,7 @@
     <Content Include="Areas\NguoiChoThue\Content\QLBaiDang.css" />
     <Content Include="Areas\NguoiChoThue\Content\Css\style.css" />
     <Content Include="Areas\NguoiChoThue\Content\Css\Thongtin.css" />
+    <Content Include="Areas\NguoiChoThue\Content\Script\ScriptPost.js" />
     <Content Include="Contents\Css\Bootstrap\bootstrap-grid.css" />
     <Content Include="Contents\Css\Bootstrap\bootstrap-grid.min.css" />
     <Content Include="Contents\Css\Bootstrap\bootstrap-grid.rtl.css" />
@@ -188,6 +190,7 @@
     <Compile Include="Areas\NguoiChoThue\Controllers\QLBaiDangController.cs" />
     <Compile Include="Areas\NguoiChoThue\Controllers\QLTaiKhoanController.cs" />
     <Compile Include="Areas\NguoiChoThue\NguoiChoThueAreaRegistration.cs" />
+    <Compile Include="Areas\NguoiChoThue\ViewModal\PostVM.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaiDangController.cs" />
@@ -247,6 +250,10 @@
     <Content Include="Areas\KiemDuyetVien\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\KiemDuyetVien\Views\KDVHome\DashBoard.cshtml" />
     <Content Include="Areas\NguoiChoThue\Views\NCTHome\Info.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\KhachHang.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\BaiDang.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\NhanVien.cshtml" />
     <None Include="Models\PhongTro.dbml.layout">
       <DependentUpon>PhongTro.dbml</DependentUpon>
     </None>
@@ -278,7 +285,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\KiemDuyetVien\Data\" />
     <Folder Include="Areas\NguoiChoThue\Data\" />
     <Folder Include="Views\Admin\" />

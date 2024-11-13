@@ -1,11 +1,9 @@
 ﻿@model IEnumerable<Web_PhongTro.ViewModels.BaiDangVM>
 
-@{ 
-    ViewBag.Title = "DashBoard";
-    Layout = "~/Areas/NguoiChoThue/Views/Shared/_Layout.cshtml"; 
+@{
+    ViewBag.Title = "BaiDang";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-
 
 
 <div class="activity" id="posts">
@@ -20,15 +18,14 @@
                     <td colspan="8">
                         @using (Html.BeginForm("GetAll", "NCTHome", FormMethod.Post, new { id = "post-search-form" }))
                         {
-                            <select class="form-select" name="postsearchType" id="post-search-type" required>
-                                <option value="name">Tìm theo tên</option>
-                            </select>
+            <select class="form-select" name="postsearchType" id="post-search-type" required>
+                <option value="name">Tìm theo tên</option>
+            </select>
                             <input class="form-control" type="text" placeholder="Tìm kiếm..." name="postsearchInput" id="post-search-input" required>
-                            <button type="submit" class="btn btn-light" id="btn-search-post">
-                                <i class="fa fa-search" style="color: #3557ff;"></i>
-                                Tìm kiếm
-                            </button>
-                         }
+                                            <button type="submit" class="btn btn-light" id="btn-search-post">
+                                                <i class="fa fa-search" style="color: #3557ff;"></i>
+                                                Tìm kiếm
+                                            </button>}
                         <button class="btn btn-light" id="btn-add-post">
                             <i class="fa fa-plus-square" style="color: #3557ff;"></i>
                             Thêm bài đăng mới
@@ -93,45 +90,42 @@
             <button type="button" class="edit-post-btn" data-post-id="@item.BaiDang.IdBaiDang"><i class="fa fa-wrench"></i></button>
             <button type="button" class="delete-post-btn" data-post-id="@item.BaiDang.IdBaiDang"><i class="fa fa-trash"></i></button>
         </td>
-    </tr>
-}
+    </tr>}
             </tbody>
         </table>
     </div>
     @if (ViewBag.NoOfPages > 1)
     {
-        <div class="break-page">
-            @{ int PrevPage = ViewBag.Page - 1;
-                if (PrevPage <= 0)
-                {
-                    PrevPage = 1;
-                }
-                int NextPage = ViewBag.Page + 1;
-                if (NextPage >= ViewBag.NoOfPages)
-                {
-                    NextPage = ViewBag.NoOfPages;
-                } 
+<div class="break-page">
+    @{ int PrevPage = ViewBag.Page - 1;
+        if (PrevPage <= 0)
+        {
+            PrevPage = 1;
         }
-        <div><a class="buttons prev-button" href="@Url.Action("GetAll","NCTHome")/?page=@PrevPage">&lt;&lt;</a></div>
-            @for (int i = 0; i < ViewBag.NoOfPages; i++)
-            {
-                if (i + 1 == ViewBag.Page)
-                {
-                    <div>
-                        <a href="@Url.Action("GetAll","NCTHome")/?page=@(i+1)" class="buttons active">@(i+1)</a>
-                    </div> 
-                } else
-                                        {
-                    <div>
-                        <a href="@Url.Action("GetAll","NCTHome")/?page=@(i+1)" class="buttons">@(i+1)</a>
-                    </div>
+        int NextPage = ViewBag.Page + 1;
+        if (NextPage >= ViewBag.NoOfPages)
+        {
+            NextPage = ViewBag.NoOfPages;
+        } }
+    <div><a class="buttons prev-button" href="@Url.Action("GetAll","NCTHome")/?page=@PrevPage">&lt;&lt;</a></div>
+    @for (int i = 0; i < ViewBag.NoOfPages; i++)
+    {
+        if (i + 1 == ViewBag.Page)
+        {
+<div>
+    <a href="@Url.Action("GetAll","NCTHome")/?page=@(i+1)" class="buttons active">@(i+1)</a>
+</div> }
+                    else
+                    {
+<div>
+    <a href="@Url.Action("GetAll","NCTHome")/?page=@(i+1)" class="buttons">@(i+1)</a>
+</div>}
+
                 }
-                                    
-            }
-            <div><a class="buttons next-button" href="@Url.Action("GetAll","NCTHome")/?page=@NextPage">&gt;&gt;</a></div>
-        </div>
-     }
+    <div><a class="buttons next-button" href="@Url.Action("GetAll","NCTHome")/?page=@NextPage">&gt;&gt;</a></div>
+</div>}
 </div>
 @section scriptsFooter {
     <script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>
 }
+

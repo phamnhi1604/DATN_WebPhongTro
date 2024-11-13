@@ -490,13 +490,13 @@ nav.close~.dashboard .top {
     color: var(--text-color);
     border-color: var(--panel-color);
 }
-#posts tbody td:last-child,
+#products tbody td:last-child,
 #customers tbody td:last-child,
 #orders tbody td:last-child {
     position: relative;
 }
 
-#posts tbody button,
+#products tbody button,
 #customers tbody button,
 #orders tbody button {
     position: relative;
@@ -541,7 +541,7 @@ nav.close~.dashboard .top {
     color: var(--text-color);
 }
 
-#posts tbody tr td,
+#products tbody tr td,
 #customers tbody tr td {
     position: relative;
 }
@@ -557,12 +557,12 @@ nav.close~.dashboard .top {
     margin-left: 0.3rem;
     margin-top: 0.4rem;
 }
-#posts tbody tr td:nth-child(2) a {
+#products tbody tr td:nth-child(2) a {
     text-decoration: none;
     color: var(--text-color);
 }
 
-#posts tbody tr td:nth-child(2) img {
+#products tbody tr td:nth-child(2) img {
     position: absolute;
     top: -107px;
     left: -100px;
@@ -571,10 +571,10 @@ nav.close~.dashboard .top {
     transition-duration: .1s;
     z-index: 2;
 }
-#posts tbody tr td:nth-child(2):hover a{
+#products tbody tr td:nth-child(2):hover a{
     text-decoration: underline;
 }
-#posts tbody tr td:nth-child(2):hover img {
+#products tbody tr td:nth-child(2):hover img {
     height: 140px;
 }
 

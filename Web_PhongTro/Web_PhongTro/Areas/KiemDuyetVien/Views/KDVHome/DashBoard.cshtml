@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Web_PhongTro.ViewModels.BaiDangVM>
+
 @{
     ViewBag.Title = "DashBoard";
     Layout = "~/Areas/KiemDuyetVien/Views/Shared/_Layout.cshtml";
@@ -9,49 +10,74 @@
     <span class="text">Danh Sách Bài Đăng Chờ Duyệt</span>
 </div>
 <div class="container">
-    
+
 
     <div class="post-list">
-        <!-- Bài đăng 1 -->
-        <div class="post">
-            <img src="https://via.placeholder.com/300x200" alt="Phòng trọ quận 1">
-            <div class="post-details">
-                <h3>Phòng trọ quận 1, TP.HCM</h3>
-                <p>Giá: <span>3.000.000 VNĐ/tháng</span></p>
-                <p>Địa chỉ: 123 Nguyễn Trãi, Quận 1, TP.HCM</p>
-                <p class="text">
-                    Phòng trọ sạch sẽ, thoáng mát, đầy đủ tiện nghi, gần trung tâm thương mại,
-                    gần các trường đại học và các tiện ích khác. Khu vực an ninh, yên tĩnh,
-                    phù hợp cho sinh viên và nhân viên văn phòng. Phòng có diện tích 20m2, có gác lửng,
-                    toilet riêng, wifi miễn phí, có bãi đậu xe rộng rãi, bảo vệ 24/24, thuận tiện cho việc đi lại.
-                </p>
-                <a class="toggle-btn">Xem thêm</a>
-                <div class="buttons">
-                    <button class="accept">✔ Chấp Nhận</button>
-                    <button class="reject">✖ Từ Chối</button>
+        @foreach (var item in Model)
+        {
+            if ((item.BaiDang.TrangThai).Contains("0"))
+            {
+                <div class="post">
+                    <img src="~/Contents/Images/ImgPost/@item.BaiDang.AnhBaiDang" alt="Phòng trọ quận 1">
+                    <div class="post-details">
+                        <h3>@item.BaiDang.TieuDe</h3>
+                        <p>Giá: <span>3.000.000 VNĐ/tháng</span></p>
+                        <p>Địa chỉ: @item.diachiPT.Phuong  @item.diachiPT.Quan </p>
+                        <p class="text">
+                            @item.BaiDang.NoiDung
+                        </p>
+                        <a class="toggle-btn">Xem thêm</a>
+                        <div class="buttons">
+                            <button class="accept">✔ Chấp Nhận</button>
+                            <button class="reject">✖ Từ Chối</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            }
 
-        <!-- Bài đăng 2 -->
-        <div class="post">
-            <img src="https://via.placeholder.com/300x200" alt="Phòng trọ Bình Thạnh">
-            <div class="post-details">
-                <h3>Phòng trọ Bình Thạnh, TP.HCM</h3>
-                <p>Giá: <span>2.500.000 VNĐ/tháng</span></p>
-                <p>Địa chỉ: 456 Xô Viết Nghệ Tĩnh, Bình Thạnh, TP.HCM</p>
-                <p class="text">
-                    Phòng trọ sạch sẽ, thoáng mát, đầy đủ tiện nghi, gần trung tâm thương mại.
-                </p>
-                <a class="toggle-btn">Xem thêm</a>
-                <div class="buttons">
-                    <button class="accept">✔ Chấp Nhận</button>
-                    <button class="reject">✖ Từ Chối</button>
-                </div>
-            </div>
-        </div>
+        }
+        <!-- Bài đăng 1 -->
+
+
     </div>
 </div>
 
+
+<div class="title">
+    <i class="uil uil-tachometer-fast-alt"></i>
+    <span class="text">Danh Sách Bài Đăng Đã Duyệt</span>
+</div>
+<div class="container">
+
+
+    <div class="post-list">
+        @foreach (var item in Model)
+        {
+            if ((item.BaiDang.TrangThai).Contains("1"))
+            {
+                <div class="post">
+                    <img src="~/Contents/Images/ImgPost/@item.BaiDang.AnhBaiDang" alt="Phòng trọ quận 1">
+                    <div class="post-details">
+                        <h3>@item.BaiDang.TieuDe</h3>
+                        <p>Giá: <span>3.000.000 VNĐ/tháng</span></p>
+                        <p>Địa chỉ: @item.diachiPT.Phuong  @item.diachiPT.Quan </p>
+                        <p class="text">
+                            @item.BaiDang.NoiDung
+                        </p>
+                        <a class="toggle-btn">Xem thêm</a>
+                        <div class="buttons">
+                            <button class="accept">✔ Chấp Nhận</button>
+                            <button class="reject">✖ Từ Chối</button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+        <!-- Bài đăng 1 -->
+
+
+    </div>
+</div>
 
 

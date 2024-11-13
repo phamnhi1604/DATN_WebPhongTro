@@ -22,7 +22,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                         .Select(baiDang => new BaiDangVM
                         {
                             BaiDang = baiDang
-                            //Gia = db.func_GiaSanPham(sanPham.IdSanPham)
+                            //Gia = db.func_GiaBaiDang(BaiDang.IdBaiDang)
                         });
             }
             else
@@ -36,7 +36,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                             BaiDang = baiDang,
                             noidungPT = nd,
                             diachiPT = dc
-                            //Gia = db.func_GiaSanPham(sanPham.IdSanPham)
+                            //Gia = db.func_GiaBaiDang(BaiDang.IdBaiDang)
                         });
             }
 
@@ -63,23 +63,23 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                 //        break;
                 //    case "GiaGoc":
                 //        if (sortType == "ASC")
-                //            query = query.OrderBy(x => x.SanPham.GiaBan);
+                //            query = query.OrderBy(x => x.BaiDang.GiaBan);
                 //        else if (sortType == "DESC")
-                //            query = query.OrderByDescending(x => x.SanPham.GiaBan);
+                //            query = query.OrderByDescending(x => x.BaiDang.GiaBan);
                 //        else return HttpNotFound();
                 //        break;
                 //    case "GiamGia":
                 //        if (sortType == "ASC")
-                //            query = query.OrderBy(x => x.SanPham.GiamGia);
+                //            query = query.OrderBy(x => x.BaiDang.GiamGia);
                 //        else if (sortType == "DESC")
-                //            query = query.OrderByDescending(x => x.SanPham.GiamGia);
+                //            query = query.OrderByDescending(x => x.BaiDang.GiamGia);
                 //        else return HttpNotFound();
                 //        break;
                 //    case "SoLuongDanhGia":
                 //        if (sortType == "ASC")
-                //            query = query.OrderBy(x => x.SanPham.SoLuongDanhGia);
+                //            query = query.OrderBy(x => x.BaiDang.SoLuongDanhGia);
                 //        else if (sortType == "DESC")
-                //            query = query.OrderByDescending(x => x.SanPham.SoLuongDanhGia);
+                //            query = query.OrderByDescending(x => x.BaiDang.SoLuongDanhGia);
                 //        else return HttpNotFound();
                 //        break;
                 //    default:
@@ -92,6 +92,51 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
         public ActionResult Info()
         {
             return View();
+        }
+        public ActionResult AddPartial()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            foreach (var lsp in db.DanhMucs.ToList())
+            {
+                items.Add(new SelectListItem
+                {
+                    Value = lsp.IdDanhMuc.ToString(),
+                    Text = lsp.TenDanhMuc
+                });
+            }
+
+            ViewBag.SPLoaiCha = items;
+
+            return PartialView();
+        }
+
+        [HttpPost] 
+        public JsonResult Add(BaiDang bd)
+        {
+            var res = new { success = false, message = "Thêm sản phẩm không thành công" };
+            BaiDang temp = bd;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    BaiDang newBd = new BaiDang()
+                    {
+                        TieuDe = bd.TieuDe
+                    };
+                    db.BaiDangs.InsertOnSubmit(newBd);
+                    db.SubmitChanges();
+
+                    res = new { success = true, message = "Thêm sản phẩm thành công" };
+                }
+                catch (Exception ex)
+                {
+
+                    res = new { success = false, message = "Đã xảy ra lỗi:" + ex.Message };
+                }
+            }
+
+            return Json(res);
         }
     }
 }
