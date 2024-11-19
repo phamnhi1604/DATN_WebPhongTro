@@ -110,7 +110,7 @@
                     $('.user-box').css('display', 'unset');
 
                 } else {
-                    alert('Chưa đăng nhập');
+                    //alert('Chưa đăng nhập');
                     console.log(result.isAuthenticated);
 
                     window.location.href = "/Account/LoginV";

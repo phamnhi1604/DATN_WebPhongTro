@@ -6,7 +6,7 @@ section{
     background-color:#f7f7f7;
 }
 .posts {
-  padding: 8rem 9% 2rem 9%;
+    padding: 8rem 3% 2rem 3%;
 }
 .posts .container
 {
@@ -20,11 +20,12 @@ section{
 
 .posts .post-details-left .post-image-container {
   width: 100%;
-  height: 450px;
+  height: 400px;
   margin-bottom: 2rem;
 }
 
 .posts .post-details-left .post-image-container img {
+    border-radius:0.5rem;
   height: 100%;
   width: 100%;
 }
@@ -34,14 +35,16 @@ section{
   justify-content: center;
   column-gap: 2rem;
   background:#fff;
+    height:8rem;
 }
 
 .posts .post-details-left .list-post-image-compact div {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 12rem;
-  width: 10rem;
+  /*height: 12rem;
+  width: 10rem;*/
+  height: inherit;
 }
 
 .posts .post-details-left .list-post-image-compact div:hover {

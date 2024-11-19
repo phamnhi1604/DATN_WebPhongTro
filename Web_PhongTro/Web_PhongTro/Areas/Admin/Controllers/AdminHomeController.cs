@@ -106,17 +106,47 @@ namespace Web_PhongTro.Areas.Admin.Controllers
             query = query.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage);
             return View(query);
         }
-        public ActionResult NguoiChoThue()
+        public ActionResult NguoiThue(string NhanVienSearchType, string NhanVienSearchInput, string sortCol, string sortType, int page = 1)
+        {
+            //IEnumerable<BaiDangVM> query = null;
+            var query = (from NguoiThue in db.NguoiThues
+                         select NguoiThue);
+            int NoOfRecordPerPage = 12;
+            int NoOfPages = (int)Math.Ceiling((double)query.Count() / NoOfRecordPerPage);
+            int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;
+            ViewBag.Page = page;
+            ViewBag.STT = (page - 1) * NoOfRecordPerPage + 1;
+            ViewBag.NoOfPages = NoOfPages;
+            query = query.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage);
+            return View(query);
+        }
+        public ActionResult NguoiChoThue(string NhanVienSearchType, string NhanVienSearchInput, string sortCol, string sortType, int page = 1)
         {
             //IEnumerable<BaiDangVM> query = null;
             var query = (from NguoiChoThue in db.NguoiChoThues
+                         //join NguoiThue in db.NguoiThues on NguoiChoThue.IdNguoiDung equals NguoiThue.IdNguoiDung
                          select NguoiChoThue);
+            int NoOfRecordPerPage = 12;
+            int NoOfPages = (int)Math.Ceiling((double)query.Count() / NoOfRecordPerPage);
+            int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;
+            ViewBag.Page = page;
+            ViewBag.STT = (page - 1) * NoOfRecordPerPage + 1;
+            ViewBag.NoOfPages = NoOfPages;
+            query = query.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage);
             return View(query);
         }
-        public ActionResult PhanHoi()
+        public ActionResult PhanHoi(string NhanVienSearchType, string NhanVienSearchInput, string sortCol, string sortType, int page = 1)
         {
             var query = (from PhanHoi in db.PhanHois
+                         join NguoiThue in db.NguoiThues on PhanHoi.IdNguoiThue equals NguoiThue.IdNguoiThue
                          select PhanHoi);
+            int NoOfRecordPerPage = 12;
+            int NoOfPages = (int)Math.Ceiling((double)query.Count() / NoOfRecordPerPage);
+            int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;
+            ViewBag.Page = page;
+            ViewBag.STT = (page - 1) * NoOfRecordPerPage + 1;
+            ViewBag.NoOfPages = NoOfPages;
+            query = query.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage);
             return View(query);
         }
 

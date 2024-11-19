@@ -255,6 +255,8 @@
     <Content Include="Areas\Admin\Views\AdminHome\NhanVien.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\NguoiChoThue.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\TaiKhoan.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\PhanHoi.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\NguoiThue.cshtml" />
     <None Include="Models\PhongTro.dbml.layout">
       <DependentUpon>PhongTro.dbml</DependentUpon>
     </None>

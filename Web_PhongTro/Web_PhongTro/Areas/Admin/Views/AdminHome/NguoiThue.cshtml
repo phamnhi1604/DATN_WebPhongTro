@@ -1,8 +1,7 @@
-﻿@model IEnumerable<Web_PhongTro.Models.NguoiChoThue>
-
+﻿@model IEnumerable<Web_PhongTro.Models.NguoiThue>
 
 @{
-    ViewBag.Title = "NguoiChoThue";
+    ViewBag.Title = "NguoiThue";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,27 +9,27 @@
 <div class="activity" id="posts">
     <div class="title">
         <i class="uil uil-package"></i>
-        <span class="text">Danh sách bài đăng</span>
+        <span class="text">Danh sách người thuê</span>
     </div>
     <div class="activity-data">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <td colspan="8">
-                        @using (Html.BeginForm("NguoiChoThue", "AdminHome", FormMethod.Post, new { id = "post-search-form" }))
+                        @using (Html.BeginForm("NguoiThue", "AdminHome", FormMethod.Post, new { id = "post-search-form" }))
                         {
                             <select class="form-select" name="postsearchType" id="post-search-type" required>
                                 <option value="name">Tìm theo tên</option>
-                           </select>
+                            </select>
                             <input class="form-control" type="text" placeholder="Tìm kiếm..." name="postsearchInput" id="post-search-input" required>
                             <button type="submit" class="btn btn-light" id="btn-search-post">
                                 <i class="fa fa-search" style="color: #3557ff;"></i>
                                 Tìm kiếm
                             </button>}
-                        <button class="btn btn-light" id="btn-add-post">
-                            <i class="fa fa-plus-square" style="color: #3557ff;"></i>
-                            Thêm bài đăng mới
-                        </button>
+                            <button class="btn btn-light" id="btn-add-post">
+                                <i class="fa fa-plus-square" style="color: #3557ff;"></i>
+                                Thêm bài đăng mới
+                            </button>
                     </td>
 
                 </tr>
@@ -38,10 +37,10 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Tên người phản hồi</th>
+                    <th>Tên khách hàng</th>
 
                     <th>
-                        Nội dung
+                        Ngày sinh
                         <div>
                             @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiaGoc",sortType = "DESC", page = ViewBag.Page})" class="fa fa-solid fa-sort-up"></a>*@
                             @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiaGoc",sortType = "ASC", page = ViewBag.Page})" class="fa fa-solid fa-sort-down"></a>*@
@@ -55,8 +54,11 @@
                     <!--</div>
                     </th>-->
 
+                    <th>Giới tính</th>
+                    <th>Địa chỉ</th>
+                    <th>Số điện thoại</th>
 
-                    <th>Ngày phản hồi</th>
+                    <th>Email</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -69,9 +71,12 @@
                         <td>@(stt++)</td>
 
                         @*<td>@string.Format("{0:N0}", item.Gia) đ</td>*@
-                        <td>@item.TenNguoiChoThue</td>
+                        <td>@item.TenKhachHang</td>
+                        <td>@item.NgaySinh</td>
+                        <td>@item.GioiTinh</td>
                         <td>@item.DiaChi</td>
                         <td>@item.SoDienThoai</td>
+                        <td>@item.Email</td>
 
                         <td>
                             <button type="button" class="edit-post-btn" data-post-id="@item"><i class="fa fa-wrench"></i></button>
@@ -87,6 +92,5 @@
 @section scriptsFooter {
     <script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>
 }
-
 
 
