@@ -16,6 +16,7 @@ section{
   width: 100%;
   padding: 1rem;
   text-align: center;
+  position:relative;
 }
 
 .posts .post-details-left .post-image-container {
@@ -29,13 +30,38 @@ section{
   height: 100%;
   width: 100%;
 }
+.post-details-left button {
+    position: absolute;
+    top: 40%; /* Canh giữa theo chiều dọc */
+    transform: translateY(-50%);
+    z-index: 2; /* Đảm bảo nằm phía trên các phần tử khác */
+    background-color: rgba(0, 0, 0, 0.7); /* Màu nền nút */
+    border-radius: 50%; /* Tạo hình tròn cho nút */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carousel-control-prev {
+    left: 10px; /* Dịch nút về bên trái, có thể chỉnh lại tùy ý */
+}
 
+.carousel-control-next {
+    right: 10px; /* Dịch nút về bên phải */
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+    background-size: contain; /* Đảm bảo icon được hiển thị đầy đủ */
+    background-color: transparent; /* Loại bỏ màu nền mặc định của icon */
+}
 .posts .post-details-left .list-post-image-compact {
-  display: flex;
-  justify-content: center;
-  column-gap: 2rem;
-  background:#fff;
-    height:8rem;
+    display: flex;
+    justify-content: center;
+    column-gap: 1rem;
+    background: #fff;
+    height: 8rem;
 }
 
 .posts .post-details-left .list-post-image-compact div {
@@ -62,7 +88,7 @@ section{
   background:#fff;
 }
 .posts .post-details-contents .title-post {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 .post-detail-box .post-details-contents .price h2 {
     padding: 0.5rem 0;
@@ -142,26 +168,37 @@ section{
     border: 1px solid #ccc;
     margin: 1rem;
     border-radius: 0.5rem;
-    background:#fff;
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .contact-image-container img {
     width: 100%;
-    padding: 4rem 10rem 2rem 10rem;
+    padding: 4rem 8rem 2rem;
 }
-
+.btn-contact-opt button {
+    background: none;
+}
+.btn-contact-opt button i {
+    margin-right:4px;
+}
+.btn-contact-opt button:hover {
+    background: #ccc;
+}
 .contact-opt {
     display: flex;
     flex-direction: column;
     font-size: 1.6rem;
-
-
 }
 
 .contact-opt button{
     height: 3rem;
+    border-radius: 5rem;
+    width: 90%;
+    margin: 0.5rem auto auto ;
 
 }
-.contact-opt h1 {
+.contact-opt h2 {
     height: 3rem;
     text-align:center;
 }
@@ -190,56 +227,45 @@ td {
 .col-2 {
     width: 66.67%;
 }
-/*
-.posts .post-details-contentst .tabs-title
-{
+.sidebar {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+}
+
+.sidebar-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+.sideBar-postList {
     display: flex;
-    width: 100%;
-    margin-top: 2rem;
-    margin-bottom: 0px;
-    border-bottom: 1px solid #ddd;
-    padding-left: 0px;
-    text-align: left;
-    list-style: none;
+    align-items: center;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 16px;
 }
-.posts .post-details-contentst .tabs-title .tab-link
-{
-  position: relative;
-  margin: 0;
-  padding: 1rem 3rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  transition: color ease 0.3s;
+
+
+.sideBar-postList img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 12px;
 }
-.posts .post-details-contentst .tabs-title .tab-link h3 span
-{
-  font-size: 1.5rem;
-  text-transform: uppercase;
+.post-title{
+    font-size:13px;
+    line-height:15px;
 }
-.posts .post-details-contentst .tabs-title .tab-link h3 span:hover
-{
-  color: #eb4d4b;
-  cursor: pointer;
+.post-price {
+    font-size: 14px;
+    color: #16c784;
+    font-weight:bold;
 }
-.posts .post-details-contentst .tabs-title .tab-link.current
-{
-    background: #fff;
-    border: 1px solid #ddd;
-    border-top: 2px solid #eb4d4b;
-    border-bottom: 1px solid #fff;
-    margin-bottom: -1px;
+.post-content {
+    flex: 1;
 }
-.posts .post-details-contentst .tabs-title .tab-link h3
-{
-  color: #363636;
-  margin: 0;
-  font-size: 2rem;
-}
-.posts .post-details-contentst .tab-float{
-  margin: 1rem;
-  padding: 1rem;
-}
-.posts .post-details-contentst .tab-float .tab-content {
-  display: none;
-  font-size: 1.3rem;
-}*/

@@ -12,33 +12,26 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
     {
         PhongTroDataContext db = new PhongTroDataContext();
         // GET: NguoiChoThue/NCTHome
-        public ActionResult Dashboard(string productSearchType, string productSearchInput, string sortCol, string sortType, int page = 1)
+        public ActionResult Dashboard(string productSearchType, string sortCol, string sortType, int page = 1)
         {
+            string username = User.Identity.Name.ToString();
             IEnumerable<BaiDangVM> query = null;
-            if (!string.IsNullOrEmpty(productSearchType) && !string.IsNullOrEmpty(productSearchInput))
-            {
-                query = db.BaiDangs
-                        .Where(p => p.TieuDe.Contains(productSearchInput))
-                        .Select(baiDang => new BaiDangVM
-                        {
-                            BaiDang = baiDang
-                            //Gia = db.func_GiaBaiDang(BaiDang.IdBaiDang)
-                        });
-            }
-            else
-            {
+            
                 query = (from baiDang in db.BaiDangs
-                        join nd in db.PhongTros on baiDang.IdPhongTro equals nd.IdPhongTro
-                        join dc in db.DiaChis on nd.IdDiaChi equals dc.IdDiaChi
+                        join pt in db.PhongTros on baiDang.IdPhongTro equals pt.IdPhongTro
+                        join dc in db.DiaChis on pt.IdDiaChi equals dc.IdDiaChi
+                        join nct in db.NguoiChoThues on baiDang.IdNguoiChoThue equals nct.IdNguoiChoThue
+                        join nd in db.NguoiDungs on nct.IdNguoiDung equals nd.IdNguoiDung
                         orderby baiDang.IdBaiDang descending
-                        select new BaiDangVM
+                        where username == nd.TenTaiKhoan
+
+                         select new BaiDangVM
                         {
                             BaiDang = baiDang,
-                            noidungPT = nd,
+                            noidungPT = pt,
                             diachiPT = dc
-                            //Gia = db.func_GiaBaiDang(BaiDang.IdBaiDang)
+                            
                         });
-            }
 
 
 
@@ -50,45 +43,12 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
             ViewBag.STT = (page - 1) * NoOfRecordPerPage + 1;
             ViewBag.NoOfPages = NoOfPages;
             query = query.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage);
-            if (!string.IsNullOrEmpty(sortCol) && !string.IsNullOrEmpty(sortType))
-            {
-                //switch (sortCol)
-                //{
-                //    case "GiaDaGiam":
-                //        if (sortType == "ASC")
-                //            query = query.OrderBy(x => x.Gia);
-                //        else if (sortType == "DESC")
-                //            query = query.OrderByDescending(x => x.Gia);
-                //        else return HttpNotFound();
-                //        break;
-                //    case "GiaGoc":
-                //        if (sortType == "ASC")
-                //            query = query.OrderBy(x => x.BaiDang.GiaBan);
-                //        else if (sortType == "DESC")
-                //            query = query.OrderByDescending(x => x.BaiDang.GiaBan);
-                //        else return HttpNotFound();
-                //        break;
-                //    case "GiamGia":
-                //        if (sortType == "ASC")
-                //            query = query.OrderBy(x => x.BaiDang.GiamGia);
-                //        else if (sortType == "DESC")
-                //            query = query.OrderByDescending(x => x.BaiDang.GiamGia);
-                //        else return HttpNotFound();
-                //        break;
-                //    case "SoLuongDanhGia":
-                //        if (sortType == "ASC")
-                //            query = query.OrderBy(x => x.BaiDang.SoLuongDanhGia);
-                //        else if (sortType == "DESC")
-                //            query = query.OrderByDescending(x => x.BaiDang.SoLuongDanhGia);
-                //        else return HttpNotFound();
-                //        break;
-                //    default:
-                //        return HttpNotFound();
-                //}
-            }
+            
+            
 
             return View(query);
         }
+
         public ActionResult Info()
         {
             return View();
@@ -110,7 +70,28 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
 
             return PartialView();
         }
+        public ActionResult ChiTietBaiDang(int id)
+        {
+            var query = (from baiDang in db.BaiDangs
+                         join nd in db.PhongTros on baiDang.IdPhongTro equals nd.IdPhongTro
+                         join dc in db.DiaChis on nd.IdDiaChi equals dc.IdDiaChi
+                         join ddA in db.AnhBaiDangs on baiDang.IdBaiDang equals ddA.IdBaiDang
+                         join thongtinNguoiChoThue in db.NguoiChoThues on baiDang.IdNguoiChoThue equals thongtinNguoiChoThue.IdNguoiChoThue
+                         where baiDang.IdBaiDang == id
+                         select new BaiDangVM
+                         {
+                             BaiDang = baiDang,
+                             noidungPT = nd,
+                             diachiPT = dc,
+                             nguoiChoThue = thongtinNguoiChoThue,
+                             listDdAnh = db.AnhBaiDangs
+                                       .Where(a => a.IdBaiDang == baiDang.IdBaiDang)
+                                       .Select(a => a.DuongDanAnh)
+                                       .ToList()
 
+                         }).Take(1);
+            return View(query);
+        }
         [HttpPost] 
         public JsonResult Add(BaiDang bd)
         {
@@ -138,5 +119,53 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
 
             return Json(res);
         }
+
+        public ActionResult ThemBai()
+        {
+            return View();
+        }
+        public ActionResult EditPartial()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            foreach (var lsp in db.DanhMucs.ToList())
+            {
+                items.Add(new SelectListItem
+                {
+                    Value = lsp.IdDanhMuc.ToString(),
+                    Text = lsp.TenDanhMuc
+                });
+            }
+
+            ViewBag.DanhMuc = items;
+            return PartialView();
+        }
+
+        //public ActionResult GetDetails(long postId)
+        //{
+        //    long a = postId;
+        //    var query = (from bd in db.BaiDangs
+        //                 where bd.IdBaiDang == postId
+        //                 select new BaiDangVM
+        //                 {
+        //                     BaiDang = bd
+        //                 }).FirstOrDefault();
+        //    long idDanhMuc = (from pt in db.PhongTros
+        //                      join loaipt in db.DanhMucs on pt.IdDanhMuc equals loaipt.IdDanhMuc
+        //                      where BaiDang. == postId
+        //                      select loaiSanPham.IdLoaiSPCha).FirstOrDefault().Value;
+        //    BaiDangVM product = new BaiDangVM(query);
+        //    if (product != null)
+        //    {
+        //        return Json(new
+        //        {
+        //            productData = product,
+        //            idLoaiCha = idLoaiCha
+        //        }, JsonRequestBehavior.AllowGet);
+
+        //    }
+
+        //    return HttpNotFound();
+        //}
     }
 }

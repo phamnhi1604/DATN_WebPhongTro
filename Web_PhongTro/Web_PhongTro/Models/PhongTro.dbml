@@ -8,11 +8,13 @@
       <Association Name="BaiDang_AnhBaiDang" Member="BaiDang" ThisKey="IdBaiDang" OtherKey="IdBaiDang" Type="BaiDang" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.VaiTro" Member="VaiTros">
-    <Type Name="VaiTro">
-      <Column Name="IdVaiTro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenVaiTro" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Association Name="VaiTro_NguoiDung" Member="NguoiDungs" ThisKey="IdVaiTro" OtherKey="IdVaiTro" Type="NguoiDung" />
+  <Table Name="dbo.YeuThich" Member="YeuThiches">
+    <Type Name="YeuThich">
+      <Column Name="IDYT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdBaiDang" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdNguoiThue" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="BaiDang_YeuThich" Member="BaiDang" ThisKey="IdBaiDang" OtherKey="IdBaiDang" Type="BaiDang" IsForeignKey="true" />
+      <Association Name="NguoiThue_YeuThich" Member="NguoiThue" ThisKey="IdNguoiThue" OtherKey="IdNguoiThue" Type="NguoiThue" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.BaiDang" Member="BaiDangs">
@@ -27,6 +29,7 @@
       <Column Name="TrangThai" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SoLuongYeuThich" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="BaiDang_AnhBaiDang" Member="AnhBaiDangs" ThisKey="IdBaiDang" OtherKey="IdBaiDang" Type="AnhBaiDang" />
+      <Association Name="BaiDang_YeuThich" Member="YeuThiches" ThisKey="IdBaiDang" OtherKey="IdBaiDang" Type="YeuThich" />
       <Association Name="BaiDang_PhanHoi" Member="PhanHois" ThisKey="IdBaiDang" OtherKey="IdBaiDang" Type="PhanHoi" />
       <Association Name="NguoiChoThue_BaiDang" Member="NguoiChoThue" ThisKey="IdNguoiChoThue" OtherKey="IdNguoiChoThue" Type="NguoiChoThue" IsForeignKey="true" />
       <Association Name="PhongTro_BaiDang" Member="PhongTro" ThisKey="IdPhongTro" OtherKey="IdPhongTro" Type="PhongTro" IsForeignKey="true" />
@@ -99,6 +102,7 @@
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="SoDienThoai" Type="System.String" DbType="Char(10)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="NguoiThue_YeuThich" Member="YeuThiches" ThisKey="IdNguoiThue" OtherKey="IdNguoiThue" Type="YeuThich" />
       <Association Name="NguoiThue_PhanHoi" Member="PhanHois" ThisKey="IdNguoiThue" OtherKey="IdNguoiThue" Type="PhanHoi" />
       <Association Name="NguoiDung_NguoiThue" Member="NguoiDung" ThisKey="IdNguoiDung" OtherKey="IdNguoiDung" Type="NguoiDung" IsForeignKey="true" />
     </Type>
@@ -128,6 +132,13 @@
       <Association Name="DanhMuc_PhongTro" Member="DanhMuc" ThisKey="IdDanhMuc" OtherKey="IdDanhMuc" Type="DanhMuc" IsForeignKey="true" />
       <Association Name="DiaChi_PhongTro" Member="DiaChi" ThisKey="IdDiaChi" OtherKey="IdDiaChi" Type="DiaChi" IsForeignKey="true" />
       <Association Name="NguoiChoThue_PhongTro" Member="NguoiChoThue" ThisKey="IdNguoiChoThue" OtherKey="IdNguoiChoThue" Type="NguoiChoThue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VaiTro" Member="VaiTros">
+    <Type Name="VaiTro">
+      <Column Name="IdVaiTro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenVaiTro" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="VaiTro_NguoiDung" Member="NguoiDungs" ThisKey="IdVaiTro" OtherKey="IdVaiTro" Type="NguoiDung" />
     </Type>
   </Table>
 </Database>

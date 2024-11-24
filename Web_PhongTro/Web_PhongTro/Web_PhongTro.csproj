@@ -133,7 +133,7 @@
     <Content Include="Areas\KiemDuyetVien\Contents\Css\style.css" />
     <Content Include="Areas\KiemDuyetVien\Contents\Script\main.js" />
     <Content Include="Areas\KiemDuyetVien\Contents\Script\Script.js" />
-    <Content Include="Areas\NguoiChoThue\Content\baidang.css" />
+    <Content Include="Areas\NguoiChoThue\Content\Css\baidang.css" />
     <Content Include="Areas\NguoiChoThue\Content\QLBaiDang.css" />
     <Content Include="Areas\NguoiChoThue\Content\Css\style.css" />
     <Content Include="Areas\NguoiChoThue\Content\Css\Thongtin.css" />
@@ -156,6 +156,7 @@
     <Content Include="Contents\Css\Bootstrap\bootstrap.rtl.min.css" />
     <Content Include="Contents\Css\post_details.css" />
     <Content Include="Contents\Css\style.css" />
+    <Content Include="Contents\Css\Thongtin.css" />
     <Content Include="Contents\Images\Banner.png" />
     <Content Include="Contents\Images\Banner2.png" />
     <Content Include="Contents\Images\cate1.png" />
@@ -191,6 +192,11 @@
     <Compile Include="Areas\NguoiChoThue\Controllers\QLTaiKhoanController.cs" />
     <Compile Include="Areas\NguoiChoThue\NguoiChoThueAreaRegistration.cs" />
     <Compile Include="Areas\NguoiChoThue\ViewModal\PostVM.cs" />
+    <Compile Include="Areas\NguoiChoThue\ViewModels\BaiDangViewModel.cs" />
+    <Compile Include="Areas\NguoiChoThue\ViewModels\DanhMucViewModel.cs" />
+    <Compile Include="Areas\NguoiChoThue\ViewModels\DiaChiViewModel.cs" />
+    <Compile Include="Areas\NguoiChoThue\ViewModels\NguoiChoThueViewModel.cs" />
+    <Compile Include="Areas\NguoiChoThue\ViewModels\PhongTroViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaiDangController.cs" />
@@ -207,6 +213,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BaiDangVM.cs" />
+    <Compile Include="ViewModels\FavoritePostPartialVM.cs" />
+    <Compile Include="ViewModels\NguoiThueVM.cs" />
     <Compile Include="ViewModels\UserVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -257,6 +265,12 @@
     <Content Include="Areas\Admin\Views\AdminHome\TaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\PhanHoi.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\NguoiThue.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\NCTHome\ThemBai.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\DangBai\DanhSachDiaChi.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\DangBai\GetDanhSachDanhMuc.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\DangBai\GetDanhSachPhongTro.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\DangBai\ThongTinLienHe.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\NCTHome\EditPartial.cshtml" />
     <None Include="Models\PhongTro.dbml.layout">
       <DependentUpon>PhongTro.dbml</DependentUpon>
     </None>
@@ -277,7 +291,11 @@
     <Content Include="Views\Account\LoginV.cshtml" />
     <Content Include="Views\Account\RegisterV.cshtml" />
     <Content Include="Views\Account\RoleAndNamePartial.cshtml" />
-    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\BaiDang\SideBarPosts.cshtml" />
+    <Content Include="Views\FavoritePost\FavoritePostPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout_Info.cshtml" />
+    <Content Include="Views\Home\YeuThich.cshtml" />
+    <Content Include="Views\Home\Info.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -290,8 +308,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\KiemDuyetVien\Data\" />
     <Folder Include="Areas\NguoiChoThue\Data\" />
-    <Folder Include="Views\Admin\" />
-    <Folder Include="Views\FavoritePost\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

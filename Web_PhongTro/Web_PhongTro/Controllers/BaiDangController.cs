@@ -69,6 +69,20 @@ namespace Web_PhongTro.Controllers
                 throw new Exception("Không tìm thấy tọa độ cho địa chỉ này.");
             }
         }
+        public ActionResult SideBarPosts()
+        {
+            IEnumerable<BaiDangVM> query = null;
+            query = (from danhMuc in db.DanhMucs
+                         join phongTro in db.PhongTros on danhMuc.IdDanhMuc equals phongTro.IdDanhMuc
+                         join baiDang in db.BaiDangs on phongTro.IdPhongTro equals baiDang.IdPhongTro
+                         orderby baiDang.IdBaiDang descending
+                         select new BaiDangVM
+                         {
+                             noidungPT = phongTro,
+                             BaiDang = baiDang
+                         }).Take(4);
+            return View(query);
+        }
         public ActionResult GetBaiDangByDiaChi(int? id)
         {
             if (id == 0 || id == null)
@@ -92,7 +106,7 @@ namespace Web_PhongTro.Controllers
                                        .Select(a => a.DuongDanAnh)
                                        .ToList()
 
-                         }).Take(1);
+                         }).Take(1) ;
             return View(query);
         }
     }

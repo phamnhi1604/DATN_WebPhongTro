@@ -9,7 +9,7 @@ reset
 :root {
   --bgColor: #36B9CA;
 }
-
+ 
 /*html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -27,12 +27,11 @@ figure, header, nav, section, article, aside, footer, figcaption {
     visibility: hidden;
     line-height: 0;
     height: 0;
-
-  }
+}
   
-  .clearfix {
+.clearfix {
     display: inline-block;
-  }
+}
   
   html[xmlns] .clearfix {
     display: block;
@@ -415,7 +414,7 @@ section {
 }
 
 .header .product-cart-box,
-.header .product-heart-box {
+.header .post-heart-box {
   position: absolute;
   top: 70%;
   right: 3rem;
@@ -501,18 +500,18 @@ section {
 }
 
 .header .product-cart-box .title-product-cart,
-.header .product-heart-box .title-product-heart {
+.header .post-heart-box .title-product-heart {
   border-bottom: 1px solid rgba(0, 0, 0, 0.17);
 }
 
 .header .product-cart-box li,
-.header .product-heart-box li {
+.header .post-heart-box li {
   margin: 0.5rem 0;
   width: 100%;
 }
 
 .header .product-cart-box .image,
-.header .product-heart-box .image {
+.header .post-heart-box .image {
   float: left;
   width: 6rem;
   height: 7rem;
@@ -520,7 +519,7 @@ section {
 }
 
 .header .product-cart-box .image img,
-.header .product-heart-box .image img {
+.header .post-heart-box .image img {
   width: 100%;
   height: 100%;
 }
@@ -531,7 +530,7 @@ section {
   padding-top: 1rem;
 }
 
-.header .product-heart-box .item-description {
+.header .post-heart-box .item-description {
   float: left;
   height: 7rem;
 }
@@ -544,7 +543,7 @@ section {
   color: #434343;
 }
 
-.header .product-heart-box .item-description .title-name {
+.header .post-heart-box .item-description .title-name {
   display: block;
   text-decoration: none;
   font-weight: 700;
@@ -561,7 +560,7 @@ section {
 }
 
 .header .product-cart-box .right,
-.header .product-heart-box .right {
+.header .post-heart-box .right {
   float: right;
   text-align: center;
   width: auto;
@@ -570,7 +569,7 @@ section {
 }
 
 .header .product-cart-box .right .price,
-.header .product-heart-box .right .price {
+.header .post-heart-box .right .price {
   font-size: 1.7rem;
   color: #130f40;
   padding-bottom: 0.4rem;
@@ -1053,7 +1052,7 @@ section {
     padding-top: 3rem;
     /*padding-bottom: 5rem;*/
     justify-content: space-around;
-    background: #f9f9f9;
+    /*background: #f9f9f9;*/
 }
 
 .container .banner {
@@ -1548,7 +1547,9 @@ section {
     right:0;
     left:0;*/
 }
-
+.footer *{
+     color: #fff;
+}
 .footer a {
     color: #fff;
     text-decoration: none;
@@ -1556,13 +1557,13 @@ section {
 }
 .footer .container .box h3 {
   font-size: 2.2rem;
-  color: #130f40;
+  /*color: #130f40;*/
   padding: 1rem 0;
 }
 
 .footer .container .box p {
   font-size: 1.5rem;
-  color: #666;
+  /*color: #666;*/
   padding: 1rem 0;
   line-height: 2;
 }
@@ -1570,7 +1571,7 @@ section {
 .footer .container .box a {
   display: block;
   font-size: 1.4rem;
-  color: #666;
+  /*color: #666;*/
   padding: 1rem 0;
 }
 

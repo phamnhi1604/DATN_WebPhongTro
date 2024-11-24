@@ -1,0 +1,125 @@
+﻿@model Web_PhongTro.ViewModels.BaiDangVM
+
+<div class="edit-post">
+    <div class="close-btn">×</div>
+    <div class="container" id="container">
+        @using (Html.BeginForm("", "", FormMethod.Post, new { id = "edit-post-form" }))
+        {
+            <div class="row mb-4">
+                <div class="col">
+                    <h3 id="edit-post-id-header" style="text-align: center;"></h3>
+                    @Html.TextBoxFor(model => model.BaiDang.IdBaiDang, new { @class = "form-control", id = "edit-post-id", type = "hidden"})
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BaiDang.TieuDe, "Tên sản phẩm:")
+                        @Html.TextBoxFor(model => model.BaiDang.TieuDe, new { @class = "form-control", id = "edit-post-name", type = "text", required = "required" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="parent-post-type">Loại sản phẩm cha:</label>
+                        @*@Html.DropDownList("parentProductType", (List<SelectListItem>)ViewBag.SPLoaiCha, "Select an option", new { @class = "form-control", required = "required", id = "editParentProductTypeDropdown" })*@
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.noidungPT.IdDanhMuc, "Loại sản phẩm:")
+                        @Html.DropDownListFor(model => model.noidungPT.IdDanhMuc, new List<SelectListItem> { new SelectListItem { Text = "Select an option", Value = "" } }, new { @class = "form-control", required = "required", id = "edit-clothes-style" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.noidungPT.GiaPhong, "Giá:")
+                        @Html.TextBoxFor(model => model.noidungPT.GiaPhong, new { @class = "form-control", required = "required", id = "edit-post-price", type = "number", min = "0" })
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BaiDang.TrangThai, "Trạng thái:")
+                        @Html.DropDownListFor(model => model.BaiDang.TrangThai,
+                            new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Chưa xóa", Value = "true" },
+                                new SelectListItem { Text = "Đã xóa", Value = "false" }
+                            }, "Value", "Text"),
+                            new
+                            {
+                                @class = "form-control",
+                                id = "edit-post-status",
+                                required = "required",
+                            })
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="col">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BaiDang.AnhBaiDang, "Đường dẫn ảnh:")
+                            @Html.TextBoxFor(model => model.BaiDang.AnhBaiDang, new { @class = "form-control", id = "edit-image-url", type = "file", accept = "image/*" })
+                        </div>
+                    </div>
+                    <div class="col">
+                        @Html.TextBoxFor(model => model.BaiDang.AnhBaiDang, new { @class = "form-control", id = "image-source", type = "hidden" })
+                        <img class="image img-fluid" id="preview-image" src="" alt="" style="height: 100px; margin-top: 1rem;">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="col">
+                        <div class="edit-form-group">
+                            @Html.LabelFor(model => model.listDdAnh, "Đường dẫn ảnh chi tiết 1:")
+                            @Html.TextBoxFor(model => model.listDdAnh, new { @class = "form-control", id = "edit-image-url-compact-1", type = "file", accept = "image/*" ,value = "" })
+                        </div>
+                    </div>
+                    <div class="col">
+                        @Html.TextBoxFor(model => model.listDdAnh, new { @class = "form-control", id = "image-compact-source-1", type = "hidden" })
+                        <img class="image img-fluid" id="preview-image-compact-1" src="" alt="" style="height: 100px; margin-top: 1rem;">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="col">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.listDdAnh, "Đường dẫn ảnh chi tiết 2:")
+                            @Html.TextBoxFor(model => model.listDdAnh, new { @class = "form-control", id = "edit-image-url-compact-2", type = "file", accept = "image/*" })
+                        </div>
+                    </div>
+                    <div class="col">
+                        @Html.TextBoxFor(model => model.listDdAnh, new { @class = "form-control", id = "image-compact-source-2", type = "hidden" })
+                        <img class="image img-fluid" id="preview-image-compact-2" src="" alt="" style="height: 100px; margin-top: 1rem;">
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BaiDang.NoiDung, "Nội dung bài đăng:")
+                        @Html.TextAreaFor(model => model.BaiDang.NoiDung, new { @class = "form-control", id = "edit-post-content", rows = "3" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.noidungPT.MoTa, "Chọn phòng trọ:")
+                        @Html.TextAreaFor(model => model.noidungPT.MoTa, new { @class = "form-control", id = "edit-post-review", rows = "3" })
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row mb-4" style="margin-top: 1rem;">
+                <button type="submit" class="btn btn-primary" style="width: 35%;margin: auto;">Cập nhật thông tin</button>
+            </div>
+        }
+    </div>
+</div>
+
+@section scriptsFooter {
+    <script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>
+}
+
+

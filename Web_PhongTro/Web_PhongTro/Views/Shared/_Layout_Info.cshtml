@@ -7,21 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="https://raw.githubusercontent.com/anhvu13/fashion.github.io/main/icon.png"
           type="image/x-icon" />
-    <title>Dashboard người dùng</title>
-    <link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/Css/baidang.css">
-    <link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/Css/Thongtin.css">
+    <title>Admin FashionShop</title>
 
     @Html.Raw("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.8/css/line.min.css\">")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link rel="stylesheet" href="~/Content/Css/Bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/Css/style.css">
     <link rel="stylesheet" href="~/Contents/Css/Bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Areas/Admin/Contents/style.css">
+    <link rel="stylesheet" href="~/Content/Css/Bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/Css/style.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="~/Areas/Admin/Scripts/Script.js"></script>
-    <script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>
 
 
     <style>
@@ -40,51 +37,65 @@
         <div class="logo-name">
             <div class="logo-image">
                 <a href="">
-                    <i class="fa-solid fa-house-laptop"></i>
+                    <i class="fas fa-shopping-cart"></i>
                 </a>
             </div>
-            <span class="logo_name">Người dùng</span>
+            <span class="logo_name">Admin Panel</span>
 
         </div>
 
         <div class="menu-items">
             <ul class="nav-links">
 
+
+                @*<li>
+            <a href="@Url.Action("KhachHang","AdminHome")">
+                <i class="uil uil uil-estate"></i>
+                <span class="link-name">Khách hàng</span>
+            </a>
+        </li>*@
+
                 <li>
-                    <a href="@Url.Action("Info","NCTHome", new { page = 1})">
-                        <i class="fa-regular fa-user"></i>
-                        <span class="link-name">Thông tin cá nhân</span>
+                    <a href="@Url.Action("Info","Home")">
+                        <i class="uil uil uil-estate"></i>
+                        <span class="link-name">Thông tin tài khoản</span>
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("DashBoard","NCTHome")">
-                        <i class="uil uil-files-landscapes"></i>
-                        <span class="link-name">Bài đăng</span>
+                    <a href="@Url.Action("FavoritePostPartial","FavoritePost")">
+                        <i class="uil uil uil-estate"></i>
+                        <span class="link-name">Bài đăng yêu thích</span>
                     </a>
                 </li>
-
-            </ul>
-
-            <ul class="logout-mode">
-                <li>
-                    <a href="" id="logoutButton">
-                        <i class="uil uil-signout"></i>
-                        <span class="link-name">Logout</span>
+                @*<li>
+                    <a href="@Url.Action("DashBoard","Home")">
+                        <i class="uil uil-estate"></i>
+                        <span class="link-name">Dashboard</span>
                     </a>
-                </li>
+                </li>*@
 
-                <li class="mode">
-                    <a href="#">
-                        <i class="uil uil-moon"></i>
-                        <span class="link-name">Dark Mode</span>
-                    </a>
 
-                    <div class="mode-toggle">
-                        <span class="switch"></span>
-                    </div>
-                </li>
-            </ul>
-        </div>
+
+                <ul class="logout-mode">
+                    <li>
+                        <a href="" id="logoutButton">
+                            <i class="uil uil-signout"></i>
+                            <span class="link-name">Logout</span>
+                        </a>
+                    </li>
+
+                    <li class="mode">
+                        <a href="#">
+                            <i class="uil uil-moon"></i>
+                            <span class="link-name">Dark Mode</span>
+                        </a>
+
+                        <div class="mode-toggle">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+                </ul>
+</div>
     </nav>
     <section class="dashboard">
         <div class="top">

@@ -1,155 +1,175 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 16.75, 15.75" name="PhongTro">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 19.75, 16.875" name="PhongTro">
   <DataContextMoniker Name="/PhongTroDataContext" />
   <nestedChildShapes>
-    <classShape Id="76aaaaa8-0e88-4268-9273-b1847a19e1b6" absoluteBounds="14.5, 6.625, 2, 1.3862939453125005">
+    <classShape Id="0dac2521-6993-43d9-9f30-d6f70f282113" absoluteBounds="14.5, 7.75, 2, 1.3862939453124996">
       <DataClassMoniker Name="/PhongTroDataContext/AnhBaiDang" />
       <nestedChildShapes>
-        <elementListCompartment Id="8eba88f7-5b30-4199-8147-cd3e0ba75541" absoluteBounds="14.515, 7.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="5db8db8b-cd21-4fae-b353-583446856c2c" absoluteBounds="14.515, 8.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ed586fec-1b5f-42eb-8bb1-8f669b298d35" absoluteBounds="0.75, 7.125, 2, 1.1939925130208344">
-      <DataClassMoniker Name="/PhongTroDataContext/VaiTro" />
+    <classShape Id="e0f3a408-3a44-40f7-9715-890ac786afc8" absoluteBounds="14.5, 10.25, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/PhongTroDataContext/YeuThich" />
       <nestedChildShapes>
-        <elementListCompartment Id="b5f8da8d-f9eb-423f-ba65-f1c62e7023a5" absoluteBounds="0.765, 7.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="108773c1-defe-4a80-b6bb-0286635384e1" absoluteBounds="14.515, 10.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ed12e8ab-9704-46e9-accd-12ac8d3bede0" absoluteBounds="11.75, 6, 2, 2.5401025390624996">
+    <classShape Id="5fc59a78-c17c-463d-9d54-7dc162fb7c2c" absoluteBounds="11.75, 7.125, 2, 2.5401025390624996">
       <DataClassMoniker Name="/PhongTroDataContext/BaiDang" />
       <nestedChildShapes>
-        <elementListCompartment Id="5b384c8e-12c9-4ead-ae4b-5ca004786f43" absoluteBounds="11.765, 6.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9cab1b19-d9bc-4a02-bdba-b313db37b956" absoluteBounds="11.765, 7.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e5b9859e-4355-4984-93dc-fad73f51662d" absoluteBounds="6.25, 1.125, 2, 1.1939925130208335">
+    <classShape Id="2e66420f-43dd-40e6-80a9-ab4d72cce256" absoluteBounds="6.25, 2.25, 2, 1.1939925130208335">
       <DataClassMoniker Name="/PhongTroDataContext/DanhMuc" />
       <nestedChildShapes>
-        <elementListCompartment Id="a3f82ab0-6636-4fde-adb6-c73bd800bd45" absoluteBounds="6.265, 1.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9ea41567-99df-45db-9b43-2e9c24746d6c" absoluteBounds="6.265, 2.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="83968da5-3947-461f-b5f0-7bb326f2f079" absoluteBounds="6.25, 13.125, 2, 2.3478011067708344">
+    <classShape Id="fef6bcc1-325c-4169-b4a1-2cf7d7275512" absoluteBounds="6.25, 14.25, 2, 2.3478011067708344">
       <DataClassMoniker Name="/PhongTroDataContext/DiaChi" />
       <nestedChildShapes>
-        <elementListCompartment Id="eaa11501-7ef6-454d-95b3-2681c3bdcbd4" absoluteBounds="6.265, 13.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="03d42cca-a5a8-4873-9fb8-b75b8ed282a8" absoluteBounds="6.265, 14.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="cbcbde16-4341-4ed9-9437-62707254cdac" absoluteBounds="6.25, 3.75, 2, 1.5785953776041666">
+    <classShape Id="412aa505-22ef-4f4e-88e7-8dafde33dab0" absoluteBounds="6.25, 5, 2, 1.5785953776041666">
       <DataClassMoniker Name="/PhongTroDataContext/KiemDuyetVien" />
       <nestedChildShapes>
-        <elementListCompartment Id="03b5adfb-0397-4e60-843d-fd0dfacd48a4" absoluteBounds="6.265, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b1a4f611-7441-42b7-91d7-cacb2656c72b" absoluteBounds="6.265, 5.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="2ad7235e-82c3-464c-901f-4bbdd4c42c26" absoluteBounds="6.25, 6.125, 2, 2.3478011067708344">
+    <classShape Id="b123643c-1bf4-4e42-bc32-99b30d84b27f" absoluteBounds="6.25, 7.25, 2, 2.3478011067708344">
       <DataClassMoniker Name="/PhongTroDataContext/NguoiChoThue" />
       <nestedChildShapes>
-        <elementListCompartment Id="a6133ef7-117b-4ab5-89e4-f58366598391" absoluteBounds="6.265, 6.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="bb63df98-a376-425f-9d18-a8ed034dd86c" absoluteBounds="6.265, 7.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="31686c99-4389-4d8d-a5c4-203e38626c5c" absoluteBounds="3.5, 6.75, 2, 1.7708968098958335">
+    <classShape Id="4420b74e-1a17-4721-a04f-f84b4e13c6fb" absoluteBounds="3.5, 8, 2, 1.7708968098958335">
       <DataClassMoniker Name="/PhongTroDataContext/NguoiDung" />
       <nestedChildShapes>
-        <elementListCompartment Id="fc03d851-0202-40ac-850a-bf4e6268a8bc" absoluteBounds="3.515, 7.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e2a2e110-3a42-4808-9fe8-47e71a06b7c3" absoluteBounds="3.515, 8.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="6760afa4-ee1a-4f52-856a-29b767fad17d" absoluteBounds="6.25, 9.25, 2, 2.3478011067708344">
+    <classShape Id="78475847-6b32-42ed-a702-8193de12f05f" absoluteBounds="6.25, 10.375, 2, 2.3478011067708344">
       <DataClassMoniker Name="/PhongTroDataContext/NguoiThue" />
       <nestedChildShapes>
-        <elementListCompartment Id="5970dc0e-750b-48be-8d6e-ee4600652467" absoluteBounds="6.265, 9.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1a27ed2e-998d-4363-8ce1-2c192598701d" absoluteBounds="6.265, 10.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="749ba5be-f386-45e6-ad4a-39b5f43ae555" absoluteBounds="14.5, 8.875, 2, 1.7708968098958344">
+    <classShape Id="f59d27fc-04ce-445d-beab-4c46c3962cde" absoluteBounds="17.5, 9.125, 2, 1.7708968098958344">
       <DataClassMoniker Name="/PhongTroDataContext/PhanHoi" />
       <nestedChildShapes>
-        <elementListCompartment Id="8c8d3fb7-6269-4401-a39f-403b8b846da6" absoluteBounds="14.515, 9.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d2457809-9888-422a-a62b-933556e54de6" absoluteBounds="17.515, 9.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="99690f82-dda3-49c1-bb36-4b801e39e78d" absoluteBounds="9, 6.125, 2, 2.3478011067708344">
+    <classShape Id="bb28ad36-4a26-4a6d-bb2c-7a665a12f04f" absoluteBounds="9, 7.25, 2, 2.3478011067708344">
       <DataClassMoniker Name="/PhongTroDataContext/PhongTro" />
       <nestedChildShapes>
-        <elementListCompartment Id="b76680b3-420f-489e-b4d1-1a3ca2510152" absoluteBounds="9.015, 6.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ad8d3fe3-b25b-4509-b9be-c8c071ac2bae" absoluteBounds="9.015, 7.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(13.75 : 7.31814697265625); (14.5 : 7.31814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="6ed642de-c5d4-42b5-8fa7-162a4fcb5f49" absoluteBounds="0.75, 8.25, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/PhongTroDataContext/VaiTro" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4ef08cd5-fbd2-4e8e-99c6-14e019376eef" absoluteBounds="0.765, 8.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(13.75 : 8.44314697265625); (14.5 : 8.44314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhongTroDataContext/BaiDang/BaiDang_AnhBaiDang" />
       <nodes>
-        <classShapeMoniker Id="ed12e8ab-9704-46e9-accd-12ac8d3bede0" />
-        <classShapeMoniker Id="76aaaaa8-0e88-4268-9273-b1847a19e1b6" />
+        <classShapeMoniker Id="5fc59a78-c17c-463d-9d54-7dc162fb7c2c" />
+        <classShapeMoniker Id="0dac2521-6993-43d9-9f30-d6f70f282113" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 8.47280110677083); (8.625 : 8.84780110677083); (8.625 : 8.9151025390625); (9.91666666666667 : 8.9151025390625 : JumpStart); (10.0833333333333 : 8.9151025390625 : JumpEnd); (11.375 : 8.9151025390625); (11.75 : 8.5401025390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(12.75 : 9.6651025390625); (12.75 : 10.9431469726562); (14.5 : 10.9431469726562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PhongTroDataContext/BaiDang/BaiDang_YeuThich" />
+      <nodes>
+        <classShapeMoniker Id="5fc59a78-c17c-463d-9d54-7dc162fb7c2c" />
+        <classShapeMoniker Id="e0f3a408-3a44-40f7-9715-890ac786afc8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 9.59780110677083); (8.625 : 9.97280110677083); (8.625 : 10.0401025390625); (9.91666666666667 : 10.0401025390625 : JumpStart); (10.0833333333333 : 10.0401025390625 : JumpEnd); (11.375 : 10.0401025390625); (11.75 : 9.6651025390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PhongTroDataContext/NguoiChoThue/NguoiChoThue_BaiDang" />
       <nodes>
-        <classShapeMoniker Id="2ad7235e-82c3-464c-901f-4bbdd4c42c26" />
-        <classShapeMoniker Id="ed12e8ab-9704-46e9-accd-12ac8d3bede0" />
+        <classShapeMoniker Id="b123643c-1bf4-4e42-bc32-99b30d84b27f" />
+        <classShapeMoniker Id="5fc59a78-c17c-463d-9d54-7dc162fb7c2c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 6.75); (4.5 : 4.53929768880208); (6.25 : 4.53929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.5 : 8); (4.5 : 5.78929768880208); (6.25 : 5.78929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhongTroDataContext/NguoiDung/NguoiDung_KiemDuyetVien" />
       <nodes>
-        <classShapeMoniker Id="31686c99-4389-4d8d-a5c4-203e38626c5c" />
-        <classShapeMoniker Id="cbcbde16-4341-4ed9-9437-62707254cdac" />
+        <classShapeMoniker Id="4420b74e-1a17-4721-a04f-f84b4e13c6fb" />
+        <classShapeMoniker Id="412aa505-22ef-4f4e-88e7-8dafde33dab0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 7.61140055338542); (6.25 : 7.61140055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 8.79890055338542); (6.25 : 8.79890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhongTroDataContext/NguoiDung/NguoiDung_NguoiChoThue" />
       <nodes>
-        <classShapeMoniker Id="31686c99-4389-4d8d-a5c4-203e38626c5c" />
-        <classShapeMoniker Id="2ad7235e-82c3-464c-901f-4bbdd4c42c26" />
+        <classShapeMoniker Id="4420b74e-1a17-4721-a04f-f84b4e13c6fb" />
+        <classShapeMoniker Id="b123643c-1bf4-4e42-bc32-99b30d84b27f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 7.72199625651042); (3.5 : 7.72199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/PhongTroDataContext/VaiTro/VaiTro_NguoiDung" />
+    <associationConnector edgePoints="[(8.25 : 11.3522204589844); (9.91666666666667 : 11.3522204589844 : JumpStart); (10.0833333333333 : 11.3522204589844 : JumpEnd); (14.5 : 11.3522204589844)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PhongTroDataContext/NguoiThue/NguoiThue_YeuThich" />
       <nodes>
-        <classShapeMoniker Id="ed586fec-1b5f-42eb-8bb1-8f669b298d35" />
-        <classShapeMoniker Id="31686c99-4389-4d8d-a5c4-203e38626c5c" />
+        <classShapeMoniker Id="78475847-6b32-42ed-a702-8193de12f05f" />
+        <classShapeMoniker Id="e0f3a408-3a44-40f7-9715-890ac786afc8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 8.52089680989583); (4.5 : 10.4239005533854); (6.25 : 10.4239005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.5 : 9.77089680989583); (4.5 : 11.5489005533854); (6.25 : 11.5489005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhongTroDataContext/NguoiDung/NguoiDung_NguoiThue" />
       <nodes>
-        <classShapeMoniker Id="31686c99-4389-4d8d-a5c4-203e38626c5c" />
-        <classShapeMoniker Id="6760afa4-ee1a-4f52-856a-29b767fad17d" />
+        <classShapeMoniker Id="4420b74e-1a17-4721-a04f-f84b4e13c6fb" />
+        <classShapeMoniker Id="78475847-6b32-42ed-a702-8193de12f05f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(12.7812525 : 8.5401025390625); (12.7812525 : 9.76044840494792); (14.5 : 9.76044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(13.75 : 9.4319482421875); (17.5 : 9.4319482421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhongTroDataContext/BaiDang/BaiDang_PhanHoi" />
       <nodes>
-        <classShapeMoniker Id="ed12e8ab-9704-46e9-accd-12ac8d3bede0" />
-        <classShapeMoniker Id="749ba5be-f386-45e6-ad4a-39b5f43ae555" />
+        <classShapeMoniker Id="5fc59a78-c17c-463d-9d54-7dc162fb7c2c" />
+        <classShapeMoniker Id="f59d27fc-04ce-445d-beab-4c46c3962cde" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 10.2656726074219); (9.91666666666667 : 10.2656726074219 : JumpStart); (10.0833333333333 : 10.2656726074219 : JumpEnd); (14.5 : 10.2656726074219)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 12.2107975260417); (9.91666666666667 : 12.2107975260417 : JumpStart); (10.0833333333333 : 12.2107975260417 : JumpEnd); (18.5 : 12.2107975260417); (18.5 : 10.8958968098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhongTroDataContext/NguoiThue/NguoiThue_PhanHoi" />
       <nodes>
-        <classShapeMoniker Id="6760afa4-ee1a-4f52-856a-29b767fad17d" />
-        <classShapeMoniker Id="749ba5be-f386-45e6-ad4a-39b5f43ae555" />
+        <classShapeMoniker Id="78475847-6b32-42ed-a702-8193de12f05f" />
+        <classShapeMoniker Id="f59d27fc-04ce-445d-beab-4c46c3962cde" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11 : 7.29890055338542); (11.75 : 7.29890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11 : 8.42390055338542); (11.75 : 8.42390055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhongTroDataContext/PhongTro/PhongTro_BaiDang" />
       <nodes>
-        <classShapeMoniker Id="99690f82-dda3-49c1-bb36-4b801e39e78d" />
-        <classShapeMoniker Id="ed12e8ab-9704-46e9-accd-12ac8d3bede0" />
+        <classShapeMoniker Id="bb28ad36-4a26-4a6d-bb2c-7a665a12f04f" />
+        <classShapeMoniker Id="5fc59a78-c17c-463d-9d54-7dc162fb7c2c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 1.72199625651042); (10 : 1.72199625651042); (10 : 6.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 2.84699625651042); (10 : 2.84699625651042); (10 : 7.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhongTroDataContext/DanhMuc/DanhMuc_PhongTro" />
       <nodes>
-        <classShapeMoniker Id="e5b9859e-4355-4984-93dc-fad73f51662d" />
-        <classShapeMoniker Id="99690f82-dda3-49c1-bb36-4b801e39e78d" />
+        <classShapeMoniker Id="2e66420f-43dd-40e6-80a9-ab4d72cce256" />
+        <classShapeMoniker Id="bb28ad36-4a26-4a6d-bb2c-7a665a12f04f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 14.2989005533854); (10 : 14.2989005533854); (10 : 8.47280110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 15.4239005533854); (10 : 15.4239005533854); (10 : 9.59780110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhongTroDataContext/DiaChi/DiaChi_PhongTro" />
       <nodes>
-        <classShapeMoniker Id="83968da5-3947-461f-b5f0-7bb326f2f079" />
-        <classShapeMoniker Id="99690f82-dda3-49c1-bb36-4b801e39e78d" />
+        <classShapeMoniker Id="fef6bcc1-325c-4169-b4a1-2cf7d7275512" />
+        <classShapeMoniker Id="bb28ad36-4a26-4a6d-bb2c-7a665a12f04f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 7.26764805338542); (9 : 7.26764805338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 8.39264805338542); (9 : 8.39264805338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhongTroDataContext/NguoiChoThue/NguoiChoThue_PhongTro" />
       <nodes>
-        <classShapeMoniker Id="2ad7235e-82c3-464c-901f-4bbdd4c42c26" />
-        <classShapeMoniker Id="99690f82-dda3-49c1-bb36-4b801e39e78d" />
+        <classShapeMoniker Id="b123643c-1bf4-4e42-bc32-99b30d84b27f" />
+        <classShapeMoniker Id="bb28ad36-4a26-4a6d-bb2c-7a665a12f04f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 8.84699625651042); (3.5 : 8.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PhongTroDataContext/VaiTro/VaiTro_NguoiDung" />
+      <nodes>
+        <classShapeMoniker Id="6ed642de-c5d4-42b5-8fa7-162a4fcb5f49" />
+        <classShapeMoniker Id="4420b74e-1a17-4721-a04f-f84b4e13c6fb" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

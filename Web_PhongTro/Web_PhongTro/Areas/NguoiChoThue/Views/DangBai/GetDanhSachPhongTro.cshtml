@@ -1,0 +1,15 @@
+﻿
+@model Web_PhongTro.Areas.NguoiChoThue.ViewModels.PhongTroViewModel
+
+<div class="form-group row mt-3">
+    <label for="post_cat" class="col-md-12 col-form-label">Danh sách phòng trọ</label>
+    <div class="col-md-6">
+        <select class="form-control" id="post_cat" name="loai_chuyen_muc" required="" data-msg-required="Chưa chọn loại chuyên mục">
+            <option value="">-- Chọn phòng trọ --</option>
+            @foreach (var roomId in Model.IdPhong)
+             {
+                <option value="@roomId">@roomId</option>
+             }
+     </select>
+    </div>
+</div>

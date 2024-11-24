@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/baidang.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -28,7 +29,6 @@
                     <ul>
                         <li><span>Mã thành viên:</span> <span style="font-weight: 700;"> 145753</span></li>
                     </ul>
-                    <!-- <a class="btn btn-danger btn-sm" href="#">Đăng tin</a> -->
                     <ul class="nav nav-sidebar">
                         <li class="nav-item">
                             <a class="nav-link " href="quanlibaidang.html">
@@ -59,43 +59,15 @@
             </nav>
         </div>
         <div class="ad-info">
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1>Địa chỉ cho thuê</h1>
+            <form asp-action="SaveDiaChi" asp-controller="DangBai" method="post">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Địa chỉ cho thuê</h1>
+                        </div>
                     </div>
+                    @Html.Action("DanhSachDiaChi", "DangBai")
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="province_id" class="col-form-label">Tỉnh/Thành phố</label>
-                            <select id="province_id" name="province_id" class="form-control js-select-tinhthanhpho select2-hidden-accessible" required="" data-msg-required="Chưa chọn Tỉnh/TP" tabindex="-1" aria-hidden="true">
-                                <option value="">-- Chọn Tỉnh/TP --</option>
-
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="col-form-label" for="district_id">Quận/Huyện</label>
-                            <select name="district_id" id="district_id" class="form-control js-select-quanhuyen select2-hidden-accessible" required="" data-msg-required="Chưa chọn Quận/Huyện" tabindex="-1" aria-hidden="true">
-                                <option value="">--Chọn Quận/Huyện--</option>
-
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="col-form-label" for="phuongxa">Phường/Xã</label>
-                            <select class="form-control js-select-phuongxa select2-hidden-accessible" name="phuongxa" id="phuongxa" tabindex="-1" aria-hidden="true">
-                                <option value="">--Chọn Phường/Xã</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <script>
-
-                </script>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
@@ -258,29 +230,85 @@
                 </div>
                 <div class="form-group row mt-5">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-success mb-5 btn-lg btn-block js-btn-hoan-tat">Tiếp tục</button>
+                        <button type="button" class="btn btn-primary mt-3" onclick="saveDiaChi()">Tiếp tục</button>
                     </div>
                 </div>
 
-            </div>
-            </form>
         </div>
-        <div class="additional-info">
-            <div class="card mb-5" style="color: #856404; background-color: #fff3cd; border-color: #ffeeba;">
-                <div class="card-body">
-                    <h4 class="card-title">Lưu ý khi đăng tin</h4>
-                    <ul>
-                        <li style="list-style-type: square; margin-left: 15px;">Nội dung phải viết bằng tiếng Việt có dấu</li>
-                        <li style="list-style-type: square; margin-left: 15px;">Tiêu đề tin không dài quá 100 kí tự</li>
-                        <li style="list-style-type: square; margin-left: 15px;">Các bạn nên điền đầy đủ thông tin vào các mục để tin đăng có hiệu quả hơn.</li>
-                        <li style="list-style-type: square; margin-left: 15px;">Để tăng độ tin cậy và tin rao được nhiều người quan tâm hơn, hãy sửa vị trí tin rao của bạn trên bản đồ bằng cách kéo icon tới đúng vị trí của tin rao.</li>
-                        <li style="list-style-type: square; margin-left: 15px;">Tin đăng có hình ảnh rõ ràng sẽ được xem và gọi gấp nhiều lần so với tin rao không có ảnh. Hãy đăng ảnh để được giao dịch nhanh chóng!</li>
-                    </ul>
-                </div>
+        </form>
+    </div>
+    <div class="additional-info">
+        <div class="card mb-5" style="color: #856404; background-color: #fff3cd; border-color: #ffeeba;">
+            <div class="card-body">
+                <h4 class="card-title">Lưu ý khi đăng tin</h4>
+                <ul>
+                    <li style="list-style-type: square; margin-left: 15px;">Nội dung phải viết bằng tiếng Việt có dấu</li>
+                    <li style="list-style-type: square; margin-left: 15px;">Tiêu đề tin không dài quá 100 kí tự</li>
+                    <li style="list-style-type: square; margin-left: 15px;">Các bạn nên điền đầy đủ thông tin vào các mục để tin đăng có hiệu quả hơn.</li>
+                    <li style="list-style-type: square; margin-left: 15px;">Để tăng độ tin cậy và tin rao được nhiều người quan tâm hơn, hãy sửa vị trí tin rao của bạn trên bản đồ bằng cách kéo icon tới đúng vị trí của tin rao.</li>
+                    <li style="list-style-type: square; margin-left: 15px;">Tin đăng có hình ảnh rõ ràng sẽ được xem và gọi gấp nhiều lần so với tin rao không có ảnh. Hãy đăng ảnh để được giao dịch nhanh chóng!</li>
+                </ul>
             </div>
         </div>
     </div>
     </div>
+    </div>
+    <script>
+       $(document).ready(function () {
+            $('#district_id').prop('disabled', true);
+            $('#phuongxa').prop('disabled', true);
+
+            // When a province is selected
+            $('#province_id').change(function () {
+                var selectedProvince = $(this).val();
+
+                if (selectedProvince !== "") {
+                    $('#district_id').prop('disabled', false);
+
+                    // TODO: Make an AJAX call to load districts for the selected province
+                    // Example:
+                    // $.ajax({
+                } else {
+                    $('#district_id').prop('disabled', true).val('');
+                    $('#phuongxa').prop('disabled', true).val('');
+                }
+
+                // Disable the ward dropdown since no district is selected yet
+                $('#phuongxa').prop('disabled', true);
+            });
+
+            // When a district is selected
+            $('#district_id').change(function () {
+                var selectedDistrict = $(this).val();
+
+                if (selectedDistrict !== "") {
+                    // Enable the ward dropdown
+                    $('#phuongxa').prop('disabled', false);
+                    $.ajax({
+                        url: '@Url.Action("GetWardsByDistrict", "DangBai")',
+                        type: 'GET',
+                        data: { district: selectedDistrict },
+                        success: function (data) {
+                            $('#phuongxa').prop('disabled', false);
+                            $('#phuongxa').html(''); // Clear current options
+                            $('#phuongxa').append('<option value="">-- Chọn Phường/Xã --</option>'); // Default option
+
+                            // Populate ward dropdown with the new data
+                            $.each(data, function (index, ward) {
+                                $('#phuongxa').append('<option value="' + ward + '">' + ward + '</option>');
+                            });
+                        }
+                    });
+
+
+                } else {
+                    // If no district is selected, disable the ward dropdown
+                    $('#phuongxa').prop('disabled', true).val('');
+                }
+            });
+        });
+
+    </script>
     </div>
 </body>
 </html>

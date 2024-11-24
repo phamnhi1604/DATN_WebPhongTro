@@ -13,13 +13,13 @@ document.querySelector("#search-btn").onclick = () => {
 };
 
 //Click product cart box
-let cartBox = document.querySelector(".product-cart-box");
-let shoppingCartBtn = document.querySelector("#shopping-cart-btn");
+let cartBox = document.querySelector(".post-heart-box");
+//let shoppingCartBtn = document.querySelector("#shopping-cart-btn");
 
-let heartBox = document.querySelector(".product-heart-box");
+let heartBox = document.querySelector(".post-heart-box");
 let heartBtn = document.querySelector("#heart-btn");
 
-if (cartBox && shoppingCartBtn && heartBox && heartBtn) {
+if (heartBox && heartBtn) {
     shoppingCartBtn.onclick = () => {
         if (cartBox.style.display === "none") {
             cartBox.style.display = "flex";

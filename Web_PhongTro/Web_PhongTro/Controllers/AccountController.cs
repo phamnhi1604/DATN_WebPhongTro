@@ -77,12 +77,12 @@ namespace Web_PhongTro.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                
                 var count = db.NguoiDungs.Count(x => x.TenTaiKhoan == userName && x.MatKhau == password);
                 if (count > 0)
                 {
                     FormsAuthentication.SetAuthCookie(userName, false);
-                    return Json(new { success = true });
+                    return Json(new { success = true, UN = userName});
                 }
                 else
                 {
@@ -148,7 +148,7 @@ namespace Web_PhongTro.Controllers
 
                     redirectUrlNCT = Url.Action("DashBoard", "NCTHome", new { area = "NguoiChoThue" }),
                     redirectUrlKDV = Url.Action("Dashboard", "KDVHome", new { area = "KiemDuyetVien" }),
-                    redirectUrlKT = Url.Action("Dashboard", "Home"),
+                    redirectUrlKT = Url.Action("FavoritePostPartial", "FavoritePost"),
                     redirectUrlAdmin = Url.Action("DashBoard", "AdminHome", new { area = "Admin" })
                 }, JsonRequestBehavior.AllowGet);
             }

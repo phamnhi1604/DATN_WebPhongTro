@@ -28,13 +28,15 @@
                             }
 
                         </div>
+                        <button class="carousel-control-prev " type="button" data-bs-target="#carousel_Photos" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Slide trước</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel_Photos" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Slide tiếp theo</span></button>
                     </div>
                     <div class="post-details-contents">
-                        <h1 class="title-post">@item.BaiDang.TieuDe</h1>
+                        <h3 class="title-post">@item.BaiDang.TieuDe</h3>
                         <div class="price">
                             <h2>@string.Format("{0:N0}",item.noidungPT.GiaPhong) vnđ</h2>
                         </div>
-                        <h1>Thông tin mô tả</h1>
+                        <h2>Thông tin mô tả</h2>
                         <p style="text-align: justify; font-size: 1.8rem;">
                             @Html.Raw(item.BaiDang.NoiDung.Replace("\\n", "<br>"))
                         </p>
@@ -44,7 +46,7 @@
                         <table>
                             <tr>
                                 <td>Ngày đăng</td>
-                                <td>Row 3, Col 2</td>
+                                <td>@item.BaiDang.NgayDang</td>
                             </tr>
                             <tr>
                                 <td class="col-1">Diện tích</td>
@@ -52,13 +54,13 @@
                             </tr>
                             <tr>
                                 <td>Địa chỉ</td>
-                                <td>Row 2, Col 2</td>
+                                <td>@item.diachiPT.Phuong, @item.diachiPT.Quan, @item.diachiPT.ThanhPho</td>
                             </tr>
 
                         </table>
                         <div class="post-detail-map">
                             <h2>Xem trên bản đồ</h2>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62708.143874355424!2d106.58620995994364!3d10.791465086940724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752bf733e69175%3A0xd8d63453733325fe!2zVMOibiBQaMO6LCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1730214335319!5m2!1svi!2s" width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62708.143874355424!2d106.58620995994364!3d10.791465086940724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752bf733e69175%3A0xd8d63453733325fe!2zVMOibiBQaMO6LCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1730214335319!5m2!1svi!2s" width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
                         </div>
@@ -69,39 +71,34 @@
                     <div class="contact-details">
                         <div class="contact-image-container">
                             <img id="contact-image" src="~/Contents/Images/UserImg.png" alt="">
-                           
+
                         </div>
                         <div class="contact-opt">
-                            <h1> @item.nguoiChoThue.TenNguoiChoThue</h1>
-                            <button id="copyButton" onclick="copyToClipboard();">@item.nguoiChoThue.SoDienThoai</button>
-                            <button><a href="https://zalo.me/@item.nguoiChoThue.SoDienThoai">Nhắn zalo</a></button>
-                            <button><span>Lưu tin Này</span></button>
+                            <h2>
+                                @item.nguoiChoThue.TenNguoiChoThue
+                            </h2>
+                            <button style="background: #3B9E62; color:#ffffff" id="copyButton" onclick="copyToClipboard();">
+                                <i class="fa-solid fa-phone"></i>
+                                @item.nguoiChoThue.SoDienThoai
+                            </button>
+                            <button style="background:#0094ff;"><a style=" color: #ffffff" href="https://zalo.me/@item.nguoiChoThue.SoDienThoai"><i class="fa-solid fa-comment"></i>Nhắn zalo</a></button>
+                            <div style="font-size: 1.4rem;" class="btn-contact-opt d-flex justify-content-between mt-2">
+                                <button>
+                                    <i class="fa-regular fa-heart"></i>Lưu tin Này
+                                </button>
+                                <button><i class="fa-solid fa-triangle-exclamation"></i>Báo cáo</button>
+                            </div>
 
 
 
                         </div>
 
                     </div>
-                    @*<div class="bg-white shadow-sm rounded p-3 mb-3 d-none d-lg-block">
-                        <div class="mb-3">
-                            <img class="avatar size-90 d-block p-1 m-auto" src="https://phongtro123.com/images/default-user.svg">
-                            <div class="mt-3 text-center">
-                                <span class="fs-5 fw-medium">saigon house</span>
-                                <div class="d-flex justify-content-center fs-9 js-author-online-status online" author_id="147291">
-                                    <i class="bg-warning rounded-circle d-inline-block me-2 size-5"></i>
-                                    <span>Đang hoạt động</span>
-                                </div>
-                            <div class="fs-7 mt-1">2 tin đăng <span class="dot"></span>Tham gia từ: 13/11/2024</div>
-                            </div>
-                        </div>
-                        <div>
-                            <a class="btn btn-green btn-lg text-white d-flex justify-content-center rounded-4" rel="nofollow" href="tel:0938748773"><i class="icon telephone-fill white me-2"></i> 0938748773</a>
-                            <a class="btn btn-primary btn-lg text-white d-flex justify-content-center mt-2 rounded-4" target="_blank" rel="nofollow" href="https://zalo.me/0938748773"><i class="icon chat-text white me-2"></i> Nhắn Zalo</a>
-                        </div>
-                        <div class="d-flex justify-content-between mt-3">
-                            <button class="btn btn-white btn__save__lg fs-7 d-flex text-nowrap js-btn-save" data-post-id="669693" title="Tin đã lưu"><i class="icon heart me-2"></i><span>Lưu tin</span></button><button class="btn btn-white fs-7 text-nowrap d-flex" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSharePost" aria-controls="offcanvasSharePost"><i class="icon share me-2"></i><span>Chia sẻ</span></button><button class="btn btn-white fs-7 text-nowrap d-flex" data-bs-toggle="offcanvas" data-bs-target="#offcanvasReportPost" aria-controls="offcanvasReportPost"><i class="icon exclamation-triangle me-2"></i><span>Báo xấu</span></button>
-                        </div>
-                    </div>*@
+                    <div class="sidebar">
+                        @Html.Action("SideBarPosts", "BaiDang")
+
+                    </div>
+
                 </div>
             </div>
                 

@@ -1,0 +1,39 @@
+﻿@model Web_PhongTro.Areas.NguoiChoThue.ViewModels.DiaChiViewModel
+
+<div class="">
+    <!-- Province/City Dropdown -->
+    <div class="">
+        <div class="form-group">
+            <label for="province_id" class="col-form-label">Tỉnh/Thành phố</label>
+            <select id="province_id" name="province_id" class="form-control js-select-tinhthanhpho select2-hidden-accessible" required>
+                <option value="">-- Chọn Tỉnh/TP --</option>
+                @foreach (var tinhThanh in Model.TinhThanhList)
+                {
+                    <option value="@tinhThanh">@tinhThanh</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <!-- District Dropdown -->
+    <div class="">
+        <div class="form-group">
+            <label for="district_id" class="col-form-label">Quận/Huyện</label>
+            <select id="district_id" name="district_id" class="form-control js-select-quanhuyen select2-hidden-accessible" required>
+                <option value="">-- Chọn Quận/Huyện --</option>
+                @foreach (var quan in Model.QuanHuyenList)
+                {
+                    <option value="@quan">@quan</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="">
+        <div class="form-group">
+            <label for="phuongxa" class="col-form-label">Phường/Xã</label>
+            <select id="phuongxa" name="phuongxa" class="form-control js-select-phuongxa select2-hidden-accessible" disabled>
+                <option value="">-- Chọn Phường/Xã --</option>
+            </select>
+        </div>
+    </div>
+</div>

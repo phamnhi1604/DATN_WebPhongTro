@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Web_PhongTro.ViewModels.BaiDangVM>
+
+@{ ViewBag.Title = "BaiDang";
+                Layout = "~/Views/Shared/_Layout_Info.cshtml"; }
+
+
+
+<div class="activity" id="posts">
+    <div class="title">
+        <i class="uil uil-package"></i>
+        <span class="text">Danh sách bài đăng</span>
+    </div>
+    <div class="activity-data">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td colspan="8">
+                        @using (Html.BeginForm("FavoritePostPartial", "FavoritePost", FormMethod.Post, new { id = "post-search-form" }))
+                        {
+                            <select class="form-select" name="postsearchType" id="post-search-type" required>
+                                <option value="name">Tìm theo tên</option>
+                            </select>
+                            <input class="form-control" type="text" placeholder="Tìm kiếm..." name="postsearchInput" id="post-search-input" required>
+                            <button type="submit" class="btn btn-light" id="btn-search-post">
+                                <i class="fa fa-search" style="color: #3557ff;"></i>
+                                Tìm kiếm
+                            </button>}
+                        <button class="btn btn-light" id="btn-add-post">
+                            <i class="fa fa-plus-square" style="color: #3557ff;"></i>
+                            <a href="/">Xem thêm bài đăng</a>
+                        </button>
+                    </td>
+
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tiêu đề</th>
+
+                    <th>
+                        Địa chỉ
+                        <div>
+                            @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiaGoc",sortType = "DESC", page = ViewBag.Page})" class="fa fa-solid fa-sort-up"></a>*@
+                            @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiaGoc",sortType = "ASC", page = ViewBag.Page})" class="fa fa-solid fa-sort-down"></a>*@
+                        </div>
+                    </th>
+                    <!--<th>
+                            Giảm giá
+                            <div>-->
+                    @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiamGia",sortType = "DESC", page = ViewBag.Page})" class="fa fa-solid fa-sort-up"></a>*@
+                    @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiamGia",sortType = "ASC", page = ViewBag.Page})" class="fa fa-solid fa-sort-down"></a>*@
+                    <!--</div>
+                    </th>-->
+                    <th>
+                        Số Lượng yêu thích
+                        <div>
+                            @*<a href="@Url.Action("GetAll","NCTHome", new { sortCol = "SoLuongDanhGia",sortType = "DESC", page = ViewBag.Page})" class="fa fa-solid fa-sort-up"></a>*@
+                            @*<a href="@Url.Action("GetAll","NCTHome", new { sortCol = "SoLuongDanhGia",sortType = "ASC", page = ViewBag.Page})" class="fa fa-solid fa-sort-down"></a>*@
+                        </div>
+                    </th>
+                   
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="post-table-body">
+                @{ int stt = ViewBag.STT;}
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@(stt++)</td>
+                        <td>
+                            <a href="@Url.Action("GetBaiDangById", "BaiDang", new { area = "", id = item.BaiDang.IdBaiDang })" target="_blank">@item.BaiDang.TieuDe</a>
+                            <img src="~/Content/Images/@item.BaiDang.AnhBaiDang" alt="">
+                        </td>
+                        @*<td>@string.Format("{0:N0}", item.Gia) đ</td>*@
+                        <td>@item.diachiPT.Phuong @item.diachiPT.Quan</td>
+                        <td>@item.BaiDang.SoLuongYeuThich</td>
+
+                        <td>
+                            @*<button type="button" class="edit-post-btn" data-post-id="@item.BaiDang.IdBaiDang"><i class="fa fa-wrench"></i></button>*@
+                            <button type="button" class="delete-post-btn" data-post-id="@item.BaiDang.IdBaiDang"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @if (ViewBag.NoOfPages > 1)
+    {
+        <div class="break-page">
+            @{ int PrevPage = ViewBag.Page - 1;
+                if (PrevPage <= 0)
+                {
+                    PrevPage = 1;
+                }
+                int NextPage = ViewBag.Page + 1;
+                if (NextPage >= ViewBag.NoOfPages)
+                {
+                    NextPage = ViewBag.NoOfPages;
+                } }
+            <div><a class="buttons prev-button" href="@Url.Action("GetAll","NCTHome")/?page=@PrevPage">&lt;&lt;</a></div>
+            @for (int i = 0; i < ViewBag.NoOfPages; i++)
+            {
+                if (i + 1 == ViewBag.Page)
+                {
+                    <div>
+                        <a href="@Url.Action("GetAll","NCTHome")/?page=@(i+1)" class="buttons active">@(i+1)</a>
+                    </div> }
+                else
+                {
+                    <div>
+                        <a href="@Url.Action("GetAll","NCTHome")/?page=@(i+1)" class="buttons">@(i+1)</a>
+                    </div>}
+
+            }
+            <div><a class="buttons next-button" href="@Url.Action("GetAll","NCTHome")/?page=@NextPage">&gt;&gt;</a></div>
+        </div>}
+</div>
+@section scriptsFooter {
+    <script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>
+}
+

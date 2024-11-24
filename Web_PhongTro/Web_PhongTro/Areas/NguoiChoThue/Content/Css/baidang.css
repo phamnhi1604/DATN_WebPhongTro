@@ -83,11 +83,10 @@ header {
 /* Thiết lập phần thông tin tin đăng */
 .ad-info {
     width: 60%;
-    background-color: #ffffff;
     padding: 30px;
     border-radius: 5px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-    margin-left: -18px;
+    margin: auto;
+    background: #ccc;
 }
 
     .ad-info h2 {
@@ -288,5 +287,26 @@ css
     color: white;
     border: none;
     padding: 4px 8px;
+    cursor: pointer;
+}
+
+.active{
+    display:block !important; 
+}
+#frmThemBaiDang {
+    display: none;
+    background: rgba(255, 255, 255, 0.8);
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+.frm-post .close-btn {
+    font-size: 3rem;
+    position: absolute;
+    right: 10px;
     cursor: pointer;
 }

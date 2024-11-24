@@ -1,14 +1,15 @@
 ﻿$(document).ready(function () {
 
     let closeBtnAddPro = document.querySelector('.add-post .close-btn');
-    let addpost = document.querySelector('.add-post');
+    let btnAddpost = document.querySelector('#btn-add-post');
+    let frmPost = document.querySelector('.frm-post');
 
-    closeBtnAddPro.addEventListener('click', function () {
-        addpost.classList.remove('active');
-    });
+    //closeBtnAddPro.addEventListener('click', function () {
+    //    addpost.classList.remove('active');
+    //});
     let formAddpost = document.getElementById('btn-add-post');
-    formAddpost.addEventListener('click', function () {
-        addpost.classList.add('active');
+    btnAddpost.addEventListener('click', function () {
+        frmPost.classList.add('active');
     });
 
     //Render loại sản phẩm khi chọn loại sản phẩm cha

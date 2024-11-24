@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Web_PhongTro.ViewModels.BaiDangVM>
+
+
+<h3 class="sidebar-title">Tin mới đăng</h3>
+@foreach (var item in Model)
+{
+    <div class="sideBar-postList">
+        <img src="~/Contents/Images/ImgPost/@item.BaiDang.AnhBaiDang" alt="Tin 1" class="post-image">
+        <div class="post-content">
+            <p class="post-title">@item.BaiDang.NoiDung</p>
+            <p class="post-price">@string.Format("{0:N0}", item.noidungPT.GiaPhong)đ</p>
+        </div>
+    </div>
+}

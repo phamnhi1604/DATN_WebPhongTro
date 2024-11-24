@@ -1,0 +1,17 @@
+﻿
+@model Web_PhongTro.Areas.NguoiChoThue.ViewModels.DanhMucViewModel
+
+
+    <div class="form-group row mt-3">
+        <label for="post_cat" class="col-md-12 col-form-label">Loại chuyên mục</label>
+        <div class="col-md-6">
+            <select class="form-control" id="post_cat" name="loai_chuyen_muc" required="" data-msg-required="Chưa chọn loại chuyên mục">
+                <option value="">-- Chọn loại danh mục --</option>
+                @foreach (var item in Model.DanhMucList)
+                {
+                    <option value="@item.Value">@item.Text</option>
+
+                }
+            </select>
+        </div>
+    </div>

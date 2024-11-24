@@ -537,3 +537,16 @@ INSERT INTO PhanHoi (IdNguoiThue, IdBaiDang, NoiDung) VALUES
     (1, 1, N'Phòng rất đẹp, tôi rất thích!'),
     (1, 2, N'Thích hợp cho gia đình nhỏ, không gian yên tĩnh.');
 select * from PhanHoi
+
+
+create table YeuThich(
+	IDYT INT IDENTITY(1,1), 
+	IdBaiDang  BIGINT NOT NULL,
+	IdNguoiThue  BIGINT NOT NULL,
+    CONSTRAINT FK_YeuThich_NguoiThue FOREIGN KEY (IdNguoiThue) REFERENCES NguoiThue(IdNguoiThue ), -- Khóa ngoại liên kết với bảng NguoiDung
+    CONSTRAINT FK_YeuThich_BaiDang FOREIGN KEY (IdBaiDang) REFERENCES BaiDang(IdBaiDang) -- Khóa ngoại liên kết với bảng BaiDang
+)
+ INSERT INTO YeuThich(IdBaiDang,IdNguoiThue)  VALUES 
+    (1,1),
+    (2,1)	
+select * from YeuThich

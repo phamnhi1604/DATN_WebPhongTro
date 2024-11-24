@@ -34,13 +34,9 @@
 
             success: function (result) {
                 if (result.success) {
-                    if (result.isInRoleAdmin) {
-                        alert('Chào mừng tới trang quản lý hệ thống');
-                        window.location.href = result.redirectUrl;
-                    } else {
-                        alert('Đăng nhập thành công');
-                        window.location.href = "../Home/Index"
-                    }
+                    alert(String(result.UN));
+                    alert('Đăng nhập thành công');
+                    window.location.href = "../Home/Index"
                 } else {
                     alert(result.message);
                     if (result.validationErrors) {
@@ -107,7 +103,11 @@
                     {
                         //window.location.href = result.redirectUrlNCT;
                     }
-                    $('.user-box').css('display', 'unset');
+                    if ($('.user-box').css('display') === 'none') {
+                        $('.user-box').css('display', 'unset');
+                    } else {
+                        $('.user-box').css('display', 'none');
+                    }
 
                 } else {
                     //alert('Chưa đăng nhập');
@@ -115,14 +115,13 @@
 
                     window.location.href = "/Account/LoginV";
                 }
+                
             },
             error: function () {
                 console.log('Error checking authentication status.');
             }
         });
-        if ($('.user-box').css('display', 'unset')) {
-            $('.user-box').css('display', 'none');
-        }
+        
     });
 
     $('#user-information').on('click', function () {

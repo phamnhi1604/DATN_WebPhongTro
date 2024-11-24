@@ -33,7 +33,7 @@ namespace Web_PhongTro.Controllers
         }
 
         public List<BaiDangVM> GetBaiDangPartial(string tenDanhMuc)
-        {
+        {   
             var query = ( from danhMuc in db.DanhMucs
                           join phongTro in db.PhongTros on danhMuc.IdDanhMuc equals phongTro.IdDanhMuc
                           join baiDang in db.BaiDangs on phongTro.IdPhongTro equals baiDang.IdPhongTro
@@ -49,9 +49,20 @@ namespace Web_PhongTro.Controllers
             return query.ToList();
         }
 
-        public ActionResult Dashboard()
+       
+        public ActionResult Info()
         {
-            return View();
+            string username = User.Identity.Name.ToString();
+            var query = (from thongtin in db.NguoiThues
+                     join nd in db.NguoiDungs on thongtin.IdNguoiDung equals nd.IdNguoiDung
+                     where username == nd.TenTaiKhoan
+                     //orderby baiDang.IdBaiDang descending
+                     select new NguoiThueVM
+                     {  
+                         NguoiThue = thongtin,
+                         nguoiDung = nd
+                     }).FirstOrDefault();
+            return View(query);
         }
     }
 }
