@@ -52,7 +52,7 @@
     });
 
     //update thong tin ca nhan
-    $(".btn-update").on("click", function (e) {
+    $(".btn-update-info").on("click", function (e) {
         e.preventDefault();
 
         const data = {
@@ -80,5 +80,5 @@
                 alert("Có lỗi xảy ra!");
             }
         });
-    }
+    });
 });

@@ -18,6 +18,7 @@ namespace Web_PhongTro.Controllers
             var query = (from danhMuc in db.DanhMucs
                          join phongTro in db.PhongTros on danhMuc.IdDanhMuc equals phongTro.IdDanhMuc
                          join baiDang in db.BaiDangs on phongTro.IdPhongTro equals baiDang.IdPhongTro 
+                         
                          orderby baiDang.IdBaiDang descending
                          select new BaiDangVM
                          {

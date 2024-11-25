@@ -12,31 +12,6 @@ document.querySelector("#search-btn").onclick = () => {
     }
 };
 
-//Click product cart box
-let cartBox = document.querySelector(".post-heart-box");
-//let shoppingCartBtn = document.querySelector("#shopping-cart-btn");
-
-let heartBox = document.querySelector(".post-heart-box");
-let heartBtn = document.querySelector("#heart-btn");
-
-if (heartBox && heartBtn) {
-    shoppingCartBtn.onclick = () => {
-        if (cartBox.style.display === "none") {
-            cartBox.style.display = "flex";
-            heartBox.style.display = "none";
-        } else {
-            cartBox.style.display = "none";
-        }
-    };
-
-    heartBtn.onclick = () => {
-        if (heartBox.style.display === "none") {
-            heartBox.style.display = "flex";
-            cartBox.style.display = "none";
-        } else {
-            heartBox.style.display = "none";
-        }
-    };
 }
 //active nav in reponsive
 let navbar = document.querySelector(".navbar");

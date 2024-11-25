@@ -38,6 +38,7 @@ INSERT INTO NguoiDung VALUES ('Kiemduyetvien2','123123123',2, 1)
 INSERT INTO NguoiDung VALUES ('Nguoichothue1','123123123',3, 1)
 INSERT INTO NguoiDung VALUES ('Nguoichothue2','123123123',3, 1)
 INSERT INTO NguoiDung VALUES ('customer1','123123123',4, 1)
+INSERT INTO NguoiDung VALUES ('phamyennhi','qqqqqqqq',4, 1)
  select * from NguoiDung
 
 create table KiemDuyetVien
@@ -542,12 +543,12 @@ select * from PhanHoi
 create table YeuThich(
 	IDYT INT IDENTITY(1,1), 
 	IdBaiDang  BIGINT NOT NULL,
-	IdNguoiThue  BIGINT NOT NULL,
+	IdNguoiDung  BIGINT NOT NULL,
 	CONSTRAINT PK_YeuThich PRIMARY KEY (IDYT),
-    CONSTRAINT FK_YeuThich_NguoiThue FOREIGN KEY (IdNguoiThue) REFERENCES NguoiThue(IdNguoiThue ), -- Khóa ngoại liên kết với bảng NguoiDung
+    CONSTRAINT FK_YeuThich_NguoiDung FOREIGN KEY (IdNguoiDung) REFERENCES NguoiDUng(IdNguoiDung ), -- Khóa ngoại liên kết với bảng NguoiDung
     CONSTRAINT FK_YeuThich_BaiDang FOREIGN KEY (IdBaiDang) REFERENCES BaiDang(IdBaiDang) -- Khóa ngoại liên kết với bảng BaiDang
 )
- INSERT INTO YeuThich(IdBaiDang,IdNguoiThue)  VALUES 
-    (1,1),
-    (2,1)	
+ INSERT INTO YeuThich(IdBaiDang,IdNguoiDung)  VALUES 
+    (1,7),
+    (2,6)	
 select * from YeuThich

@@ -294,7 +294,6 @@
     <Content Include="Views\BaiDang\SideBarPosts.cshtml" />
     <Content Include="Views\FavoritePost\FavoritePostPartial.cshtml" />
     <Content Include="Views\Shared\_Layout_Info.cshtml" />
-    <Content Include="Views\Home\YeuThich.cshtml" />
     <Content Include="Views\Home\Info.cshtml" />
     <Content Include="Views\Home\Info1.cshtml" />
     <None Include="Web.Debug.config">
