@@ -70,6 +70,8 @@ F:\college\hk7\DoAnTotNghiep\CODE\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongT
 F:\college\hk7\DoAnTotNghiep\CODE\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.csproj.CopyComplete
 F:\college\hk7\DoAnTotNghiep\CODE\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.dll
 F:\college\hk7\DoAnTotNghiep\CODE\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.pdb
+F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.csproj.AssemblyReference.cache
+F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.csproj.CoreCompileInputs.cache
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Web_PhongTro.dll.config
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Web_PhongTro.dll
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Web_PhongTro.pdb
@@ -124,12 +126,14 @@ F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\roslyn\VBCSCompiler.exe.config
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Microsoft.Web.Infrastructure.dll
+F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Newtonsoft.Json.dll
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\System.Web.Helpers.dll
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\System.Web.Mvc.dll
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\System.Web.Razor.dll
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\System.Web.Webpages.Deployment.dll
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\System.Web.Webpages.dll
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\System.Web.Webpages.Razor.dll
+F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Newtonsoft.Json.xml
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\System.Web.Razor.xml
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\System.Web.Webpages.xml
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\System.Web.Webpages.Deployment.xml
@@ -137,10 +141,6 @@ F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\System.Web.Helpers.xml
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\System.Web.Mvc.xml
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.csproj.AssemblyReference.cache
-F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.csproj.CoreCompileInputs.cache
-F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.csproj.CopyComplete
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.dll
 F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.pdb
-F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Newtonsoft.Json.dll
-F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\bin\Newtonsoft.Json.xml
+F:\college\hk7\DoAnTotNghiep\CODE\DATN_WebPhongTro\Web_PhongTro\Web_PhongTro\obj\Debug\Web_PhongTro.csproj.CopyComplete

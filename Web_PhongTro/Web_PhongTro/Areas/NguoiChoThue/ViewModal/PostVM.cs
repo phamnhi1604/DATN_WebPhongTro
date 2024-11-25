@@ -27,7 +27,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.ViewModal
 
         public string ThanhToanVanChuyen;
 
-        public bool TonTai;
+        public string TonTai;
 
         public long? Gia; 
         public PostVM(BaiDangVM sp)
@@ -39,7 +39,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.ViewModal
             listDdAnh = sp.listDdAnh;
             GiaBan = (long?)sp.noidungPT.GiaPhong;
             NoiDungSanPham = sp.BaiDang.NoiDung;
-            TonTai = sp.BaiDang.TonTai;
+            TonTai = sp.BaiDang.TrangThai;
         }
     }
 

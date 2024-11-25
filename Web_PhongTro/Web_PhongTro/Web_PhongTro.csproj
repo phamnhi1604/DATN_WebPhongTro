@@ -173,7 +173,7 @@
     <Content Include="Contents\Scripts\Bootstrap\bootstrap.js" />
     <Content Include="Contents\Scripts\Bootstrap\bootstrap.min.js" />
     <Content Include="Contents\Scripts\ChatBot.js" />
-    <Content Include="Contents\Scripts\favoriteProduct.js" />
+    <Content Include="Contents\Scripts\favoritePost.js" />
     <Content Include="Contents\Scripts\main.js" />
     <Content Include="Contents\Scripts\Script.js" />
     <Content Include="Contents\Scripts\shoppingCart.js" />
@@ -296,6 +296,7 @@
     <Content Include="Views\Shared\_Layout_Info.cshtml" />
     <Content Include="Views\Home\YeuThich.cshtml" />
     <Content Include="Views\Home\Info.cshtml" />
+    <Content Include="Views\Home\Info1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

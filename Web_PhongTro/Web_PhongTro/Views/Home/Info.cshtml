@@ -16,23 +16,23 @@
         <form class="profile-form">
             <div class="form-group">
                 <label for="fullName">Họ và Tên</label>
-                <input type="text" id="fullName" name="fullName" value="@Model.NguoiThue.TenKhachHang" required>
+                <input type="text" id="fullName" name="fullName" value="@Model.TenKhachHang"  >
             </div>
             <div class="form-group">
                 <label for="phone">Số Điện Thoại</label>
-                <input type="text" id="phone" name="phone" value="@Model.NguoiThue.SoDienThoai" required>
+                <input type="text" id="phone" name="phone" value="@Model.SoDienThoai"  >
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="@Model.NguoiThue.Email" required>
+                <input type="email" id="email" name="email" value="@Model.Email"  >
             </div>
             <div class="form-group">
                 <label for="address">Địa Chỉ</label>
-                <input type="text" id="address" name="address" value="@Model.NguoiThue.DiaChi" required>
+                <input type="text" id="address" name="address" value="@Model.DiaChi"  >
             </div>
             <div class="form-group">
                 <label for="password">Mật Khẩu (Chỉ nhập khi muốn đổi mật khẩu)</label>
-                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu mới">
+                <input type="password" id="password" name="password" value="@Model.Password"  placeholder="Nhập mật khẩu mới">
             </div>
             <div class="form-group">
                 <label for="confirmPassword">Xác Nhận Mật Khẩu</label>
@@ -40,9 +40,12 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="btn save">Lưu Thay Đổi</button>
+                <button class="btn save btn-update" >Lưu Thay Đổi</button>
                 <button type="button" class="btn cancel" onclick="cancelUpdate()">Hủy</button>
             </div>
         </form>
     </div>
 </div>
+<script>
+    
+</script>

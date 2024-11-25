@@ -27,8 +27,7 @@ namespace Web_PhongTro.Controllers
                      join pt in db.PhongTros on baiDang.IdPhongTro equals pt.IdPhongTro
                      join dc in db.DiaChis on pt.IdDiaChi equals dc.IdDiaChi
                      join yt in db.YeuThiches on baiDang.IdBaiDang equals yt.IdBaiDang
-                     join nt in db.NguoiThues on yt.IdNguoiThue equals nt.IdNguoiThue
-                     join nd in db.NguoiDungs on nt.IdNguoiDung equals nd.IdNguoiDung
+                     join nd in db.NguoiDungs on yt.IdNguoiDung equals nd.IdNguoiDung
                      where username == nd.TenTaiKhoan
                      //orderby baiDang.IdBaiDang descending
                      select new BaiDangVM
@@ -78,49 +77,113 @@ namespace Web_PhongTro.Controllers
         }
 
         [HttpPost]
-        public JsonResult Add(int idBaiDang)
+        public JsonResult Add(YeuThich yt)
         {
-            List<FavoritePostPartialVM> favoritesList = GetFavoritesList();
+            // Lấy username từ người dùng đang đăng nhập
+            string username = User.Identity.Name.ToString();
 
-            if (favoritesList == null)
-            {
-                favoritesList = new List<FavoritePostPartialVM>();
-            }
+            // Lấy IdNguoiDung dựa trên username
+            long idNT = db.NguoiDungs
+                          .Where(u => u.TenTaiKhoan == username)
+                          .Select(u => u.IdNguoiDung)
+                          .FirstOrDefault();
 
-            if (favoritesList.Any(x => x.IdBaiDang == idBaiDang))
+            // Kiểm tra xem bài đăng đã được thích trước đó hay chưa
+            if (db.YeuThiches.Any(x => x.IdBaiDang == yt.IdBaiDang && x.IdNguoiDung == idNT))
             {
                 return Json(new
                 {
-                    status = false,
-                    message = "Bạn đã thích sản phẩm này!"
+                    success = false,
+                    message = "Bạn đã thích bài đăng này!"
                 });
             }
-            else
+
+            // Xử lý thêm bài viết yêu thích
+            else if (ModelState.IsValid)
             {
-                FavoritePostPartialVM newItem = new FavoritePostPartialVM(idBaiDang);
-                favoritesList.Add(newItem);
+                try
+                {
+                    // Tạo đối tượng YeuThich mới
+                    YeuThich newP = new YeuThich
+                    {
+                        IdBaiDang = yt.IdBaiDang,
+                        IdNguoiDung = idNT
+                    };
+
+                    // Thêm vào cơ sở dữ liệu
+                    db.YeuThiches.InsertOnSubmit(newP);
+                    db.SubmitChanges();
+
+                    return Json(new
+                    {
+                        success = true,
+                        message = "Thêm vào yêu thích thành công!"
+                    });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Đã xảy ra lỗi: " + ex.Message
+                    });
+                }
             }
 
-            Session[sessionFavoriteName] = favoritesList;
-
+            // Nếu ModelState không hợp lệ
             return Json(new
             {
-                status = true,
-                message = "Đã thêm vào danh sách sản phẩm yêu thích!"
+                success = false,
+                message = "Dữ liệu không hợp lệ!"
             });
         }
 
 
         [HttpPost]
-        public JsonResult Delete(int idBaiDang)
+        public JsonResult Delete(long postId)
         {
-            List<FavoritePostPartialVM> favoritesList = GetFavoritesList();
-            favoritesList.RemoveAll(x => x.IdBaiDang == idBaiDang);
-            Session[sessionFavoriteName] = favoritesList;
-            return Json(new
+            string username = User.Identity.Name.ToString();
+
+            // Lấy IdNguoiDung từ username
+            long idNT = db.NguoiDungs
+                          .Where(u => u.TenTaiKhoan == username)
+                          .Select(u => u.IdNguoiDung)
+                          .FirstOrDefault();
+
+            try
             {
-                status = true
-            });
+                // Kiểm tra xem bài đăng đã thích tồn tại chưa
+                var favorite = db.YeuThiches.FirstOrDefault(x => x.IdBaiDang == postId && x.IdNguoiDung == idNT);
+
+                if (favorite != null)
+                {
+                    db.YeuThiches.DeleteOnSubmit(favorite); // Xóa bản ghi
+                    db.SubmitChanges();
+
+                    return Json(new
+                    {
+                        success = true,
+                        message = "Bài đăng đã được xóa khỏi danh sách yêu thích."
+                    });
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Không tìm thấy bài đăng trong danh sách yêu thích."
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Đã xảy ra lỗi: " + ex.Message
+                });
+            }
         }
+
     }
 }

@@ -21,5 +21,9 @@ namespace Web_PhongTro.ViewModels
             this.TieuDe = post.TieuDe;
             this.AnhBD = post.AnhBaiDang;
         }
+
+        public FavoritePostPartialVM()
+        {
+        }
     }
 }

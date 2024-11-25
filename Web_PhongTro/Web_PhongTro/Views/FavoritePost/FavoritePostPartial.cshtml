@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Web_PhongTro.ViewModels.BaiDangVM>
 
 @{ ViewBag.Title = "BaiDang";
-                Layout = "~/Views/Shared/_Layout_Info.cshtml"; }
+    Layout = "~/Views/Shared/_Layout_Info.cshtml"; }
 
 
 
@@ -59,7 +59,7 @@
                             @*<a href="@Url.Action("GetAll","NCTHome", new { sortCol = "SoLuongDanhGia",sortType = "ASC", page = ViewBag.Page})" class="fa fa-solid fa-sort-down"></a>*@
                         </div>
                     </th>
-                   
+
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -119,6 +119,7 @@
         </div>}
 </div>
 @section scriptsFooter {
-    <script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>
+    @*<script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>*@
+    <script src="~/Contents/Scripts/favoritePost.js"></script>
 }
 

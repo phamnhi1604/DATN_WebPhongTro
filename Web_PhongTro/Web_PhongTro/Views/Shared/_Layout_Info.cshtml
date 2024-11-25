@@ -49,14 +49,14 @@
 
 
                 @*<li>
-            <a href="@Url.Action("KhachHang","AdminHome")">
-                <i class="uil uil uil-estate"></i>
-                <span class="link-name">Khách hàng</span>
-            </a>
-        </li>*@
+                        <a href="@Url.Action("KhachHang","AdminHome")">
+                            <i class="uil uil uil-estate"></i>
+                            <span class="link-name">Khách hàng</span>
+                        </a>
+                    </li>*@
 
                 <li>
-                    <a href="@Url.Action("Info","Home")">
+                    <a href="@Url.Action("Info1","Home")">
                         <i class="uil uil uil-estate"></i>
                         <span class="link-name">Thông tin tài khoản</span>
                     </a>
@@ -68,11 +68,11 @@
                     </a>
                 </li>
                 @*<li>
-                    <a href="@Url.Action("DashBoard","Home")">
-                        <i class="uil uil-estate"></i>
-                        <span class="link-name">Dashboard</span>
-                    </a>
-                </li>*@
+                        <a href="@Url.Action("DashBoard","Home")">
+                            <i class="uil uil-estate"></i>
+                            <span class="link-name">Dashboard</span>
+                        </a>
+                    </li>*@
 
 
 
@@ -95,7 +95,7 @@
                         </div>
                     </li>
                 </ul>
-</div>
+        </div>
     </nav>
     <section class="dashboard">
         <div class="top">
@@ -117,7 +117,8 @@
 
     </section>
     @RenderSection("PartialView", required: false)
-    <script src="~/Areas/Admin/Scripts/main.js"></script>
+    @*<script src="~/Areas/Admin/Scripts/main.js"></script>*@
+    <script src="~/Contents/Scripts/favoritePost.js"></script>
 
     @RenderSection("scriptsFooter", required: false)
 </body>

@@ -51,7 +51,7 @@ create table KiemDuyetVien
 )
 --thêm thông tin đầy đủ và chạy lại db
 INSERT INTO KiemDuyetVien  VALUES 
-    (N'Phạm Yến Nhi', N'Bạc Liêu', 1),
+    (N'Phạm Yến Nhi', N'Bạc Liêu', 2),
     (N'Lê Thị B', N'140 Lê Trọng Tấn, Tân Phú', 3);
 select * from KiemDuyetVien
 
@@ -104,12 +104,12 @@ ADD CONSTRAINT DF_DiaChi_NguoiChoThue DEFAULT N'Không xác định' FOR DiaChi;
 
 SET DATEFORMAT DMY
 INSERT INTO NguoiChoThue (IdNguoiDung, TenNguoiChoThue, NgaySinh, GioiTinh, DiaChi, SoDienThoai, Email) VALUES
-(1,N'Phạm Yến Nhi','16/04/2003',N'Nữ',N'Số 368, Quốc Kỷ, Hưng Thành, Vĩnh Lợi, Bạc Liêu, Việt Nam','0911051995','caynhalavuon@gmail.com'),
-(2,N'Quảng Ling Ling','11/05/1995',N'Nữ',N'Tân Phú, Thành phố Hồ Chí Minh','090900099','00K@gmail.com'),
-(3,N'Nguyễn Tấn Phát','07/04/2003',N'Nam',N'Tân Phú, Thành phố Hồ Chí Minh, Việt Nam','09090099','phatnguyen@gmail.com'),
-(4,N'Phạm Thị A','20/11/1990',N'Nữ',N'212-242 Đ. Độc Lập, Tân Thành, Tân Phú, Thành phố Hồ Chí Minh, Việt Nam','0393666222','co0giu20@gmail.com'),
-(5,N'Nguyễn Thị B','14/03/1998',N'Nữ',N'Bình Hưng Hòa A, Bình Hưng Hoà A, Bình Tân, Thành phố Hồ Chí Minh, Việt Nam','0393777222','matdungtim14@gmail.com'),
-(6,N'Lê Văn C','21/06/2000',N'Nam',N'Bình Tân, Thành phố Hồ Chí Minh, Việt Nam','0393000222','goi115ho@gmail.com')
+(4,N'Phạm Yến Nhi','16/04/2003',N'Nữ',N'Số 368, Quốc Kỷ, Hưng Thành, Vĩnh Lợi, Bạc Liêu, Việt Nam','0911051995','caynhalavuon@gmail.com'),
+(5,N'Quảng Ling Ling','11/05/1995',N'Nữ',N'Tân Phú, Thành phố Hồ Chí Minh','090900099','00K@gmail.com')
+--(3,N'Nguyễn Tấn Phát','07/04/2003',N'Nam',N'Tân Phú, Thành phố Hồ Chí Minh, Việt Nam','09090099','phatnguyen@gmail.com'),
+--(4,N'Phạm Thị A','20/11/1990',N'Nữ',N'212-242 Đ. Độc Lập, Tân Thành, Tân Phú, Thành phố Hồ Chí Minh, Việt Nam','0393666222','co0giu20@gmail.com'),
+--(5,N'Nguyễn Thị B','14/03/1998',N'Nữ',N'Bình Hưng Hòa A, Bình Hưng Hoà A, Bình Tân, Thành phố Hồ Chí Minh, Việt Nam','0393777222','matdungtim14@gmail.com'),
+--(6,N'Lê Văn C','21/06/2000',N'Nam',N'Bình Tân, Thành phố Hồ Chí Minh, Việt Nam','0393000222','goi115ho@gmail.com')
 SELECT* FROM NguoiChoThue
 
 create table DiaChi
@@ -543,6 +543,7 @@ create table YeuThich(
 	IDYT INT IDENTITY(1,1), 
 	IdBaiDang  BIGINT NOT NULL,
 	IdNguoiThue  BIGINT NOT NULL,
+	CONSTRAINT PK_YeuThich PRIMARY KEY (IDYT),
     CONSTRAINT FK_YeuThich_NguoiThue FOREIGN KEY (IdNguoiThue) REFERENCES NguoiThue(IdNguoiThue ), -- Khóa ngoại liên kết với bảng NguoiDung
     CONSTRAINT FK_YeuThich_BaiDang FOREIGN KEY (IdBaiDang) REFERENCES BaiDang(IdBaiDang) -- Khóa ngoại liên kết với bảng BaiDang
 )

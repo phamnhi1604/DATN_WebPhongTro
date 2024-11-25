@@ -29,15 +29,25 @@ namespace Web_PhongTro.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Kiểm tra tài khoản đã tồn tại
                 bool existsUsername = db.NguoiDungs.Any(x => x.TenTaiKhoan == lg.Username);
 
                 if (existsUsername)
                 {
                     return Json(new { success = false, message = "Tài khoản đã tồn tại" });
                 }
-                else if (lg.Password == lg.ConfirmPassword)
+
+                if (lg.Password != lg.ConfirmPassword)
                 {
+                    return Json(new { success = false, message = "Mật khẩu và xác nhận mật khẩu không khớp" });
+                }
+
+                try
+                {
+                    // Xác định vai trò
                     int roleId = lg.AccountType == "Người cho thuê" ? 3 : 4;
+
+                    // Tạo NguoiDung
                     NguoiDung u = new NguoiDung()
                     {
                         TenTaiKhoan = lg.Username,
@@ -49,21 +59,49 @@ namespace Web_PhongTro.Controllers
                     db.NguoiDungs.InsertOnSubmit(u);
                     db.SubmitChanges();
 
+                    // Lấy IdNguoiDung mới được tạo
+                    long newUserId = u.IdNguoiDung;
+
+                    // Thêm bản ghi vào bảng tương ứng
+                    if (roleId == 4)
+                    {
+                        NguoiThue nt = new NguoiThue()
+                        {
+                            IdNguoiDung = newUserId,
+                            TenKhachHang = lg.Username
+                        };
+                        db.NguoiThues.InsertOnSubmit(nt);
+                    }
+                    else if (roleId == 3)
+                    {
+                        NguoiChoThue nct = new NguoiChoThue()
+                        {
+                            IdNguoiDung = newUserId,
+                            TenNguoiChoThue = lg.Username
+                        };
+                        db.NguoiChoThues.InsertOnSubmit(nct);
+                    }
+
+                    db.SubmitChanges();
+
                     return Json(new
                     {
-                        JsonRequestBehavior.AllowGet,
                         success = true,
                         message = "Đăng ký thành công"
                     });
-
                 }
-                else
+                catch (Exception ex)
                 {
-                    return Json(new { success = false, message = "Mật khẩu và xác nhận mật khẩu không khớp" });
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Đã xảy ra lỗi: " + ex.Message
+                    });
                 }
             }
             else
             {
+                // Trả về lỗi validation nếu ModelState không hợp lệ
                 var validationErrors = ModelState.ToDictionary(
                     kvp => kvp.Key,
                     kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray());
@@ -71,6 +109,7 @@ namespace Web_PhongTro.Controllers
                 return Json(new { success = false, validationErrors });
             }
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public JsonResult Login(string userName, string password)
