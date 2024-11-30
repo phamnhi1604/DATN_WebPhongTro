@@ -3,7 +3,7 @@
 
 @foreach (var item in Model) {
 <li>
-        <a href="@Url.Action("GetDsSanPhamByTenLoaiSpCha","SanPham")/?tenLoaiSpCha=@item.TenDanhMuc&page=1">@item.TenDanhMuc</a>
+        <a href="@Url.Action("GetDsBaiDangByTenDanhMuc","BaiDang")/?TenDM=@item.TenDanhMuc&page=1">@item.TenDanhMuc</a>
         <ul>
             @{var lst = ViewData[item.TenDanhMuc.ToString()];}
         </ul>

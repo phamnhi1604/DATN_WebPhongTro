@@ -13,26 +13,28 @@
 </div>
 <div class="" style="padding: 0 15% ">
     <div class="profile-form-container">
-        <form class="profile-form">
+        @using (Html.BeginForm("UpdateInfo", "Home", FormMethod.Post, new { @class = "profile-form", @id = "profileForm" }))
+        {
+            @*<form class="profile-form">*@
             <div class="form-group">
                 <label for="fullName">Họ và Tên</label>
-                <input type="text" id="fullName" name="fullName" value="@Model.TenKhachHang"  >
+                <input type="text" id="fullName" name="TenKhachHang" value="@Model.TenKhachHang">
             </div>
             <div class="form-group">
                 <label for="phone">Số Điện Thoại</label>
-                <input type="text" id="phone" name="phone" value="@Model.SoDienThoai"  >
+                <input type="text" id="phone" name="SoDienThoai" value="@Model.SoDienThoai">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="@Model.Email"  >
+                <input type="email" id="email" name="email" value="@Model.Email">
             </div>
             <div class="form-group">
                 <label for="address">Địa Chỉ</label>
-                <input type="text" id="address" name="address" value="@Model.DiaChi"  >
+                <input type="text" id="address" name="DiaChi" value="@Model.DiaChi">
             </div>
             <div class="form-group">
                 <label for="password">Mật Khẩu (Chỉ nhập khi muốn đổi mật khẩu)</label>
-                <input type="password" id="password" name="password" value="@Model.Password"  placeholder="Nhập mật khẩu mới">
+                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu mới">
             </div>
             <div class="form-group">
                 <label for="confirmPassword">Xác Nhận Mật Khẩu</label>
@@ -40,12 +42,14 @@
             </div>
 
             <div class="form-actions">
-                <button class="btn save btn-update" >Lưu Thay Đổi</button>
+                <button class="btn save btn-update">Lưu Thay Đổi</button>
                 <button type="button" class="btn cancel" onclick="cancelUpdate()">Hủy</button>
             </div>
-        </form>
+            @*</form>*@
+        }
     </div>
+
 </div>
 <script>
-    
+
 </script>

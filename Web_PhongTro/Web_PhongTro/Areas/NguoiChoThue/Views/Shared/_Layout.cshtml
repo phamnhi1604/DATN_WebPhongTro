@@ -20,7 +20,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="~/Areas/Admin/Scripts/Script.js"></script>
+    @*<script src="~/Areas/Admin/Scripts/Script.js"></script>*@
     <script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>
 
 
@@ -39,7 +39,7 @@
     <nav>
         <div class="logo-name">
             <div class="logo-image">
-                <a href="">
+                <a href="/">
                     <i class="fa-solid fa-house-laptop"></i>
                 </a>
             </div>
@@ -60,6 +60,12 @@
                     <a href="@Url.Action("DashBoard","NCTHome")">
                         <i class="uil uil-files-landscapes"></i>
                         <span class="link-name">Bài đăng</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("DanhSachPhongTro","NCTHome")">
+                        <i class="uil uil-files-landscapes"></i>
+                        <span class="link-name">Phòng trọ</span>
                     </a>
                 </li>
 
@@ -106,7 +112,8 @@
 
     </section>
     @RenderSection("PartialView", required: false)
-    <script src="~/Areas/Admin/Scripts/main.js"></script>
+    @*<script src="~/Areas/Admin/Scripts/main.js"></script>*@
+    @*<script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>*@
 
     @RenderSection("scriptsFooter", required: false)
 </body>

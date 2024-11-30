@@ -148,10 +148,30 @@ namespace Web_PhongTro.Controllers
             if (!string.IsNullOrEmpty(username))
             {
                 ViewBag.Roles = GetRolesForUser(username)[0];
-                ViewBag.EmployeeName = (from nguoiDung in db.NguoiDungs
-                                        join nhanVien in db.KiemDuyetViens on nguoiDung.IdNguoiDung equals nhanVien.IdNguoiDung
-                                        where nguoiDung.TenTaiKhoan == username
-                                        select nhanVien.TenKDV).FirstOrDefault();
+                if (ViewBag.Roles == "Admin")
+                {
+                    ViewBag.EmployeeName = "Phạm Yến Nhi";
+                }
+                else if (ViewBag.Roles == "Kiểm duyệt viên") {
+                    ViewBag.EmployeeName = (from nguoiDung in db.NguoiDungs
+                                            join nhanVien in db.KiemDuyetViens on nguoiDung.IdNguoiDung equals nhanVien.IdNguoiDung
+                                            where nguoiDung.TenTaiKhoan == username
+                                            select nhanVien.TenKDV).FirstOrDefault();
+                }
+                else if(ViewBag.Roles == "Người cho thuê") {
+                    ViewBag.EmployeeName = (from nguoiDung in db.NguoiDungs
+                                            join nct in db.NguoiChoThues on nguoiDung.IdNguoiDung equals nct.IdNguoiDung
+                                            where nguoiDung.TenTaiKhoan == username
+                                            select nct.TenNguoiChoThue).FirstOrDefault();
+                }
+                else {
+                    ViewBag.EmployeeName = (from nguoiDung in db.NguoiDungs
+                                            join nt in db.NguoiThues on nguoiDung.IdNguoiDung equals nt.IdNguoiDung
+                                            where nguoiDung.TenTaiKhoan == username
+                                            select nt.TenKhachHang).FirstOrDefault();
+                }
+
+                
             }
             else
             {

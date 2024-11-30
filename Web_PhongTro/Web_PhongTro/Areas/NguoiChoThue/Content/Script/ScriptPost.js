@@ -1,235 +1,323 @@
 ﻿$(document).ready(function () {
 
-    let closeBtnAddPro = document.querySelector('.add-post .close-btn');
-    let btnAddpost = document.querySelector('#btn-add-post');
-    let frmPost = document.querySelector('.frm-post');
+    //let closeBtnAdd = document.querySelector('.add-post .close-btn');
+    //let btnAddpost = document.querySelector('#btn-add-post');
+    //let frmPost = document.querySelector('.frm-post');
 
-    //closeBtnAddPro.addEventListener('click', function () {
+    //closeBtnAdd.addEventListener('click', function () {
     //    addpost.classList.remove('active');
     //});
-    let formAddpost = document.getElementById('btn-add-post');
-    btnAddpost.addEventListener('click', function () {
-        frmPost.classList.add('active');
-    });
+    //let formAddpost = document.getElementById('btn-add-post');
+    //btnAddpost.addEventListener('click', function () {
+    //    frmPost.classList.add('active');
+    //});
 
-    //Render loại sản phẩm khi chọn loại sản phẩm cha
-    $("#parentpostTypeDropdown").change(function () {
-        var selectedParentTypeId = $(this).val();
-        if (selectedParentTypeId === "") {
-            $("#clothes-style").empty();
-            $("#clothes-style").append('<option value="">Select an option</option>');
-        } else {
-            $.ajax({
-                url: "/Categories/GetLoaiSanPham",
-                type: "GET",
-                data: { parentId: selectedParentTypeId },
-                success: function (data) {
-                    $("#clothes-style").empty();
-
-                    $("#clothes-style").append('<option value="">Select an option</option>');
-
-                    $.each(data, function (index, item) {
-                        $("#clothes-style").append('<option value="' + item.Value + '">' + item.Text + '</option>');
-                    });
-                },
-                error: function (error) {
-                    console.log("Error: " + error);
-                }
-            });
-        }
-    });
+     
 
 
+    //let closeBtnEditPro = document.querySelector('.edit-post .close-btn');
+    //let editpost = document.querySelector('.edit-post');
 
-    // Thêm sản phẩm
-    $('#add-post-form').submit(function (e) {
-        e.preventDefault();
-
-        var formData = $(this).serialize();
-
-        // Make an AJAX request
-        $.ajax({
-            type: 'POST',
-            url: '/posts/Add',
-            data: formData,
-            success: function (response) {
-                if (response.success) {
-                    alert('Thêm sản phầm thành công!');
-                    $('#add-post-form')[0].reset();
-                    addpost.classList.remove('active');
-                } else {
-                    alert('Error: ' + response.message);
-                }
-            },
-            error: function (error) {
-                console.log('Error: ', error);
-            }
-        });
-    });
-
-
-    //  Xóa sản phẩm
-    $('.delete-post-btn').on('click', function () {
-        var postId = $(this).data('post-id');
-
-        // Make an AJAX request to delete the post
-        $.ajax({
-            type: 'POST',
-            url: '/posts/Delete',
-            data: { idSanPham: postId },
-            success: function (response) {
-                if (response.success) {
-                    alert('Xóa sản phẩm thành công!');                                     
-                    window.location.reload();
-                } else {
-                    alert('Error: ' + response.message);
-                }
-            },
-            error: function (error) {
-                console.log('Error: ', error);
-            }
-        });
-    });
-
-
-    let closeBtnEditPro = document.querySelector('.edit-post .close-btn');
-    let editpost = document.querySelector('.edit-post');
-
-    closeBtnEditPro.addEventListener('click', function () {
-        editpost.classList.remove('active');
-    });
+    //closeBtnEditPro.addEventListener('click', function () {
+    //    editpost.classList.remove('active');
+    //});
     $("#editParentpostTypeDropdown").change(function () {
         refreshClothesStyleDropdown($(this).val()).then(function () {
         });
     });
 
-    $('.edit-post-btn').click(function () {
-        var postId = $(this).data('post-id');
+    function getBaseFilename(filename) {
+        return filename.replace(/^.*[\\\/]/, '');
+    }    $('#btn-tieptuc').click(function () {
 
+        var formData = new FormData();
+
+        // Append the selected image file to the form data
+        var imageFile = $('#imageFile')[0].files[0];
+        if (imageFile) {
+            formData.append('imageFile', imageFile);
+        } else {
+            alert("Vui lòng chọn ảnh!");
+            return;
+        }
+
+        // Upload the image
         $.ajax({
-            url: '/posts/GetDetails',
-            method: 'GET',
-            data: { postId: postId },
-            success: function (data) {
-                $('#edit-post-id-header').text('ID: ' + data.postData.IdSanPham);
-                $('#edit-post-id').val(data.postData.IdSanPham);
-                $('#edit-post-name').val(data.postData.TenSanPham);
-                var selectedParentTypeId = data.idLoaiCha;
-                $('#editParentpostTypeDropdown').val(selectedParentTypeId);
-                refreshClothesStyleDropdown(selectedParentTypeId, function () {
-                    $('#edit-clothes-style').val(data.postData.IdLoaiSP);
-                });
-                $('#edit-post-price').val(data.postData.GiaBan);
-                $('#edit-post-discount').val(data.postData.GiamGia);
-                $('#edit-post-status').val(data.postData.TonTai.toString());
-                $('#preview-image').attr('src', '/Content/Images/' + data.postData.AnhSP);
-                $('#preview-image-compact-1').attr('src', '/Content/Images/' + data.postData.AnhSPChiTiet1);
-                $('#preview-image-compact-2').attr('src', '/Content/Images/' + data.postData.AnhSPChiTiet2);
-                $('#edit-post-content').text(data.postData.NoiDungSanPham);
-                $('#edit-post-review').text(data.postData.DanhGiaSanPham);
-                $('#edit-post-payment-shipping').text(data.postData.ThanhToanVanChuyen)
-                document.querySelector('.edit-post').classList.add('active');
+            url: '/DangBai/UploadImage',  // Replace with your actual controller action URL
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response.success) {
+                    // On successful image upload, create the post
+                    var imageFileName = response.savedFileName; // Get the uploaded file's name
+
+                    // Prepare the post data
+                    var postData = {
+                        IdNguoiChoThue: $('#nguoiChoThue').val(),
+                        TieuDe: $('#post_title').val(),
+                        NoiDung: $('#post_content').val(),
+                        AnhBaiDang: imageFileName // Use the uploaded image file name
+                    };
+
+                    // Create the post
+                    $.ajax({
+                        url: '/DangBai/ThemBai',  // Replace with your actual controller action URL
+                        type: 'POST',
+                        data: postData,
+                        success: function (postResponse) {
+                            if (postResponse.success) {
+                                alert(postResponse.message);  // Show success message
+                                // Optionally, you can redirect to another page or reset the form
+                            } else {
+                                alert(postResponse.message);  // Show error message from post creation
+                            }
+                        },
+                        error: function () {
+                            alert("Đã xảy ra lỗi khi tạo bài đăng.");
+                        }
+                    });
+                } else {
+                    alert(response.message);  // Show image upload error message
+                }
             },
-            error: function (error) {
-                console.error('Error fetching post details:', error);
+            error: function () {
+                alert("Đã xảy ra lỗi khi tải lên ảnh.");
             }
         });
     });
-    $('#edit-image-url').change(function (event) {
-        if (event.target.files.length > 0) {
-            var imageUrl = URL.createObjectURL(event.target.files[0]);
-            $('#preview-image').attr('src', imageUrl);
-        } else {
-            console.log('Không có tệp nào được chọn');
-        }
-    });
-    $('#edit-image-url-compact-1').change(function (event) {
-        if (event.target.files.length > 0) {
-            var imageUrl = URL.createObjectURL(event.target.files[0]);
-            $('#preview-image-compact-1').attr('src', imageUrl);
-        } else {
-            console.log('Không có tệp nào được chọn');
-        }
-    });
-    $('#edit-image-url-compact-2').change(function (event) {
-        if (event.target.files.length > 0) {
-            var imageUrl = URL.createObjectURL(event.target.files[0]);
-            $('#preview-image-compact-2').attr('src', imageUrl);
-        } else {
-            console.log('Không có tệp nào được chọn');
-        }
-    });
-    function refreshClothesStyleDropdown(selectedParentTypeId, callback) {
-        if (selectedParentTypeId === "") {
-            $("#edit-clothes-style").empty();
-            $("#edit-clothes-style").append('<option value="">Select an option</option>');
-            if (callback) {
-                callback();
-            }
-        } else {
-            $.ajax({
-                url: "/Categories/GetLoaiSanPham",
-                type: "GET",
-                data: { parentId: selectedParentTypeId },
-                success: function (data) {
-                    $("#edit-clothes-style").empty();
-                    $("#edit-clothes-style").append('<option value="">Select an option</option>');
 
-                    $.each(data, function (index, item) {
-                        $("#edit-clothes-style").append('<option value="' + item.Value + '">' + item.Text + '</option>');
-                    });
 
-                    if (callback) {
-                        callback();
-                    }
-                },
-                error: function (error) {
-                    console.log("Error: " + error);
+
+
+    $('#DanhSachAnh').on('change', function () {
+        var files = this.files;
+        var formData = new FormData();
+
+        $.each(files, function (i, file) {
+            formData.append('DanhSachAnh', file);
+        });
+
+        // Gửi yêu cầu Ajax để tải ảnh lên
+        $.ajax({
+            url: '/BaiDang/UploadImage', // Cập nhật với đường dẫn đúng
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response.success) {
+                    // Hiển thị ảnh vừa tải lên
+                    var imgTag = $('<img>').attr('src', response.filePath).addClass('uploaded-image');
+                    $('.uploaded-images').append(imgTag);
+                } else {
+                    alert('Tải ảnh lên thất bại: ' + response.message);
                 }
-            });
-        }
-    }
+            },
+            error: function (error) {
+                alert('Lỗi khi tải ảnh: ' + error.statusText);
+            }
+        });
+    });
 
-    //Cập nhật sản phẩm
-    $('#edit-post-form').submit(function (e) {
-        e.preventDefault();
 
-        var confirmation = confirm("Bạn có chắc muốn cập nhật thông tin?");
+    let btnAddpost = document.querySelector('#btn-add-post');
+    let frmPost = document.querySelector('.frm-post');
+    let closeBtn = document.querySelector('.frm-post .close-btn');
 
-        if (confirmation) {
-            $('#image-source').val(getBaseFilename($('#preview-image').attr('src')));
-            $('#image-compact-source-1').val(getBaseFilename($('#preview-image-compact-1').attr('src')));
-            $('#image-compact-source-2').val(getBaseFilename($('#preview-image-compact-2').attr('src')));
+    btnAddpost.addEventListener('click', function () {
+        frmPost.classList.add('active');
+    });
 
-            var formData = new FormData($(this)[0]);
-            console.log();
+    closeBtn.addEventListener('click', function () {
+        frmPost.classList.remove('active');
+    });
 
+
+
+    $(document).ready(function () {
+
+
+        $('#district_id').prop('disabled', true);
+        $('#phuongxa').prop('disabled', true);
+
+        // When a province is selected
+        $('#province_id').change(function () {
+            var selectedProvince = $(this).val();
+
+            if (selectedProvince !== "") {
+                $('#district_id').prop('disabled', false);
+
+                // TODO: Make an AJAX call to load districts for the selected province
+                // Example:
+                // $.ajax({
+            } else {
+                $('#district_id').prop('disabled', true).val('');
+                $('#phuongxa').prop('disabled', true).val('');
+            }
+
+            // Disable the ward dropdown since no district is selected yet
+            $('#phuongxa').prop('disabled', true);
+        });
+
+        // When a district is selected
+        $('#district_id').change(function () {
+            var selectedDistrict = $(this).val();
+
+            if (selectedDistrict !== "") {
+                // Enable the ward dropdown
+                $('#phuongxa').prop('disabled', false);
+                $.ajax({
+                    url: '@Url.Action("GetWardsByDistrict", "DangBai")',
+                    type: 'GET',
+                    data: { district: selectedDistrict },
+                    success: function (data) {
+                        $('#phuongxa').prop('disabled', false);
+                        $('#phuongxa').html(''); // Clear current options
+                        $('#phuongxa').append('<option value="">-- Chọn Phường/Xã --</option>'); // Default option
+
+                        // Populate ward dropdown with the new data
+                        $.each(data, function (index, ward) {
+                            $('#phuongxa').append('<option value="' + ward + '">' + ward + '</option>');
+                        });
+                    }
+                });
+
+
+            } else {
+                // If no district is selected, disable the ward dropdown
+                $('#phuongxa').prop('disabled', true).val('');
+            }
+        });
+        $('#btn-add-imgtest').click(function () {
+            $('#DanhSachAnh').click();
+        });
+
+
+
+        // Khi người dùng chọn ảnh
+        //$('#DanhSachAnh').change(function () {
+        //    const files = Array.from(this.files); // Lấy danh sách file
+        //    const uploadedImagesContainer = $('#uploaded-images-container');
+
+        //    // Duyệt qua từng file và xử lý
+        //    files.forEach(file => {
+        //        const reader = new FileReader();
+
+        //        // Khi file đọc xong
+        //        reader.onload = function (e) {
+        //            const img = $('<img>')
+        //                .attr('src', e.target.result) // Gán đường dẫn ảnh
+        //                .css({
+        //                    width: '100px',
+        //                    height: '100px',
+        //                    margin: '5px',
+        //                    border: '1px solid #ccc',
+        //                    borderRadius: '5px'
+        //                });
+
+        //            const deleteButton = $('<button>')
+        //                .text('Xóa')
+        //                .css({
+        //                    display: 'block',
+        //                    marginTop: '5px',
+        //                    background: '#ff0000',
+        //                    color: '#fff',
+        //                    border: 'none',
+        //                    borderRadius: '3px',
+        //                    padding: '5px',
+        //                    cursor: 'pointer'
+        //                })
+        //                .click(function () {
+        //                    img.remove(); // Xóa ảnh
+        //                    $(this).remove(); // Xóa nút xóa
+        //                });
+
+        //            const imageContainer = $('<div>')
+        //                .css({
+        //                    display: 'inline-block',
+        //                    textAlign: 'center',
+        //                    margin: '10px'
+        //                })
+        //                .append(img)
+        //                .append(deleteButton);
+
+        //            uploadedImagesContainer.append(imageContainer);
+        //        };
+
+        //        // Đọc file dưới dạng URL
+        //        reader.readAsDataURL(file);
+        //    });
+        //});
+
+        $('#uploadForm').submit(function (e) {
+            e.preventDefault(); // Ngừng việc form gửi dữ liệu theo kiểu mặc định
+
+            var fileInput = $('#imageFile')[0]; // Lấy input file từ DOM
+            var file = fileInput.files[0]; // Lấy file đầu tiên
+
+            // Kiểm tra xem có ảnh nào được chọn không
+            if (!file) {
+                $('#uploadResult').html('<span style="color: red;">Vui lòng chọn một ảnh để tải lên.</span>');
+                return; // Dừng lại nếu không có file
+            }
+
+            var formData = new FormData(this); // Lấy form data
+
+            // Gửi yêu cầu AJAX đến controller
             $.ajax({
-                url: '/posts/Update',
+                url: '/DangBai/UploadImage', // Đảm bảo URL đúng
                 type: 'POST',
                 data: formData,
                 contentType: false,
                 processData: false,
-                success: function (data) {
-                    if (data.success) {
-                        alert('Cập nhật thông tin thành công!');
-                        document.querySelector('.edit-post').classList.remove('active');
-                        location.reload();
+                success: function (response) {
+                    if (response.success) {
+                        $('#uploadResult').html('<span style="color: green;">' + response.message + '</span>');
                     } else {
-                        alert('Update failed. ' + data.message);
+                        $('#uploadResult').html('<span style="color: red;">' + response.message + '</span>');
                     }
                 },
-                error: function (error) {
-                    console.log('Error: ' + error);
+                error: function (xhr, status, error) {
+                    $('#uploadResult').html('<span style="color: red;">Lỗi khi kết nối đến server: ' + error + '</span>');
                 }
             });
-        } else {
-            alert('Update cancelled.');
-        }
+        });
     });
 
-    function getBaseFilename(filename) {
-        return filename.replace(/^.*[\\\/]/, '');
-    }
-});
+    document.addEventListener('DOMContentLoaded', function () {
+        const uploadInput = document.getElementById('DanhSachAnh');
+        const uploadedImagesContainer = document.querySelector('.uploaded-images');
 
+        uploadInput.addEventListener('change', function () {
+            const files = Array.from(uploadInput.files);
+
+            files.forEach(file => {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.classList.add('uploaded-image');
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.innerHTML = 'Xóa';
+                    deleteButton.classList.add('delete-button');
+                    deleteButton.addEventListener('click', function () {
+                        uploadedImagesContainer.removeChild(imageContainer);
+                    });
+
+                    const imageContainer = document.createElement('div');
+                    imageContainer.classList.add('image-container');
+                    imageContainer.appendChild(img);
+                    imageContainer.appendChild(deleteButton);
+
+                    uploadedImagesContainer.appendChild(imageContainer);
+                };
+
+                reader.readAsDataURL(file);
+            });
+        });
+    });
+});

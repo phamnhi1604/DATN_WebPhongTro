@@ -74,8 +74,8 @@
                         <td>@item.TonTai</td>
 
                         <td>
-                            <button type="button" class="edit-post-btn" data-post-id="@item"><i class="fa fa-wrench"></i></button>
-                            <button type="button" class="delete-post-btn" data-post-id="@item"><i class="fa fa-trash"></i></button>
+                            <button type="button" class="rs-password-btn" data-post-id="@item.IdNguoiDung"><i class="fa fa-wrench"></i></button>
+                            <button type="button" class="delete-post-btn" data-post-id="@item.IdNguoiDung"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
 }
@@ -114,6 +114,6 @@ else
 </div>}
 </div>
 @section scriptsFooter {
-    <script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>
+    <script src="~/Areas/Admin/Contents/Script/main.js"></script>
 }
 

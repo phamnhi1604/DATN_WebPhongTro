@@ -37,7 +37,6 @@
                     alert(response.message);
                     location.reload();
 
-                    $(`button[data-post-id="${postId}"]`).closest('.post-item').remove();
                 } else {
                     alert(response.message);
                     location.reload();

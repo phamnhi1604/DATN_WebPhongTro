@@ -7,6 +7,10 @@ using Web_PhongTro.Models;
 using Web_PhongTro.Areas.NguoiChoThue.ViewModels;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using System.IO; 
+using Microsoft.AspNetCore.Http;
+using System.Web.UI.WebControls;
+
 
 namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
 {
@@ -84,11 +88,53 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
 
         //    return View(nguoiChoThue);
         //}
-        public ActionResult DangBai()
+        public PartialViewResult DangBai()
         {
-            return View();
+            return PartialView();
         }
 
+        //private string SaveFileAndGetPath(HttpPostedFileBase imageFile)
+        //{
+        //    // Kiểm tra nếu không có ảnh được chọn
+
+
+        //    // Đặt đường dẫn thư mục lưu ảnh
+        //    string directoryPath = Server.MapPath("~/Contents/Images/ImgPost/");
+
+        //    // Kiểm tra và tạo thư mục nếu không tồn tại
+        //    if (!Directory.Exists(directoryPath))
+        //    {
+        //        Directory.CreateDirectory(directoryPath);
+        //    }
+
+        //    // Tạo tên file duy nhất cho ảnh
+        //    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+        //    string filePath = Path.Combine(directoryPath, fileName);
+
+        //    imageFile.SaveAs(filePath);
+
+        //    // Trả về thông báo thành công và đường dẫn ảnh
+        //    return filePath = "/Contents/Images/ImgPost/" + fileName;
+
+        //    // Trả về đường dẫn tương đối để lưu vào database
+        //}
+
+        //private void SaveFileAndInsertToDatabase(HttpPostedFileBase file, long postId)
+        //{
+        //    string filePath = UploadImage(file);
+        //    if (!string.IsNullOrEmpty(filePath))
+        //    {
+        //        // Thêm thông tin ảnh vào bảng liên quan
+        //        AnhBaiDang newImage = new AnhBaiDang
+        //        {
+        //            IdBaiDang = postId,
+        //            DuongDanAnh = filePath
+        //        };
+
+        //        db.AnhBaiDangs.InsertOnSubmit(newImage);
+        //        db.SubmitChanges();
+        //    }
+        //}
 
         //public JsonResult ThemBai(BaiDangViewModel model)
         //{
@@ -106,39 +152,39 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
         //                                  where nguoiDung.TenTaiKhoan == username
         //                                  select nct.IdNguoiChoThue).FirstOrDefault();
 
-        //            if (idNguoiChoThue == null)
-        //            {
-        //                return Json(new { success = false, message = "Người cho thuê không tồn tại." });
-        //            }
-
-        //            // Kiểm tra danh mục
-        //            var danhMuc = db.DanhMucs.FirstOrDefault(dm => dm.IdDanhMuc == model.LoaiChuyenMuc);
-        //            if (danhMuc == null)
-        //            {
-        //                return Json(new { success = false, message = "Danh mục không tồn tại." });
-        //            }
-
-        //            // Tìm phòng trọ có sẵn, ví dụ dựa vào IdNguoiChoThue và trạng thái phòng
-        //            var phongTro = db.PhongTros.FirstOrDefault(pt => pt.IdNguoiChoThue == idNguoiChoThue && pt.TrangThaiPhong == "con_trong");
-
+        //            // Kiểm tra phòng trọ có sẵn
+        //            var phongTro = db.PhongTros.FirstOrDefault(pt => pt.IdNguoiChoThue == idNguoiChoThue);
         //            if (phongTro == null)
         //            {
         //                return Json(new { success = false, message = "Không có phòng trọ có sẵn để đăng." });
         //            }
 
-        //            // Thêm bài đăng liên kết với phòng trọ có sẵn
+        //            // Tạo bài đăng mới
         //            BaiDang newBd = new BaiDang
         //            {
-        //                IdNguoiChoThue = idNguoiChoThue, 
+        //                IdNguoiChoThue = idNguoiChoThue,
         //                IdPhongTro = phongTro.IdPhongTro,
         //                TieuDe = model.TieuDe,
         //                NoiDung = model.NoiDung,
-        //                AnhBaiDang = "def_img.jpg", 
         //                NgayDang = DateTime.Now,
-        //                TrangThai = "dang_hoat_dong", 
+        //                TrangThai = "0",
+        //                SoLuongYeuThich = 0,
+        //                AnhBaiDang = model.DanhSachAnh != null && model.DanhSachAnh.Any() ? UploadImage(model.DanhSachAnh.First()) : "def_img.jpg"
         //            };
+
+        //            // Thêm bài đăng vào cơ sở dữ liệu
         //            db.BaiDangs.InsertOnSubmit(newBd);
         //            db.SubmitChanges();
+        //            long newPostId = newBd.IdBaiDang;
+
+        //            // Lưu các ảnh khác (nếu có)
+        //            if (model.DanhSachAnh != null && model.DanhSachAnh.Any())
+        //            {
+        //                foreach (var file in model.DanhSachAnh)
+        //                {
+        //                    SaveFileAndInsertToDatabase(file, newPostId); // Save ảnh và lưu vào DB
+        //                }
+        //            }
 
         //            res = new { success = true, message = "Đăng bài thành công!" };
         //        }
@@ -150,6 +196,38 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
 
         //    return Json(res);
         //}
+        [HttpPost]
+        public ActionResult UploadImage(HttpPostedFileBase imageFile)
+        {
+            if (imageFile != null && imageFile.ContentLength > 0)
+            {
+                // Tạo tên file duy nhất
+                string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+
+                // Lưu ảnh vào thư mục
+                string path = Path.Combine(Server.MapPath("~/Contents/Images/ImgPost"), uniqueFileName);
+                imageFile.SaveAs(path);
+
+                // Trả về tên file đã lưu
+                return Json(new
+                {
+                    success = true,
+                    message = "Ảnh đã được tải lên thành công.",
+                    savedFileName = uniqueFileName, // Lưu lại tên file duy nhất
+                    filePath = "/Contents/Images/ImgPost/" + uniqueFileName
+                });
+            }
+
+            return Json(new
+            {
+                success = false,
+                message = "Không có ảnh nào được tải lên."
+            });
+        }
+
+
+        [HttpPost]
+
         public JsonResult ThemBai(BaiDangViewModel model)
         {
             var res = new { success = false, message = "Thêm bài đăng không thành công" };
@@ -171,19 +249,15 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                         return Json(new { success = false, message = "Người cho thuê không tồn tại." });
                     }
 
-                    // Kiểm tra danh mục
-                    var danhMuc = db.DanhMucs.FirstOrDefault(dm => dm.IdDanhMuc == model.LoaiChuyenMuc);
-                    if (danhMuc == null)
-                    {
-                        return Json(new { success = false, message = "Danh mục không tồn tại." });
-                    }
-
                     // Lấy phòng trọ còn trống
                     var phongTro = db.PhongTros.FirstOrDefault(pt => pt.IdNguoiChoThue == idNguoiChoThue);
                     if (phongTro == null)
                     {
                         return Json(new { success = false, message = "Không có phòng trọ có sẵn để đăng." });
                     }
+
+                    // Upload image and get the unique file name
+                   
 
                     // Tạo bài đăng mới
                     BaiDang newBd = new BaiDang
@@ -192,17 +266,24 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                         IdPhongTro = phongTro.IdPhongTro,
                         TieuDe = model.TieuDe,
                         NoiDung = model.NoiDung,
-                        AnhBaiDang = "def_img.jpg", // Ảnh mặc định
                         NgayDang = DateTime.Now,
                         TrangThai = "0",
-                        SoLuongYeuThich = 0
+                        AnhBaiDang = !string.IsNullOrEmpty(model.AnhBaiDang) ? model.AnhBaiDang : "def_img.jpg"
                     };
 
                     // Thêm bài đăng vào cơ sở dữ liệu
                     db.BaiDangs.InsertOnSubmit(newBd);
                     db.SubmitChanges();
+                    long newPostId = newBd.IdBaiDang;
 
-
+                    // Lưu các ảnh khác (nếu có)
+                    if (model.DanhSachAnh != null && model.DanhSachAnh.Any())
+                    {
+                        foreach (var file in model.DanhSachAnh)
+                        {
+                            UploadListImage(file, newPostId); // Save ảnh và lưu vào DB
+                        }
+                    }
 
                     res = new { success = true, message = "Đăng bài thành công!" };
                 }
@@ -214,6 +295,36 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
 
             return Json(res);
         }
+
+        //public string UploadImage(HttpPostedFileBase imageFile)
+        //{
+        //    if (imageFile != null && imageFile.ContentLength > 0)
+        //    {
+        //        // Đặt đường dẫn thư mục lưu ảnh
+        //        string directoryPath = Server.MapPath("~/Contents/Images/ImgPost/");
+
+        //        // Kiểm tra thư mục, nếu không tồn tại, tạo mới
+        //        if (!Directory.Exists(directoryPath))
+        //        {
+        //            Directory.CreateDirectory(directoryPath);
+        //        }
+
+        //        string fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+
+        //        string filePath = Path.Combine(directoryPath, fileName);
+
+        //        // Lưu ảnh vào thư mục
+        //        imageFile.SaveAs(filePath);
+
+        //        return "~/Contents/Images/ImgPost/" + fileName;
+        //    }
+        //    return null;
+        //}
+
+
+
+
+
 
 
     }

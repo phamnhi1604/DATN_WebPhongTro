@@ -17,13 +17,15 @@ namespace Web_PhongTro.Controllers
         {
             var query = (from danhMuc in db.DanhMucs
                          join phongTro in db.PhongTros on danhMuc.IdDanhMuc equals phongTro.IdDanhMuc
+                         join diachi in db.DiaChis on phongTro.IdDiaChi equals diachi.IdDiaChi
                          join baiDang in db.BaiDangs on phongTro.IdPhongTro equals baiDang.IdPhongTro 
-                         
+                         where baiDang.TrangThai == "1"
                          orderby baiDang.IdBaiDang descending
                          select new BaiDangVM
                          {
                              noidungPT = phongTro,
-                             BaiDang = baiDang 
+                             BaiDang = baiDang ,
+                             diachiPT = diachi
                          }).Take(4);
             return View(query);
         }
@@ -60,7 +62,7 @@ namespace Web_PhongTro.Controllers
         //             }).FirstOrDefault();
         //    return View(query);
         //}
-        public ActionResult Info1()
+        public ActionResult Info()
         {
             // Lấy tên tài khoản người dùng đang đăng nhập
             string username = User.Identity.Name;
@@ -90,7 +92,7 @@ namespace Web_PhongTro.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateInfo(NguoiThueVM nt)
+        public ActionResult UpdateInfo(NguoiThueVM nt)
         {
             if (ModelState.IsValid)
             {
@@ -127,24 +129,101 @@ namespace Web_PhongTro.Controllers
                             }
 
                             db.SubmitChanges(); // LINQ to SQL
-                            return Json(new { success = true, message = "Cập nhật thông tin thành công!" });
+
+                            // Thông báo thành công và chuyển hướng
+                            TempData["SuccessMessage"] = "Cập nhật thông tin thành công.";
+                            return RedirectToAction("Info");
                         }
 
-                        return Json(new { success = false, message = "Không tìm thấy thông tin người thuê!" });
+                        TempData["ErrorMessage"] = "Không tìm thấy thông tin người thuê.";
+                        return RedirectToAction("Info");
                     }
 
-                    return Json(new { success = false, message = "Không tìm thấy thông tin người dùng!" });
+                    TempData["ErrorMessage"] = "Không tìm thấy thông tin người dùng.";
+                    return RedirectToAction("Info");
                 }
                 catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine("Error: " + ex.Message);
-                    return Json(new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
+                    TempData["ErrorMessage"] = "Đã xảy ra lỗi: " + ex.Message;
+                    return RedirectToAction("Info");
                 }
             }
 
-            return Json(new { success = false, message = "Dữ liệu không hợp lệ!" });
+            TempData["ErrorMessage"] = "Dữ liệu không hợp lệ.";
+            return RedirectToAction("Info");
         }
 
 
+        [HttpPost]
+        public JsonResult AddPhanHoi(PhanHoi ph)
+        {
+            // Lấy username từ người dùng đang đăng nhập
+            string username = User.Identity.Name.ToString();
+
+            // Lấy IdNguoiDung dựa trên username
+            long idND = db.NguoiDungs
+                          .Where(u => u.TenTaiKhoan == username)
+                          .Select(u => u.IdNguoiDung)
+                          .FirstOrDefault();
+            long idNT = db.NguoiThues
+                .Where(i => i.IdNguoiDung == idND)
+                .Select(i => i.IdNguoiThue)
+                .FirstOrDefault(); 
+            if (db.PhanHois.Any(x => x.IdBaiDang == ph.IdBaiDang && x.IdNguoiThue == idNT))
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Bạn đã báo cáo bài viết này!"
+                });
+            }
+
+            // Xử lý thêm bài viết yêu thích
+            else if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Tạo đối tượng YeuThich mới
+                    PhanHoi newP = new PhanHoi
+                    {
+                        IdBaiDang = ph.IdBaiDang,
+                        IdNguoiThue = idNT,
+                        NoiDung = ph.NoiDung,
+                        NgayPhanHoi = DateTime.Now
+                    };
+
+                    // Thêm vào cơ sở dữ liệu
+                    db.PhanHois.InsertOnSubmit(newP);
+                    db.SubmitChanges();
+
+                    return Json(new
+                    {
+                        success = true,
+                        message = "Báo cáo bài viết thành công!"
+                    });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Vui lòng đăng nhập!"
+                    });
+                }
+            }
+
+            // Nếu ModelState không hợp lệ
+            return Json(new
+            {
+                success = false,
+                message = "Dữ liệu không hợp lệ!"
+            });
+        }
+
+
+
+
     }
+
 }

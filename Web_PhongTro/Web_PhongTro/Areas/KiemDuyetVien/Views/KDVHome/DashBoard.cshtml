@@ -21,15 +21,15 @@
                     <img src="~/Contents/Images/ImgPost/@item.BaiDang.AnhBaiDang" alt="Phòng trọ quận 1">
                     <div class="post-details">
                         <h3>@item.BaiDang.TieuDe</h3>
-                        <p>Giá: <span>3.000.000 VNĐ/tháng</span></p>
+                        <p>Giá: <span>@string.Format("{0:N0}", item.noidungPT.GiaPhong)đ</span></p>
                         <p>Địa chỉ: @item.diachiPT.Phuong  @item.diachiPT.Quan </p>
                         <p class="text">
                             @item.BaiDang.NoiDung
                         </p>
                         <a class="toggle-btn">Xem thêm</a>
                         <div class="buttons">
-                            <button class="accept">✔ Chấp Nhận</button>
-                            <button class="reject">✖ Từ Chối</button>
+                            <button class="accept" data-post-id="@item.BaiDang.IdBaiDang">✔ Chấp Nhận</button>
+                            <button class="reject" data-post-id="@item.BaiDang.IdBaiDang">✖ Từ Chối</button>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                     <img src="~/Contents/Images/ImgPost/@item.BaiDang.AnhBaiDang" alt="Phòng trọ quận 1">
                     <div class="post-details">
                         <h3>@item.BaiDang.TieuDe</h3>
-                        <p>Giá: <span>3.000.000 VNĐ/tháng</span></p>
+                        <p>Giá:  <span>@string.Format("{0:N0}", item.noidungPT.GiaPhong)đ</span></p>
                         <p>Địa chỉ: @item.diachiPT.Phuong  @item.diachiPT.Quan </p>
                         <p class="text">
                             @item.BaiDang.NoiDung
@@ -67,7 +67,45 @@
                         <a class="toggle-btn">Xem thêm</a>
                         <div class="buttons">
                             @*<button class="accept">✔ Chấp Nhận</button>*@
-                            <button class="reject">✖ Xóa bài đăng</button>
+                            <button class="reject" data-post-id="@item.BaiDang.IdBaiDang">✖ Đóng bài đăng</button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+        <!-- Bài đăng 1 -->
+
+
+    </div>
+</div>
+
+
+<div class="title">
+    <i class="uil uil-tachometer-fast-alt"></i>
+    <span class="text">Danh Sách Bài Đăng Đã Từ Chối</span>
+</div>
+<div class="container">
+
+
+    <div class="post-list">
+        @foreach (var item in Model)
+        {
+            if ((item.BaiDang.TrangThai).Contains("2"))
+            {
+                <div class="post">
+                    <img src="~/Contents/Images/ImgPost/@item.BaiDang.AnhBaiDang" alt="Phòng trọ quận 1">
+                    <div class="post-details">
+                        <h3>@item.BaiDang.TieuDe</h3>
+                        <p>Giá: <span>@string.Format("{0:N0}", item.noidungPT.GiaPhong)đ</span></p>
+                        <p>Địa chỉ: @item.diachiPT.Phuong  @item.diachiPT.Quan </p>
+                        <p class="text">
+                            @item.BaiDang.NoiDung
+                        </p>
+                        <a class="toggle-btn">Xem thêm</a>
+                        <div class="buttons">
+                            @*<button class="accept">✔ Chấp Nhận</button>*@
+                            @*<button class="reject">✖ Xóa bài đăng</button>*@
                         </div>
                     </div>
                 </div>

@@ -26,7 +26,6 @@ namespace Web_PhongTro.Areas.Admin.Controllers
                         .Select(baiDang => new BaiDangVM
                         {
                             BaiDang = baiDang
-                            //Gia = db.func_GiaBaiDang(BaiDang.IdBaiDang)
                         });
             }
             else
@@ -163,6 +162,48 @@ namespace Web_PhongTro.Areas.Admin.Controllers
             ViewBag.NoOfPages = NoOfPages;
             query = query.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage);
             return View(query);
+        }
+
+
+        public JsonResult ResetPassWord(long idND)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    
+
+                    var tk = db.NguoiDungs.Where(x => x.IdNguoiDung == idND).FirstOrDefault();
+
+                    if (tk != null)
+                    {
+                        tk.MatKhau = "12345678";
+                        db.SubmitChanges();
+
+                        return Json(new
+                        {
+                            success = true,
+                            message = "Đặt lại mật khẩu thành công! "
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Đã xảy ra lỗi: " + ex.Message
+                    });
+                }
+            }
+
+            // Nếu ModelState không hợp lệ
+            return Json(new
+            {
+                success = false,
+                message = "Dữ liệu không hợp lệ!"
+            });
         }
     }
 }

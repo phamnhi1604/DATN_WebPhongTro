@@ -1,0 +1,179 @@
+﻿@model IEnumerable<Web_PhongTro.ViewModels.PhongTroVM>
+@{
+    ViewBag.Title = "DanhSachPhongTro";
+    Layout = "~/Areas/NguoiChoThue/Views/Shared/_Layout.cshtml";
+}
+
+<div class="activity" id="posts">
+    <div class="title">
+        <i class="uil uil-package"></i>
+        <span class="text">Danh sách phòng trọ</span>
+    </div>
+    <div class="activity-data">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td colspan="6">
+                        @using (Html.BeginForm("DanhSachPhongTro", "NCTHome", FormMethod.Post, new { id = "post-search-form" }))
+                        {
+                            <select class="form-select" name="searchType" id="post-search-type" required>
+                                <option value="title">Tìm theo tiêu đề</option>
+                                <option value="address">Tìm theo địa chỉ</option>
+                            </select>
+                            <input class="form-control" type="text" placeholder="Tìm kiếm..." name="searchInput" id="post-search-input" required>
+                            <button type="submit" class="btn btn-light" id="btn-search-post">
+                                <i class="fa fa-search" style="color: #3557ff;"></i>
+                                Tìm kiếm
+                            </button>
+                        }
+                        <button class="btn btn-light" id="btn-add-post">
+                            <i class="fa fa-plus-square" style="color: #3557ff;"></i>
+                            Thêm phòng trọ mới
+                        </button>
+                    </td>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Diện tích</th>
+                    <th>Giá phòng</th>
+                    <th>Mô tả</th>
+                    <th>Địa Chỉ</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="post-table-body">
+                @{ int stt = ViewBag.STT; }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(stt++)</td>
+                        @*<td>
+                                <a href="@Url.Action("GetPhongTroById", "PhongTro", new { id = item.PhongTro.IdPhongTro })" target="_blank">
+                                    @item.PhongTro.TieuDe
+                                </a>
+                            </td>*@
+                        <td>@item.PhongTro.DienTich m²</td>
+                        <td>@string.Format("{0:N0} VNĐ", item.PhongTro.GiaPhong)</td>
+                        <td>@item.PhongTro.MoTa</td>
+                        <td>@item.DiaChi.Phuong @item.DiaChi.Quan @item.DiaChi.ThanhPho</td>
+                        <td>@item.PhongTro.TrangThaiPhong</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "PhongTro", new { id = item.PhongTro.IdPhongTro })" class="btn btn-sm btn-primary">
+                                <i class="fa fa-edit"></i> Sửa
+                            </a>
+                            <a href="@Url.Action("Delete", "PhongTro", new { id = item.PhongTro.IdPhongTro })" class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash"></i> Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @if (ViewBag.NoOfPages > 1)
+    {
+        <div class="break-page">
+            @{ int PrevPage = ViewBag.Page - 1;
+                if (PrevPage <= 0)
+                {
+                    PrevPage = 1;
+                }
+                int NextPage = ViewBag.Page + 1;
+                if (NextPage > ViewBag.NoOfPages)
+                {
+                    NextPage = ViewBag.NoOfPages;
+                }
+            }
+            <div>
+                <a class="buttons prev-button" href="@Url.Action("DanhSachPhongTro", "NCTHome", new { page = PrevPage })">&lt;&lt;</a>
+            </div>
+            @for (int i = 1; i <= ViewBag.NoOfPages; i++)
+            {
+                if (i == ViewBag.Page)
+                {
+                    <div><a href="@Url.Action("DanhSachPhongTro", "NCTHome", new { page = i })" class="buttons active">@(i)</a></div>
+                }
+                else
+                {
+                    <div><a href="@Url.Action("DanhSachPhongTro", "NCTHome", new { page = i })" class="buttons">@(i)</a></div>
+                }
+            }
+            <div>
+                <a class="buttons next-button" href="@Url.Action("DanhSachPhongTro", "NCTHome", new { page = NextPage })">&gt;&gt;</a>
+            </div>
+        </div>
+    }
+</div>
+<script>
+    let btnAddpost = document.querySelector('#btn-add-post');
+    let frmPost = document.querySelector('.frm-post');
+    let closeBtn = document.querySelector('.frm-post .close-btn');
+
+    btnAddpost.addEventListener('click', function () {
+        frmPost.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', function () {
+        frmPost.classList.remove('active');
+    });
+
+
+
+       $(document).ready(function () {
+            $('#district_id').prop('disabled', true);
+            $('#phuongxa').prop('disabled', true);
+
+            // When a province is selected
+            $('#province_id').change(function () {
+                var selectedProvince = $(this).val();
+
+                if (selectedProvince !== "") {
+                    $('#district_id').prop('disabled', false);
+
+                    // TODO: Make an AJAX call to load districts for the selected province
+                    // Example:
+                    // $.ajax({
+                } else {
+                    $('#district_id').prop('disabled', true).val('');
+                    $('#phuongxa').prop('disabled', true).val('');
+                }
+
+                // Disable the ward dropdown since no district is selected yet
+                $('#phuongxa').prop('disabled', true);
+            });
+
+            // When a district is selected
+            $('#district_id').change(function () {
+                var selectedDistrict = $(this).val();
+
+                if (selectedDistrict !== "") {
+                    // Enable the ward dropdown
+                    $('#phuongxa').prop('disabled', false);
+                    $.ajax({
+                        url: '@Url.Action("GetWardsByDistrict", "DangBai")',
+                        type: 'GET',
+                        data: { district: selectedDistrict },
+                        success: function (data) {
+                            $('#phuongxa').prop('disabled', false);
+                            $('#phuongxa').html(''); // Clear current options
+                            $('#phuongxa').append('<option value="">-- Chọn Phường/Xã --</option>'); // Default option
+
+                            // Populate ward dropdown with the new data
+                            $.each(data, function (index, ward) {
+                                $('#phuongxa').append('<option value="' + ward + '">' + ward + '</option>');
+                            });
+                        }
+                    });
+
+
+                } else {
+                    // If no district is selected, disable the ward dropdown
+                    $('#phuongxa').prop('disabled', true).val('');
+                }
+            });
+        });
+
+</script>

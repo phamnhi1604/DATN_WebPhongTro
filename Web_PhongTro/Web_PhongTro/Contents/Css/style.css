@@ -7,7 +7,7 @@ reset
 */
 
 :root {
-  --bgColor: #36B9CA;
+    --bgColor: #62c780;
 }
  
 /*html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
@@ -80,12 +80,12 @@ figure, header, nav, section, article, aside, footer, figcaption {
   ul {
     margin-bottom: 0px;
   }
-  
-  p {
+
+p {
     font-size: 15px;
     line-height: 30px;
-    color: #afafaf;
-  }
+    color: #434343;
+}
   
   img {
     width: 100%;
@@ -143,8 +143,8 @@ body {
   
   .visit-country .item .right-content span {
     font-size: 15px;
-    color: #afafaf;
     display: block;
+    color:#434343;
   }
   
   .visit-country .item .right-content .main-button {
@@ -156,7 +156,6 @@ body {
   .visit-country .item .right-content .main-button a:hover {
     background-color: var(--bgColor);
     border-color: var(--bgColor);
-    color: #fff;
     opacity: 0.8;
   }
   
@@ -173,7 +172,7 @@ body {
   .visit-country .item .right-content ul li {
     display: inline-block;
     width: 32%;
-    color: #afafaf;
+    color: #000;
     font-size: 14px;
   }
   
@@ -334,7 +333,7 @@ section {
   align-items: center;
   justify-content: space-between;
   padding: 2rem 9%;
-  background: #000;
+  background: #CFE59B;
 }
 
 .header .logo {
@@ -369,21 +368,22 @@ section {
 }
 
 .header .navbar>ul li a {
+    color:#000; 
   display: block;
   padding: 0.2rem 0.4rem;
   text-decoration: none;
 }
 
 .header .navbar li ul {
-  padding: 0;
-  display: none;
-  min-width: 170px;
-  position: absolute;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: #000;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  opacity:0.8;
+    padding: 0;
+    display: none;
+    min-width: 170px;
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #CFE59B;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    opacity: 0.8;
 }
 
 .header .navbar li>ul li {
@@ -403,8 +403,7 @@ section {
 }
 
 .header .navbar>ul li>ul li>ul {
-  margin-left: 170px;
-  margin-top: -31px;
+  margin-top: 4px;
 }
 
 .header .icons div,
@@ -1280,10 +1279,12 @@ section {
     padding: 2rem 6%;
     background: #f9f9f9;
 }
-
+.sidebar-box h3{
+    margin-bottom:1rem;
+}
 
 .outstanding-products {
-  padding: 10rem 9%;
+    padding: 10rem 9%;
 }
 
 .break-page {
@@ -1538,17 +1539,17 @@ section {
   color:  var(--mainColor);
 }
 .footer {
-    background-color: #000;
-    color: #fff;
+    background-color: #CFE59B;
+    color: #000;
     padding: 20px;
     text-align: center;
-/*    position:fixed;
+    /*    position:fixed;
     bottom:0;
     right:0;
     left:0;*/
 }
 .footer *{
-     color: #fff;
+     color: #000;
 }
 .footer a {
     color: #fff;
@@ -1671,7 +1672,7 @@ section {
     top: 99%;
     left: 0;
     right: 0;
-    background: #fff;
+    background: #CFE59B;
     border-bottom: 0.1rem solid rgba(0, 0, 0, 0.3);
   }
 

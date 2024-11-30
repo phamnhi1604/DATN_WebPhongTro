@@ -5,7 +5,10 @@
     <ul class="link-danhmuc-list">
         @foreach (var quan in Model)
         {
-            <li><a href="#">@quan</a></li>            
+            @*<li><a href="@Url.Action("GetDsBaiDangByQuan", "BaiDang", new { tenDM = quan, page = 1 })"></a></li>*@
+
+            <li><a href="@Url.Action("GetDsBaiDangByQuan","BaiDang")/?tenDM=@quan&page=1">@quan</a></li>
+
         }
     </ul>  
 </div>

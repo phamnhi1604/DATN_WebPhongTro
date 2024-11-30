@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Web_PhongTro.ViewModels.BaiDangVM>
+
+@{
+    ViewBag.Title = "Danh sách phòng trọ ở " + @ViewBag.TenDC;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+}
+<h1 style="margin-top:10rem;" class="heading">Danh sách phòng trọ: <span>@ViewBag.TenDC</span></h1>
+
+<section class="posts " id="posts">
+    <div class="container" id="post-list">
+        @foreach (var item in Model)
+        {
+            <div class=" box">
+                <div class="row">
+                    <div class="visit-country">
+                        <div class="col-lg-12">
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-5" style="position:relative; overflow: hidden;">
+                                        <div class="image">
+                                            <img src="~/Contents/Images/ImgPost/@item.BaiDang.AnhBaiDang" alt="">
+                                        </div>
+                                        <div class="icons">
+                                            <a href="javascript:void(0)" class="fas fa-heart favorites-post" data-post-id="@item.BaiDang.IdBaiDang"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-sm-7">
+                                        <div class="right-content">
+                                            <h4><a href="@Url.Action("GetBaiDangById", "BaiDang", new { id = item.BaiDang.IdBaiDang })">@item.BaiDang.TieuDe</a></h4>
+                                            <span>@string.Format("{0:N0}", item.noidungPT.GiaPhong)đ</span>
+
+                                            <span>@item.diachiPT.Phuong @item.diachiPT.Quan</span>
+                                            <span>@item.noidungPT.MoTa </span>
+                                            @*<ul class="info">
+                                                    <li><i class="fa fa-user"></i></li>
+                                                    <li><i class="fa fa-globe"></i></li>
+                                                    <li><i class="fa fa-home"></i>@item.noidungPT.DienTich  <label style="text-transform:lowercase">m</label><sup>2</sup></li>
+                                                </ul>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+
+    </div>
+
+    <aside id="sidebar">
+
+        <div class="sidebar-box">
+            <h3>Cho thuê phòng trọ theo khu vực</h3>
+
+        </div>
+        <hr />
+        <div class="sidebar-box">
+            <h3>Cho thuê phòng trọ TPHCM </h3>
+            @Html.Action("ListDiaChiPartial", "DanhMuc")
+        </div>
+        <hr />
+
+        <div class="sidebar-box">
+            <h3>Xem theo giá</h3>
+            @Html.Action("ListGiaPartial", "DanhMuc")
+
+        </div>
+        <hr />
+
+        <div class="sidebar-box">
+            <h3>Xem theo diện tích</h3>
+            @Html.Action("ListDienTichPartial", "DanhMuc")
+        </div>
+    </aside>
+
+</section>
+
+<div class="break-page">
+    @{
+        int PrevPage = ViewBag.Page - 1;
+        if (PrevPage <= 0)
+        {
+            PrevPage = 1;
+        }
+        int NextPage = ViewBag.Page + 1;
+        if (NextPage >= ViewBag.NoOfPages)
+        {
+            NextPage = ViewBag.NoOfPages;
+        }
+    }
+    <div><a class="buttons prev-button" href="@Url.Action("SanPhamNoiBat","SanPham")/?page=@PrevPage">&lt;&lt;</a></div>
+    @for (int i = 0; i < ViewBag.NoOfPages; i++)
+    {
+        if (i + 1 == ViewBag.Page)
+        {
+            <div>
+                <a href="@Url.Action("SanPhamNoiBat","SanPham")/?page=@(i+1)" class="buttons active">@(i+1)</a>
+            </div>
+        }
+        else
+        {
+            <div>
+                <a href="@Url.Action("SanPhamNoiBat","SanPham")/?page=@(i+1)" class="buttons">@(i+1)</a>
+            </div>
+        }
+    }
+    <div><a class="buttons next-button" href="@Url.Action("SanPhamNoiBat","SanPham")/?page=@NextPage">&gt;&gt;</a></div>
+</div>
+

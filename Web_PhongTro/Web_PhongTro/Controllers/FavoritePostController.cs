@@ -50,31 +50,6 @@ namespace Web_PhongTro.Controllers
             
             return View(query);
         }
-        public ActionResult TotalPartial()
-        {
-            ViewBag.Total = Total();
-            return PartialView();
-        }
-        public List<FavoritePostPartialVM> GetFavoritesList()
-        {
-            List<FavoritePostPartialVM> favoritesList = Session[sessionFavoriteName] as List<FavoritePostPartialVM>;
-            if (favoritesList == null)
-            {
-                favoritesList = new List<FavoritePostPartialVM>();
-                Session[sessionFavoriteName] = favoritesList;
-            }
-            return favoritesList;
-        }
-        private int Total()
-        {
-            int total = 0;
-            List<FavoritePostPartialVM> favoritesList = GetFavoritesList();
-            if (favoritesList != null)
-            {
-                total = favoritesList.Count;
-            }
-            return total;
-        }
 
         [HttpPost]
         public JsonResult Add(YeuThich yt)
@@ -125,7 +100,7 @@ namespace Web_PhongTro.Controllers
                     return Json(new
                     {
                         success = false,
-                        message = "Đã xảy ra lỗi: " + ex.Message
+                        message = "Vui lòng đăng nhập!" 
                     });
                 }
             }

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Web_PhongTro.ViewModels; 
+using Web_PhongTro.ViewModels;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
-
+using System.IO;
 
 namespace Web_PhongTro.Areas.NguoiChoThue.ViewModels
 {
@@ -34,6 +35,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.ViewModels
         public string Phone { get; set; }
         public int TrangThaiBaiDang { get; set; }
         public int IdNguoiChoThue { get; set; }
+        public string AnhBaiDang { get; set; }
         public List<string> DanhSachAnh { get; set; }
     }
 }

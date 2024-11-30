@@ -1,22 +1,22 @@
 ﻿
 @model IEnumerable<string>
 
-<div class="link-danhmuc-container" style=" width: 100%;">
+<div class="link-danhmuc-container" style="width: 100%;">
     <ul class="link-danhmuc-list">
-        <li><a href="#">Dưới 1 triệu</a></li>
-        <li><a href="#">Từ 1 - 2 triệu</a></li>
-        <li><a href="#">Từ 2 - 3 triệu</a></li>
-        <li><a href="#">Từ 3 - 4 triệu</a></li>
-        <li><a href="#">Từ 4 - 5 triệu</a></li>
-        <li><a href="#">Từ 5 - 7 triệu</a></li>
-        <li><a href="#">Từ 7 - 10 triệu</a></li>
-        <li><a href="#">Trên 10 triệu</a></li>
+        <li><a href="@Url.Action("GetDsBaiDangByGia", "BaiDang", new { minGia = (decimal?)null, maxGia = 1000000, page = 1 })">Dưới 1 triệu</a></li>
+        <li><a href="@Url.Action("GetDsBaiDangByGia", "BaiDang", new { minGia = 1000000, maxGia = 2000000, page = 1 })">Từ 1 - 2 triệu</a></li>
+        <li><a href="@Url.Action("GetDsBaiDangByGia", "BaiDang", new { minGia = 2000000, maxGia = 3000000, page = 1 })">Từ 2 - 3 triệu</a></li>
+        <li><a href="@Url.Action("GetDsBaiDangByGia", "BaiDang", new { minGia = 3000000, maxGia = 4000000, page = 1 })">Từ 3 - 4 triệu</a></li>
+        <li><a href="@Url.Action("GetDsBaiDangByGia", "BaiDang", new { minGia = 4000000, maxGia = 5000000, page = 1 })">Từ 4 - 5 triệu</a></li>
+        <li><a href="@Url.Action("GetDsBaiDangByGia", "BaiDang", new { minGia = 5000000, maxGia = 7000000, page = 1 })">Từ 5 - 7 triệu</a></li>
+        <li><a href="@Url.Action("GetDsBaiDangByGia", "BaiDang", new { minGia = 7000000, maxGia = 10000000, page = 1 })">Từ 7 - 10 triệu</a></li>
+        <li><a href="@Url.Action("GetDsBaiDangByGia", "BaiDang", new { minGia = 10000000, maxGia = (decimal?)null, page = 1 })">Trên 10 triệu</a></li>
     </ul>
 </div>
 
+
 <style>
     .link-danhmuc-container {
-       
     }
 
     .link-danhmuc-list {
@@ -26,7 +26,7 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
-        width:100%;
+        width: 100%;
     }
 
         .link-danhmuc-list li {

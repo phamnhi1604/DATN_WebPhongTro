@@ -50,12 +50,17 @@
             <!-- Banner section ends -->
         }
 
+        @if (!IsIndexPage)
+        {
+        }
         <!-- Product section ends -->
         @RenderBody()
         <!-- Product section ends -->
 
-        @if (IsIndexPage)
+        @if (!IsIndexPage)
         {
+            
+
             <!-- Deal section ends -->
             @*@RenderPage("_Deal.cshtml")*@
             <!-- Deal section ends -->

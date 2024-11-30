@@ -33,6 +33,23 @@ namespace Web_PhongTro.Controllers
                           .ToList();
             return PartialView(query);
         }
+        //public ActionResult ListDiaChiPartial()
+        //{
+        //    var query = db.DiaChis
+        //                  .Select(diachi => diachi.Quan)
+        //                  .Distinct()
+        //                  .OrderBy(quan => quan) // Sắp xếp theo tên quận
+        //                  .ToList();
+
+        //    if (!query.Any())
+        //    {
+        //        // Trả về View trống với thông báo nếu không có quận
+        //        return PartialView("EmptyListMessage");
+        //    }
+
+        //    return PartialView(query);
+        //}
+
         public ActionResult ListGiaPartial()
         {
             var query = db.DiaChis

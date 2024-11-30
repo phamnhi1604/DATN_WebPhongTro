@@ -6,19 +6,7 @@
         productImage.src = imageUrl;
     };
 
-    //Change tap
-    $("#tab-1").show();
-    $(".tab-link[data-tab='tab-1']").addClass("current");
 
-    $(".tab-link").click(function () {
-        var tabId = $(this).attr("data-tab");
-
-        $(".tab-content").hide();
-        $(".tab-link").removeClass("current");
-
-        $("#" + tabId).show();
-        $(this).addClass("current");
-    });
 
 
     //Login form
@@ -34,7 +22,6 @@
 
             success: function (result) {
                 if (result.success) {
-                    alert(String(result.UN));
                     alert('Đăng nhập thành công');
                     window.location.href = "../Home/Index"
                 } else {
@@ -176,6 +163,39 @@
             }
         });
     });
+
+
+    $(".report-post").on("click", function (e) {
+        e.preventDefault();
+        var rejectReason = prompt("Nhập nội dung:");
+
+        // Nếu người dùng không nhập hoặc hủy prompt
+        if (rejectReason === null || rejectReason.trim() === "") {
+            alert("Nội dung không được để trống!");
+            return;
+        }
+        var postId = $(this).data("post-id");
+
+        $.ajax({
+            url: '/Home/AddPhanHoi',
+            type: 'POST',
+            data: { IdBaiDang: postId, NoiDung: rejectReason },
+            success: function (response) {
+                if (response.success) {
+                    alert(response.message); // Thông báo thành công
+                    location.reload();
+
+                } else {
+                    alert(response.message); // Thông báo lỗi 
+                }
+            },
+            error: function () {
+                alert('Đã xảy ra lỗi trong quá trình báo cáo bài viết.');
+            }
+
+        });
+    });
+
 
 
 });

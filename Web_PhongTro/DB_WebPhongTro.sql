@@ -552,3 +552,26 @@ create table YeuThich(
     (1,7),
     (2,6)	
 select * from YeuThich
+
+create table kiemduyetbaidang(
+	IDKDB INT IDENTITY(1,1), 
+	IdBaiDang  BIGINT NOT NULL,
+	IdKDV BIGINT NOT NULL,
+	NoiDung nvarchar(255),
+	ngayduyet datetime,
+	PRIMARY KEY(IDKDB),
+    CONSTRAINT FK_KDBD_BaiDang FOREIGN KEY (IdBaiDang) REFERENCES BaiDang(IdBaiDang),
+    CONSTRAINT FK_KDBD_KDV FOREIGN KEY (IdKDV) REFERENCES kiemduyetvien(IdKDV) 
+)
+
+
+
+CREATE FUNCTION func_(@Id bigint)
+RETURNS BIGINT
+AS
+BEGIN
+	DECLARE @Gia BIGINT;
+    SELECT @Gia = GiaBan - GiaBan * GiamGia /100
+	FROM SanPham WHERE IdSanPham = @IdSanPham
+    RETURN ISNULL(@Gia, 0);
+END;
