@@ -333,7 +333,7 @@ section {
   align-items: center;
   justify-content: space-between;
   padding: 2rem 9%;
-  background: #CFE59B;
+  background: #5CDB94;
 }
 
 .header .logo {
@@ -380,10 +380,10 @@ section {
     min-width: 170px;
     position: absolute;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: #CFE59B;
+    background-color: #8DE4AF;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    opacity: 0.8;
+    /*opacity: 0.8;*/
 }
 
 .header .navbar li>ul li {

@@ -486,6 +486,9 @@ create table PhongTro
 INSERT INTO PhongTro (IdNguoiChoThue, IdDiaChi, DienTich, GiaPhong, MoTa, TrangThaiPhong, IdDanhMuc)  VALUES 
     (1, 1, 25.5, 3500000, N'Phòng trọ đầy đủ nội thất', N'con_trong', 3),
     (2, 2, 40.0, 5000000, N'Căn hộ mini có view đẹp', N'da_thue', 4);
+
+INSERT INTO PhongTro (IdNguoiChoThue, IdDiaChi, DienTich, GiaPhong, MoTa, TrangThaiPhong, IdDanhMuc)  VALUES 
+(3, 176, 40.0, 5000000, N'Cho thuê văn phòng 5 tầng', N'con_trong', 2)
 select * from PhongTro
 
 create table BaiDang

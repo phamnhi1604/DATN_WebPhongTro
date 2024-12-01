@@ -3,16 +3,16 @@ let searchForm = document.querySelector(".search-form");
 let searchBox = document.getElementById("search-box");
 let searchLabel = document.querySelector("label[for='search-box']");
 
-document.querySelector("#search-btn").onclick = () => {
-    searchForm.classList.toggle("active");
-    navbar.classList.remove("active");
+//document.querySelector("#search-btn").onclick = () => {
+//    searchForm.classList.toggle("active");
+//    navbar.classList.remove("active");
 
-    if (searchForm.classList.contains("active")) {
-        searchBox.focus();
-    }
-};
+//    if (searchForm.classList.contains("active")) {
+//        searchBox.focus();
+//    }
+//};
 
-}
+
 //active nav in reponsive
 let navbar = document.querySelector(".navbar");
 let isNavbarActive = false;
@@ -28,7 +28,7 @@ document.querySelector("#menu-btn").onclick = () => {
 };
 
 window.onscroll = () => {
-    searchForm.classList.remove("active");
+    //searchForm.classList.remove("active");
     navbar.classList.remove("active");
 };
 

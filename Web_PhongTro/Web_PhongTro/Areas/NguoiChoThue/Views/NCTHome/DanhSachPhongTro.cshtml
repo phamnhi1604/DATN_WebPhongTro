@@ -1,10 +1,120 @@
 ﻿@model IEnumerable<Web_PhongTro.ViewModels.PhongTroVM>
-@{
-    ViewBag.Title = "DanhSachPhongTro";
+
+@{ViewBag.Title = "DashBoard";
     Layout = "~/Areas/NguoiChoThue/Views/Shared/_Layout.cshtml";
 }
 
-<div class="activity" id="posts">
+
+
+<div id="frmThemBaiDang" class="frm-post">
+    <div class="close-btn">×</div>
+
+    <div class="ad-info">
+        <form asp-action="SaveDiaChi" asp-controller="DangBai" method="post">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Địa chỉ cho thuê</h1>
+                    </div>
+                </div>
+                @Html.Action("DanhSachDiaChi", "DangBai")
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="street_number" class="col-form-label">Số nhà</label>
+                        <input type="text" class="form-control js-input-street-number" name="street_number" id="street_number" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mt-5">
+                <div class="col-md-12">
+                    <h3>Thông tin mô tả</h3>
+                </div>
+            </div>
+            @Html.Action("GetDanhSachDanhMuc", "DangBai")
+            <div class="form-group row">
+                <label for="post_content" class="col-md-12 col-form-label">Nội dung mô tả</label>
+                <div class="col-md-12">
+                    <textarea class="form-control js-content" name="noi_dung" id="post_content" rows="10" required="" minlength="100" data-msg-required="Bạn chưa nhập nội dung" data-msg-minlength="Nội dung tối thiểu 100 kí tự"></textarea>
+                </div>
+            </div>
+            @*  @Html.Action("ThongTinLienHe", "DangBai")*@
+            <div class="form-group row">
+                <div class="form-group row">
+                    <label for="giachothue" class="col-md-12 col-form-label">Giá cho thuê</label>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input id="giachothue" name="gia" pattern="[0-9.]+" type="text" class="form-control js-gia-cho-thue" required="" data-msg-required="Bạn chưa nhập giá phòng" data-msg-min="Giá phòng chưa đúng">
+                            <div class="input-group-append">
+                                <span class="input-group-text">đồng/tháng</span>
+                            </div>
+                        </div>
+                    </div>
+                    <label for="text_giachothue" id="text_giachothue" class="col-sm-12 control-label js-number-text" style="color: red;"></label>
+                </div>
+                <div class="form-group row">
+                    <label for="post_acreage" class="col-md-12 col-form-label">Diện tích</label>
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <input id="post_acreage" type="number" attern="[0-9.]+" name="dien_tich" max="1000" class="form-control valid" required="" data-msg-required="Bạn chưa nhập diện tích" aria-invalid="false">
+                            <div class="input-group-append">
+                                <span class="input-group-text">m<sup>2</sup></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row mt-5">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary mt-3" id="btn-tieptuc">Tiếp tục</button>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $('#btn-tieptuc').click(function () {
+                                // Lấy dữ liệu từ form
+                                var baiDangData = {
+                                    IdNguoiChoThue: $('#nguoiChoThue').val(), ThanhPho: $('#province_id').val(),
+                                    Quan: $('#district_id').val(),
+                                    Phuong: $('#phuongxa').val(),
+                                    Duong: $('#street_number').val(),
+                                    LoaiChuyenMuc: $('#post_cat').val(),
+                                    MoTa: $('#post_content').val(),
+                                    DienTich: $('#post_acreage').val(),
+                                    GiaPhong: $('#giachothue').val(),
+                                };
+
+                                console.log(baiDangData)
+
+                                // Gửi Ajax request để lưu bài đăng
+                                $.ajax({
+                                    url: '/DangBai/PhongTro', // Đường dẫn đến action ThemBai trong controller
+                                    type: 'POST',
+                                    data: baiDangData,
+                                    success: function (response) {
+                                        if (response.success) {
+                                            alert(response.message);
+                                            $('form').trigger("reset");
+                                            location.reload();
+                                        } else {
+                                            alert(response.message);
+                                        }
+                                    },
+                                    error: function (xhr, status, error) {
+                                        console.log('Lỗi:', error);
+                                        alert('Đã xảy ra lỗi khi thêm bài đăng.');
+                                    }
+                                });
+                            });
+                        });
+
+                    </script>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="activity" id="frmPost">
     <div class="title">
         <i class="uil uil-package"></i>
         <span class="text">Danh sách phòng trọ</span>
@@ -14,7 +124,7 @@
             <thead>
                 <tr>
                     <td colspan="6">
-                        @using (Html.BeginForm("DanhSachPhongTro", "NCTHome", FormMethod.Post, new { id = "post-search-form" }))
+                        @using (Html.BeginForm("PhongTro", "NCTHome", FormMethod.Post, new { id = "post-search-form" }))
                         {
                             <select class="form-select" name="searchType" id="post-search-type" required>
                                 <option value="title">Tìm theo tiêu đề</option>
@@ -58,15 +168,27 @@
                         <td>@item.PhongTro.DienTich m²</td>
                         <td>@string.Format("{0:N0} VNĐ", item.PhongTro.GiaPhong)</td>
                         <td>@item.PhongTro.MoTa</td>
-                        <td>@item.DiaChi.Phuong @item.DiaChi.Quan @item.DiaChi.ThanhPho</td>
+                        <td>@item.DiaChi.Duong,@item.DiaChi.Phuong,@item.DiaChi.Quan,@item.DiaChi.ThanhPho</td>
                         <td>@item.PhongTro.TrangThaiPhong</td>
                         <td>
-                            <a href="@Url.Action("Edit", "PhongTro", new { id = item.PhongTro.IdPhongTro })" class="btn btn-sm btn-primary">
+                            <a class="btn btn-sm btn-primary btn-update"
+                               data-id="@item.PhongTro.IdPhongTro"
+                               data-mota="@item.PhongTro.MoTa"
+                               data-dientich="@item.PhongTro.DienTich"
+                               data-giaphong="@item.PhongTro.GiaPhong"
+                               data-diachi="@item.DiaChi.Duong,@item.DiaChi.Phuong,@item.DiaChi.Quan,@item.DiaChi.ThanhPho">
                                 <i class="fa fa-edit"></i> Sửa
                             </a>
-                            <a href="@Url.Action("Delete", "PhongTro", new { id = item.PhongTro.IdPhongTro })" class="btn btn-sm btn-danger">
+                            @*href="@Url.Action("Edit", "PhongTro", new { id = item.PhongTro.IdPhongTro })"*@
+                            <a href="javascript:void(0);"
+                               class="btn btn-sm btn-danger btn-delete-phong"
+                               data-id="@item.PhongTro.IdPhongTro">
                                 <i class="fa fa-trash"></i> Xóa
                             </a>
+
+                            @*<a href="@Url.Action("Delete", "PhongTro", new { id = item.PhongTro.IdPhongTro })" class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i> Xóa
+                                </a>*@
                         </td>
                     </tr>
                 }
@@ -88,21 +210,21 @@
                 }
             }
             <div>
-                <a class="buttons prev-button" href="@Url.Action("DanhSachPhongTro", "NCTHome", new { page = PrevPage })">&lt;&lt;</a>
+                <a class="buttons prev-button" href="@Url.Action("DashBoard", "NCTHome", new { page = PrevPage })">&lt;&lt;</a>
             </div>
             @for (int i = 1; i <= ViewBag.NoOfPages; i++)
             {
                 if (i == ViewBag.Page)
                 {
-                    <div><a href="@Url.Action("DanhSachPhongTro", "NCTHome", new { page = i })" class="buttons active">@(i)</a></div>
+                    <div><a href="@Url.Action("DashBoard", "NCTHome", new { page = i })" class="buttons active">@(i)</a></div>
                 }
                 else
                 {
-                    <div><a href="@Url.Action("DanhSachPhongTro", "NCTHome", new { page = i })" class="buttons">@(i)</a></div>
+                    <div><a href="@Url.Action("DashBoard", "NCTHome", new { page = i })" class="buttons">@(i)</a></div>
                 }
             }
             <div>
-                <a class="buttons next-button" href="@Url.Action("DanhSachPhongTro", "NCTHome", new { page = NextPage })">&gt;&gt;</a>
+                <a class="buttons next-button" href="@Url.Action("DashBoard", "NCTHome", new { page = NextPage })">&gt;&gt;</a>
             </div>
         </div>
     }
@@ -112,16 +234,20 @@
     let frmPost = document.querySelector('.frm-post');
     let closeBtn = document.querySelector('.frm-post .close-btn');
 
+    let btnUpdate = document.querySelector("#btn-update");
+
     btnAddpost.addEventListener('click', function () {
         frmPost.classList.add('active');
     });
 
+    btnUpdate.addEventListener('click', function () {
+        frmPost.classList.add('active');
+    })
+
+
     closeBtn.addEventListener('click', function () {
         frmPost.classList.remove('active');
     });
-
-
-
        $(document).ready(function () {
             $('#district_id').prop('disabled', true);
             $('#phuongxa').prop('disabled', true);
@@ -132,10 +258,6 @@
 
                 if (selectedProvince !== "") {
                     $('#district_id').prop('disabled', false);
-
-                    // TODO: Make an AJAX call to load districts for the selected province
-                    // Example:
-                    // $.ajax({
                 } else {
                     $('#district_id').prop('disabled', true).val('');
                     $('#phuongxa').prop('disabled', true).val('');
@@ -175,5 +297,99 @@
                 }
             });
         });
+</script>
+<script>
+    $(document).ready(function () {
+        // Sự kiện click nút xóa
+        $('.btn-delete-phong').click(function () {
+            var phongTroId = $(this).data('id');
+
+            // Hiển thị hộp thoại xác nhận
+            if (confirm("Bạn có chắc chắn muốn xóa phòng trọ này không?")) {
+                $.ajax({
+                    url: '/DangBai/Delete', // URL đến action Delete trong controller
+                    type: 'POST',
+                    data: { id: phongTroId },
+                    success: function (response) {
+                        if (response.success) {
+                            alert(response.message);
+                            location.reload(); // Reload lại trang sau khi xóa
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert('Đã xảy ra lỗi: ' + error);
+                    }
+                });
+            }
+        });
+    });
+</script>
+<script>
+    $(document).on('click', '.btn-update', function () {
+        // Hiển thị form
+        frmPost.classList.add('active');
+
+        // Lấy thông tin từ nút
+        var id = $(this).data('id');
+        var moTa = $(this).data('mota');
+        var dienTich = $(this).data('dientich');
+        var giaPhong = $(this).data('giaphong');
+        var diaChi = $(this).data('diachi');
+
+        // Gán dữ liệu vào các input trong form
+        $('#post_content').val(moTa);
+        $('#post_acreage').val(dienTich);
+        $('#giachothue').val(giaPhong);
+        $('#street_number').val(diaChi);
+
+        // Lưu ID của phòng đang sửa vào một hidden input để gửi khi update
+        if ($('#phongtro-id').length === 0) {
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'phongtro-id',
+                name: 'id',
+                value: id
+            }).appendTo('form');
+        } else {
+            $('#phongtro-id').val(id);
+        }
+    });
+
+</script>
+<script>
+    $('#btn-tieptuc').click(function () {
+        // Lấy dữ liệu từ form
+        var phongTroData = {
+            id: $('#phongtro-id').val(),
+            moTa: $('#post_content').val(),
+            dienTich: $('#post_acreage').val(),
+            giaPhong: $('#giachothue').val(),
+            diaChi: $('#street_number').val()
+        };
+
+        console.log(phongTroData);
+
+        // Gửi AJAX request để cập nhật
+        $.ajax({
+            url: '/DangBai/UpdatePhongTro',
+            type: 'POST',
+            data: phongTroData,
+            success: function (response) {
+                if (response.success) {
+                    alert(response.message);
+                    location.reload();
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log('Lỗi:', error);
+                alert('Đã xảy ra lỗi khi cập nhật phòng trọ.');
+            }
+        });
+    });
+
 
 </script>

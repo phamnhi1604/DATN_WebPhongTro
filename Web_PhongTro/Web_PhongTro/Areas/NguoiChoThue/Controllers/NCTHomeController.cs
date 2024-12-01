@@ -129,7 +129,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                              DiaChi = dc,
                              NguoiChoThue = nct
                          });
-
+          
             // Sắp xếp
             //if (!string.IsNullOrEmpty(sortCol) && !string.IsNullOrEmpty(sortType))
             //{
