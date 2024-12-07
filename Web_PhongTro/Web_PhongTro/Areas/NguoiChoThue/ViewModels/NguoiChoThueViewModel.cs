@@ -11,7 +11,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.ViewModels
     {
         public string TenLienHe { get; set; }
         public string SoDienThoai { get; set; }
-        public int IdNguoiChoThue { get; set; }
+        public long IdNguoiChoThue { get; set; }
 
         [Required]
         public long IdNguoiDung { get; set; } // Liên kết với bảng NguoiDung
@@ -36,6 +36,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.ViewModels
         [EmailAddress]
         [StringLength(100)]
         public string Email { get; set; } // Email (độc nhất)
+        public string MatKhau { get; set; }
 
         // Navigation property nếu cần (có thể bỏ nếu không cần liên kết tự động)
         //[ForeignKey("IdNguoiDung")]

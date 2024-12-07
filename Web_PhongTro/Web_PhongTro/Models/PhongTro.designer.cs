@@ -25,12 +25,8 @@ namespace Web_PhongTro.Models
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DB_PhongTro")]
 	public partial class PhongTroDataContext : System.Data.Linq.DataContext
 	{
-        public PhongTroDataContext() :
-        base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DB_PhongTroConnectionString"].ConnectionString, mappingSource)
-        {
-            OnCreated();
-        }
-        private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
+		
+		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
@@ -80,8 +76,12 @@ namespace Web_PhongTro.Models
 		{
 			OnCreated();
 		}
-		
-		public PhongTroDataContext(System.Data.IDbConnection connection) : 
+        public PhongTroDataContext() :
+        base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DB_PhongTroConnectionString"].ConnectionString, mappingSource)
+        {
+            OnCreated();
+        }
+        public PhongTroDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -201,6 +201,12 @@ namespace Web_PhongTro.Models
 			{
 				return this.GetTable<VaiTro>();
 			}
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.func_SoLuongYeuThich", IsComposable=true)]
+		public System.Nullable<int> func_SoLuongYeuThich([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IdBaiDang", DbType="BigInt")] System.Nullable<long> idBaiDang)
+		{
+			return ((System.Nullable<int>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idBaiDang).ReturnValue));
 		}
 	}
 	

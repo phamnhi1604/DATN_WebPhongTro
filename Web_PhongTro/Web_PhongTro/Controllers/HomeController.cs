@@ -20,7 +20,7 @@ namespace Web_PhongTro.Controllers
                          join diachi in db.DiaChis on phongTro.IdDiaChi equals diachi.IdDiaChi
                          join baiDang in db.BaiDangs on phongTro.IdPhongTro equals baiDang.IdPhongTro 
                          where baiDang.TrangThai == "1"
-                         orderby baiDang.IdBaiDang descending
+                         orderby baiDang.NgayDang descending
                          select new BaiDangVM
                          {
                              noidungPT = phongTro,

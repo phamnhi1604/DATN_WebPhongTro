@@ -153,4 +153,8 @@
       <Association Name="VaiTro_NguoiDung" Member="NguoiDungs" ThisKey="IdVaiTro" OtherKey="IdVaiTro" Type="NguoiDung" />
     </Type>
   </Table>
+  <Function Name="dbo.func_SoLuongYeuThich" Method="func_SoLuongYeuThich" IsComposable="true">
+    <Parameter Name="IdBaiDang" Parameter="idBaiDang" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

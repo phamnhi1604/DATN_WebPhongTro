@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Web_PhongTro.Models;
 
 namespace Web_PhongTro.Areas.NguoiChoThue.ViewModels
 {
@@ -15,6 +16,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.ViewModels
 
         public string NoiDung { get; set; }
         public List<long> IdPhong { get; set; }
+        public List<PhongTro> MotaPT { get; set; }
         public decimal GiaPhong { get; set; }
         public string DonVi { get; set; }
         public decimal DienTich { get; set; }

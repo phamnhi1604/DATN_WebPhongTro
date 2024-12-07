@@ -41,23 +41,47 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
 
             return Json(wards, JsonRequestBehavior.AllowGet);
         }
+        //public ActionResult GetDanhSachPhongTro()
+        //{
+        //    string username = User.Identity.Name;
+
+        //    var danhSachPhongTro = (from pt in db.PhongTros
+        //                            join nct in db.NguoiChoThues on pt.IdNguoiChoThue equals nct.IdNguoiChoThue
+        //                            join nd in db.NguoiDungs on nct.IdNguoiDung equals nd.IdNguoiDung
+        //                            where nd.TenTaiKhoan == username
+        //                            select pt.MoTa).ToList();
+
+        //    PhongTroViewModel viewModel = new PhongTroViewModel
+        //    {
+        //        MotaPT = danhSachPhongTro
+        //    };
+
+        //    return View(viewModel);
+        //}
+
+
         public ActionResult GetDanhSachPhongTro()
         {
             string username = User.Identity.Name;
 
+            // Lấy danh sách phòng trọ của người cho thuê dựa trên tài khoản người dùng
             var danhSachPhongTro = (from pt in db.PhongTros
                                     join nct in db.NguoiChoThues on pt.IdNguoiChoThue equals nct.IdNguoiChoThue
                                     join nd in db.NguoiDungs on nct.IdNguoiDung equals nd.IdNguoiDung
                                     where nd.TenTaiKhoan == username
-                                    select pt.IdPhongTro).ToList();
+                                    select pt).ToList();
 
+            // Trả về view với danh sách phòng trọ
             PhongTroViewModel viewModel = new PhongTroViewModel
             {
-                IdPhong = danhSachPhongTro
+                MotaPT = danhSachPhongTro
             };
 
             return View(viewModel);
         }
+
+
+
 
         public ActionResult GetDanhSachDanhMuc()
         {
@@ -111,78 +135,160 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
 
         [HttpPost]
 
+        //public JsonResult ThemBai(BaiDangViewModel model)
+        //{
+        //    var res = new { success = false, message = "Thêm bài đăng không thành công" };
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            string username = User.Identity.Name;
+
+        //            // Lấy IdNguoiChoThue từ tài khoản đăng nhập
+        //            var idNguoiChoThue = (from nguoiDung in db.NguoiDungs
+        //                                  join nct in db.NguoiChoThues on nguoiDung.IdNguoiDung equals nct.IdNguoiDung
+        //                                  where nguoiDung.TenTaiKhoan == username
+        //                                  select nct.IdNguoiChoThue).FirstOrDefault();
+
+        //            if (idNguoiChoThue == null)
+        //            {
+        //                return Json(new { success = false, message = "Người cho thuê không tồn tại." });
+        //            }
+
+        //            // Lấy phòng trọ còn trống
+        //            //var phongTro = db.PhongTros.FirstOrDefault(pt => pt.MoTa == model.ndPT.MoTa);
+        //            //var phongTro = db.PhongTros
+        //            //              .Where(pt => pt.MoTa == model.mota)
+        //            //              .Select(pt => pt.IdPhongTro)
+        //            //              .FirstOrDefault();
+        //            var phongtro = new PhongTro
+        //            {
+        //                MoTa = model.ndPT.MoTa
+        //            };
+        //            //if (model.ndPT == null)
+        //            //{
+        //            //    return Json(new { success = false, message = "Không có phòng trọ có sẵn để đăng." });
+        //            //}
+
+        //            // Tạo bài đăng mới
+        //            BaiDang newBd = new BaiDang
+        //            {
+        //                IdNguoiChoThue = idNguoiChoThue,
+        //                IdPhongTro = model.ndPT.IdPhongTro,
+        //                TieuDe = model.TieuDe,
+        //                NoiDung = model.NoiDung,
+        //                NgayDang = DateTime.Now,
+        //                TrangThai = "0",
+        //                AnhBaiDang = !string.IsNullOrEmpty(model.AnhBaiDang) ? model.AnhBaiDang : "def_img.jpg"
+        //            };
+
+        //            // Thêm bài đăng vào cơ sở dữ liệu
+        //            db.BaiDangs.InsertOnSubmit(newBd);
+        //            db.SubmitChanges();
+
+        //            // Lấy ID bài đăng mới tạo
+        //            long newPostId = newBd.IdBaiDang;
+
+        //            // Thêm danh sách ảnh vào bảng AnhBaiDang
+        //            if (model.DanhSachAnh != null && model.DanhSachAnh.Any())
+        //            {
+        //                foreach (var anh in model.DanhSachAnh)
+        //                {
+        //                    AnhBaiDang anhBd = new AnhBaiDang
+        //                    {
+        //                        IdBaiDang = newPostId,
+        //                        DuongDanAnh = anh
+        //                    };
+        //                    db.AnhBaiDangs.InsertOnSubmit(anhBd);
+        //                }
+        //                db.SubmitChanges();
+        //            }
+
+        //            res = new { success = true, message = "Đăng bài thành công!" };
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            res = new { success = false, message = "Đã xảy ra lỗi: " + ex.Message };
+        //        }
+        //    }
+
+        //    return Json(res);
+        //}
+
         public JsonResult ThemBai(BaiDangViewModel model)
+{
+    var res = new { success = false, message = "Thêm bài đăng không thành công" };
+
+    if (ModelState.IsValid)
+    {
+        try
         {
-            var res = new { success = false, message = "Thêm bài đăng không thành công" };
+            string username = User.Identity.Name;
 
-            if (ModelState.IsValid)
+            // Lấy IdNguoiChoThue từ tài khoản đăng nhập
+            var idNguoiChoThue = (from nguoiDung in db.NguoiDungs
+                                  join nct in db.NguoiChoThues on nguoiDung.IdNguoiDung equals nct.IdNguoiDung
+                                  where nguoiDung.TenTaiKhoan == username
+                                  select nct.IdNguoiChoThue).FirstOrDefault();
+
+            if (idNguoiChoThue == null)
             {
-                try
-                {
-                    string username = User.Identity.Name;
-
-                    // Lấy IdNguoiChoThue từ tài khoản đăng nhập
-                    var idNguoiChoThue = (from nguoiDung in db.NguoiDungs
-                                          join nct in db.NguoiChoThues on nguoiDung.IdNguoiDung equals nct.IdNguoiDung
-                                          where nguoiDung.TenTaiKhoan == username
-                                          select nct.IdNguoiChoThue).FirstOrDefault();
-
-                    if (idNguoiChoThue == null)
-                    {
-                        return Json(new { success = false, message = "Người cho thuê không tồn tại." });
-                    }
-
-                    // Lấy phòng trọ còn trống
-                    var phongTro = db.PhongTros.FirstOrDefault(pt => pt.IdNguoiChoThue == idNguoiChoThue);
-                    if (phongTro == null)
-                    {
-                        return Json(new { success = false, message = "Không có phòng trọ có sẵn để đăng." });
-                    }
-
-                    // Tạo bài đăng mới
-                    BaiDang newBd = new BaiDang
-                    {
-                        IdNguoiChoThue = idNguoiChoThue,
-                        IdPhongTro = phongTro.IdPhongTro,
-                        TieuDe = model.TieuDe,
-                        NoiDung = model.NoiDung,
-                        NgayDang = DateTime.Now,
-                        TrangThai = "0",
-                        AnhBaiDang = !string.IsNullOrEmpty(model.AnhBaiDang) ? model.AnhBaiDang : "def_img.jpg"
-                    };
-
-                    // Thêm bài đăng vào cơ sở dữ liệu
-                    db.BaiDangs.InsertOnSubmit(newBd);
-                    db.SubmitChanges();
-
-                    // Lấy ID bài đăng mới tạo
-                    long newPostId = newBd.IdBaiDang;
-
-                    // Thêm danh sách ảnh vào bảng AnhBaiDang
-                    if (model.DanhSachAnh != null && model.DanhSachAnh.Any())
-                    {
-                        foreach (var anh in model.DanhSachAnh)
-                        {
-                            AnhBaiDang anhBd = new AnhBaiDang
-                            {
-                                IdBaiDang = newPostId,
-                                DuongDanAnh = anh
-                            };
-                            db.AnhBaiDangs.InsertOnSubmit(anhBd);
-                        }
-                        db.SubmitChanges();
-                    }
-
-                    res = new { success = true, message = "Đăng bài thành công!" };
-                }
-                catch (Exception ex)
-                {
-                    res = new { success = false, message = "Đã xảy ra lỗi: " + ex.Message };
-                }
+                return Json(new { success = false, message = "Người cho thuê không tồn tại." });
             }
 
-            return Json(res);
+            // Kiểm tra IdPhongTro và lấy phòng trọ từ database
+            var phongTro = db.PhongTros.FirstOrDefault(pt => pt.IdPhongTro == model.IdPhongTro);
+            if (phongTro == null)
+            {
+                return Json(new { success = false, message = "Phòng trọ không tồn tại." });
+            }
+
+            // Tạo bài đăng mới
+            BaiDang newBd = new BaiDang
+            {
+                IdNguoiChoThue = idNguoiChoThue,
+                IdPhongTro = model.IdPhongTro,  // Gắn IdPhongTro vào bài đăng
+                TieuDe = model.TieuDe,
+                NoiDung = model.NoiDung,
+                NgayDang = DateTime.Now,
+                TrangThai = "0",
+                AnhBaiDang = !string.IsNullOrEmpty(model.AnhBaiDang) ? model.AnhBaiDang : "def_img.jpg"
+            };
+
+            // Thêm bài đăng vào cơ sở dữ liệu
+            db.BaiDangs.InsertOnSubmit(newBd);
+            db.SubmitChanges();
+
+            // Lấy ID bài đăng mới tạo
+            long newPostId = newBd.IdBaiDang;
+
+            // Thêm danh sách ảnh vào bảng AnhBaiDang
+            if (model.DanhSachAnh != null && model.DanhSachAnh.Any())
+            {
+                foreach (var anh in model.DanhSachAnh)
+                {
+                    AnhBaiDang anhBd = new AnhBaiDang
+                    {
+                        IdBaiDang = newPostId,
+                        DuongDanAnh = anh
+                    };
+                    db.AnhBaiDangs.InsertOnSubmit(anhBd);
+                }
+                db.SubmitChanges();
+            }
+
+            res = new { success = true, message = "Đăng bài thành công!" };
         }
+        catch (Exception ex)
+        {
+            res = new { success = false, message = "Đã xảy ra lỗi: " + ex.Message };
+        }
+    }
+
+    return Json(res);
+}
+
 
         [HttpPost]
 

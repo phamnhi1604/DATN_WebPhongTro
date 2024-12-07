@@ -15,6 +15,7 @@ namespace Web_PhongTro.ViewModels
         public DanhMuc danhMuc { get; set; }
         public DiaChi diachiPT { get; set; }
         public NguoiChoThue nguoiChoThue { get; set; }
+        public int? slyt { get; set; }
         public BaiDangVM() { }
     }
 }

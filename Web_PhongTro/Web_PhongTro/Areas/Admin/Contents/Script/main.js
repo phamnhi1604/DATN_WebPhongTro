@@ -18,29 +18,35 @@
         });
     });
     $('.rs-password-btn').on('click', function () {
-
         var USId = $(this).data('post-id');
-        $.ajax({
-            url: '/AdminHome/ResetPassWord',
-            type: 'POST',
-            dataType: { idND: USId },
-            success: function (result) {
-                if (response.success) {
-                    alert(response.message);
-                    location.reload();
 
-                    //$(`button[data-post-id="${USId}"]`).closest('.post-item').remove();
-                } else {
-                    alert(response.message);
-                    location.reload();
+        // Hiển thị hộp thoại xác nhận
+        var isConfirmed = confirm("Bạn có chắc muốn đặt lại mật khẩu của tài khoản này?");
 
+        if (isConfirmed) {
+            $.ajax({
+                url: '/AdminHome/ResetPassWord',
+                type: 'POST',
+                data: { idND: USId },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message);
+                        location.reload();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('An error occurred: ' + xhr.responseText);
                 }
-            },
-            error: function () {
-                alert('An error occurred during reset password.');
-            }
-        });
+            });
+        } else {
+            // Nếu người dùng chọn "Hủy", không làm gì cả
+            console.log('Reset password action canceled.');
+        }
     });
+
     
 
 });

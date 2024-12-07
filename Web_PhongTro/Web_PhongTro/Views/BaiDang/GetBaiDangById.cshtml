@@ -34,15 +34,14 @@
                     <div class="post-details-contents">
                         <h3 class="title-post">@item.BaiDang.TieuDe</h3>
                         <div class="price">
-                            <h2>@string.Format("{0:N0}",item.noidungPT.GiaPhong) vnđ</h2>
+                            <h2 style="margin: 10px 0">@string.Format("{0:N0}",item.noidungPT.GiaPhong) vnđ</h2>
                         </div>
                         <h2>Thông tin mô tả</h2>
                         <p style="text-align: justify; font-size: 1.8rem;">
                             @Html.Raw(item.BaiDang.NoiDung.Replace("\\n", "<br>"))
                         </p>
                         <hr />
-
-                        <h2>Đặc điểm phòng trọ</h2>
+                        <h2 style="margin:10px 0">Đặc điểm phòng trọ</h2>
                         <table>
                             <tr>
                                 <td>Ngày đăng</td>
@@ -59,7 +58,7 @@
 
                         </table>
                         <div class="post-detail-map">
-                            <h2>Xem trên bản đồ</h2>
+                            <h2 style="margin: 10px 0">Xem trên bản đồ</h2>
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62708.143874355424!2d106.58620995994364!3d10.791465086940724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752bf733e69175%3A0xd8d63453733325fe!2zVMOibiBQaMO6LCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1730214335319!5m2!1svi!2s" width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 

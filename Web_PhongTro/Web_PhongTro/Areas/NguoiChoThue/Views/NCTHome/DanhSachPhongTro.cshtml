@@ -234,15 +234,15 @@
     let frmPost = document.querySelector('.frm-post');
     let closeBtn = document.querySelector('.frm-post .close-btn');
 
-    let btnUpdate = document.querySelector("#btn-update");
+    //let btnUpdate = document.querySelector("#btn-update");
 
     btnAddpost.addEventListener('click', function () {
         frmPost.classList.add('active');
     });
 
-    btnUpdate.addEventListener('click', function () {
-        frmPost.classList.add('active');
-    })
+    //btnUpdate.addEventListener('click', function () {
+    //    frmPost.classList.add('active');
+    //})
 
 
     closeBtn.addEventListener('click', function () {
@@ -275,7 +275,7 @@
                     // Enable the ward dropdown
                     $('#phuongxa').prop('disabled', false);
                     $.ajax({
-                        url: '@Url.Action("GetWardsByDistrict", "DangBai")',
+                        url: '/DangBai/GetWardsByDistrict',
                         type: 'GET',
                         data: { district: selectedDistrict },
                         success: function (data) {

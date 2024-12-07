@@ -134,13 +134,54 @@
     }
 
     // Hàm tạo bài đăng
+    //function createPost(coverImage, imageList) {
+    //    // Chuẩn bị dữ liệu bài đăng
+    //    var postData = {
+    //        TieuDe: $('#post_title').val(),
+    //        NoiDung: $('#post_content').val(),
+    //        AnhBaiDang: coverImage, // Ảnh bìa
+    //        DanhSachAnh: imageList   // Danh sách ảnh
+    //    };
+
+    //    // Gửi yêu cầu AJAX để tạo bài đăng
+    //    $.ajax({
+    //        url: '/DangBai/ThemBai',
+    //        type: 'POST',
+    //        contentType: 'application/json',
+    //        data: JSON.stringify(postData),
+    //        success: function (response) {
+    //            if (response.success) {
+    //                alert(response.message);
+    //                location.reload();
+    //                $('#post_form')[0].reset();
+    //            } else {
+    //                alert(response.message);
+    //            }
+    //        },
+    //        error: function (xhr, status, error) {
+    //            console.error("Lỗi khi tạo bài đăng:", error);
+    //            alert("Đã xảy ra lỗi khi tạo bài đăng.");
+    //        }
+    //    });
+    //}
+
     function createPost(coverImage, imageList) {
+        // Lấy IdPhongTro từ dropdown
+        var idPhongTro = $('#post_cat').val();  // Lấy giá trị IdPhongTro đã chọn
+
+        // Kiểm tra nếu IdPhongTro chưa được chọn
+        if (!idPhongTro) {
+            alert('Vui lòng chọn phòng trọ!');
+            return;  // Dừng lại nếu chưa chọn phòng trọ
+        }
+
         // Chuẩn bị dữ liệu bài đăng
         var postData = {
             TieuDe: $('#post_title').val(),
             NoiDung: $('#post_content').val(),
             AnhBaiDang: coverImage, // Ảnh bìa
-            DanhSachAnh: imageList   // Danh sách ảnh
+            DanhSachAnh: imageList,  // Danh sách ảnh
+            IdPhongTro: idPhongTro  // Thêm IdPhongTro vào dữ liệu
         };
 
         // Gửi yêu cầu AJAX để tạo bài đăng
@@ -152,10 +193,10 @@
             success: function (response) {
                 if (response.success) {
                     alert(response.message);
-                    location.reload();
+                    location.reload();  // Làm mới trang sau khi tạo bài đăng thành công
                     $('#post_form')[0].reset();
                 } else {
-                    alert(response.message);
+                    alert(response.message);  // Thông báo lỗi nếu không thành công
                 }
             },
             error: function (xhr, status, error) {

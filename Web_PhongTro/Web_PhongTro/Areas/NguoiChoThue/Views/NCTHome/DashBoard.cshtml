@@ -15,7 +15,7 @@
             <thead>
                 <tr>
                     <td colspan="8">
-                        @using (Html.BeginForm("GetAll", "NCTHome", FormMethod.Post, new { id = "post-search-form" }))
+                        @*@using (Html.BeginForm("GetAll", "NCTHome", FormMethod.Post, new { id = "post-search-form" }))
                         {
                             <select class="form-select" name="postsearchType" id="post-search-type" required>
                                 <option value="name">Tìm theo tên</option>
@@ -24,7 +24,7 @@
                             <button type="submit" class="btn btn-light" id="btn-search-post">
                                 <i class="fa fa-search" style="color: #3557ff;"></i>
                                 Tìm kiếm
-                            </button>}
+                            </button>}*@
                         <button class="btn btn-light" id="btn-add-post">
                             <i class="fa fa-plus-square" style="color: #3557ff;"></i>
                             Thêm bài đăng mới
@@ -86,8 +86,20 @@
                         </td>
                         @*<td>@string.Format("{0:N0}", item.Gia) đ</td>*@
                         <td>@item.diachiPT.Phuong @item.diachiPT.Quan</td>
-                        <td>@item.BaiDang.SoLuongYeuThich</td>
+                        <td>@item.slyt</td>
                         <td>@item.BaiDang.TrangThai</td>
+                        @*if (item.BaiDang.TrangThai == 2)
+                        {
+                            <td>Bị từ chối</td>
+                        }
+                        else if (item.BaiDang.TrangThai == 1)
+                        {
+                            <td>Đã duyệt</td>
+                        }
+                        else if (item.BaiDang.TrangThai == 0)
+                        {
+                            <td>Đang chờ duyệt</td>
+                        }*@
 
                         <td>
                             <button type="button" class="edit-post-btn" data-post-id="@item.BaiDang.IdBaiDang"><i class="fa fa-wrench"></i></button>

@@ -73,6 +73,7 @@ CREATE TABLE NguoiThue
 	CONSTRAINT FK_NguoiThue_NguoiDung FOREIGN KEY(IdNguoiDung) REFERENCES NguoiDung(IdNguoiDung),
 	
 );
+alter table NguoiThue drop UNI_SoDienThoai_NguoiThue
 SET DATEFORMAT DMY
 ALTER TABLE NguoiTHue
 ADD CONSTRAINT DF_DiaChi_NguoiThue DEFAULT N'Không xác định' FOR DiaChi;
@@ -98,7 +99,7 @@ CREATE TABLE NguoiChoThue
 	CONSTRAINT FK_NhanVien_NguoiDung FOREIGN KEY(IdNguoiDung) REFERENCES NguoiDung(IdNguoiDung)
 );
 ALTER TABLE NguoiChoThue
-
+alter table nguoichothue drop UNI_SoDienThoai_NhanVien
 
 ADD CONSTRAINT DF_DiaChi_NguoiChoThue DEFAULT N'Không xác định' FOR DiaChi;
 
@@ -568,13 +569,19 @@ create table kiemduyetbaidang(
 )
 
 
-
-CREATE FUNCTION func_(@Id bigint)
-RETURNS BIGINT
+CREATE FUNCTION func_SoLuongYeuThich (@IdBaiDang BIGINT)
+RETURNS INT
 AS
 BEGIN
-	DECLARE @Gia BIGINT;
-    SELECT @Gia = GiaBan - GiaBan * GiamGia /100
-	FROM SanPham WHERE IdSanPham = @IdSanPham
-    RETURN ISNULL(@Gia, 0);
+    -- Biến để lưu trữ kết quả số lượng yêu thích
+    DECLARE @SoLuongYeuThich INT;
+
+    -- Tính số lượng yêu thích dựa trên IdBaiDang
+    SELECT @SoLuongYeuThich = COUNT(*)
+    FROM YeuThich
+    WHERE IdBaiDang = @IdBaiDang;
+
+    -- Trả về kết quả
+    RETURN @SoLuongYeuThich;
 END;
+SELECT dbo.func_SoLuongYeuThich(1) AS SoLuongYeuThich;

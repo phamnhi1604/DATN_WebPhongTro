@@ -6,6 +6,7 @@ using Web_PhongTro.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using Web_PhongTro.Models;
 
 namespace Web_PhongTro.Areas.NguoiChoThue.ViewModels
 {
@@ -37,5 +38,6 @@ namespace Web_PhongTro.Areas.NguoiChoThue.ViewModels
         public int IdNguoiChoThue { get; set; }
         public string AnhBaiDang { get; set; }
         public List<string> DanhSachAnh { get; set; }
+        public PhongTro ndPT;
     }
 }

@@ -185,6 +185,7 @@
     <Content Include="Contents\Css\Bootstrap\bootstrap.min.css" />
     <Content Include="Contents\Css\Bootstrap\bootstrap.rtl.css" />
     <Content Include="Contents\Css\Bootstrap\bootstrap.rtl.min.css" />
+    <Content Include="Contents\Css\index.css" />
     <Content Include="Contents\Css\post_details.css" />
     <Content Include="Contents\Css\style.css" />
     <Content Include="Contents\Css\Thongtin.css" />
@@ -304,6 +305,7 @@
     <Content Include="Areas\NguoiChoThue\Views\NCTHome\EditPartial.cshtml" />
     <Content Include="Areas\KiemDuyetVien\Views\KDVHome\PhanHoi.cshtml" />
     <Content Include="Areas\NguoiChoThue\Views\NCTHome\DanhSachPhongTro.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\NCTHome\ThongBao.cshtml" />
     <None Include="Models\PhongTro.dbml.layout">
       <DependentUpon>PhongTro.dbml</DependentUpon>
     </None>

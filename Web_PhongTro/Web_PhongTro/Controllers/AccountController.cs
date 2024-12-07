@@ -71,6 +71,7 @@ namespace Web_PhongTro.Controllers
                             TenKhachHang = lg.Username
                         };
                         db.NguoiThues.InsertOnSubmit(nt);
+
                     }
                     else if (roleId == 3)
                     {

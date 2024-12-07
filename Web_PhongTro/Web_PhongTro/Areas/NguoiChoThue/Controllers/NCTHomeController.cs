@@ -23,6 +23,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                      join dc in db.DiaChis on pt.IdDiaChi equals dc.IdDiaChi
                      join nct in db.NguoiChoThues on baiDang.IdNguoiChoThue equals nct.IdNguoiChoThue
                      join nd in db.NguoiDungs on nct.IdNguoiDung equals nd.IdNguoiDung
+                     //join yt in db.YeuThiches on baiDang.IdBaiDang equals yt.IdBaiDang
                      orderby baiDang.IdBaiDang descending
                      where username == nd.TenTaiKhoan
 
@@ -30,7 +31,8 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                      {
                          BaiDang = baiDang,
                          noidungPT = pt,
-                         diachiPT = dc
+                         diachiPT = dc,
+                         slyt = db.YeuThiches.Count(yt => yt.IdBaiDang == baiDang.IdBaiDang) // Lấy số lượng yêu thích
 
                      });
 
@@ -50,9 +52,101 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
             return View(query);
         }
 
-        public ActionResult Info()
+       public ActionResult Info()
         {
-            return View();
+            string username = User.Identity.Name;
+
+            //if (string.IsNullOrEmpty(username))
+            //{
+            //    return RedirectToAction("Login", "Account"); 
+            //}
+
+            var nguoiDung = db.NguoiDungs.FirstOrDefault(nd => nd.TenTaiKhoan == username);
+
+            if (nguoiDung == null)
+            {
+                return View("Error");
+            }
+            var nguoiChoThue = db.NguoiChoThues.FirstOrDefault(nct => nct.IdNguoiDung == nguoiDung.IdNguoiDung);
+
+            if (nguoiChoThue == null)
+            {
+                return View("Error");
+            }
+
+            // Tạo ViewModel để đẩy dữ liệu ra View
+            var viewModel = new NguoiChoThueViewModel
+            {
+                IdNguoiChoThue = nguoiChoThue.IdNguoiChoThue,
+                TenNguoiChoThue = nguoiChoThue.TenNguoiChoThue,
+                SoDienThoai = nguoiChoThue.SoDienThoai,
+                Email = nguoiChoThue.Email,
+                DiaChi = nguoiChoThue.DiaChi,
+                NgaySinh = nguoiChoThue.NgaySinh,
+                GioiTinh = nguoiChoThue.GioiTinh,
+                MatKhau = nguoiDung.MatKhau
+            };
+
+            return View(viewModel); // Truyền ViewModel ra View
+        }
+        [HttpPost]
+        public ActionResult UpdateInfo(NguoiChoThueViewModel model, string currentPassword, string password, string confirmPassword)
+        {
+            string username = User.Identity.Name;
+
+            // Tìm người dùng hiện tại trong cơ sở dữ liệu dựa trên tên tài khoản
+            var user = (from u in db.NguoiDungs
+                        where u.TenTaiKhoan == username
+                        select u).FirstOrDefault();
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = "Người dùng không tồn tại.";
+                return View("Info", model);
+            }
+
+            // Kiểm tra mật khẩu hiện tại chỉ khi người dùng muốn thay đổi mật khẩu
+            if (!string.IsNullOrEmpty(password) && user.MatKhau != currentPassword)  // So sánh mật khẩu chỉ khi mật khẩu mới được nhập
+            {
+                ViewBag.ErrorMessage = "Mật khẩu hiện tại không chính xác.";
+                return View("Info", model);
+            }
+
+            // Kiểm tra mật khẩu mới và xác nhận mật khẩu chỉ khi có mật khẩu mới được nhập
+            if (!string.IsNullOrEmpty(password))
+            {
+                if (password != confirmPassword)
+                {
+                    ViewBag.ErrorMessage = "Mật khẩu mới và xác nhận mật khẩu không khớp.";
+                    return View("Info", model);
+                }
+
+                // Cập nhật mật khẩu mới, lưu trực tiếp mật khẩu mà không mã hóa (nếu muốn lưu rõ ràng)
+                user.MatKhau = password;
+            }
+
+            // Cập nhật thông tin người cho thuê
+            var nguoiChoThue = (from n in db.NguoiChoThues
+                                where n.IdNguoiDung == user.IdNguoiDung
+                                select n).FirstOrDefault();
+
+            if (nguoiChoThue == null)
+            {
+                ViewBag.ErrorMessage = "Thông tin người cho thuê không tồn tại.";
+                return View("Info", model);
+            }
+
+            nguoiChoThue.TenNguoiChoThue = model.TenNguoiChoThue;
+            nguoiChoThue.SoDienThoai = model.SoDienThoai;
+            nguoiChoThue.Email = model.Email;
+            nguoiChoThue.DiaChi = model.DiaChi;
+
+            // Lưu thay đổi vào cơ sở dữ liệu
+            db.SubmitChanges();
+
+            // Thông báo thành công
+            TempData["SuccessMessage"] = "Cập nhật thông tin thành công.";
+            return RedirectToAction("Info");
         }
         public ActionResult AddPartial()
         {
@@ -139,6 +233,29 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
             //}
 
             // Phân trang
+            int NoOfRecordPerPage = 12;
+            int NoOfPages = (int)Math.Ceiling((double)query.Count() / NoOfRecordPerPage);
+            int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;
+
+            ViewBag.Page = page;
+            ViewBag.STT = (page - 1) * NoOfRecordPerPage + 1;
+            ViewBag.NoOfPages = NoOfPages;
+
+            query = query.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage);
+
+            return View(query.ToList());
+        }
+        public ActionResult ThongBao(string sortCol, string sortType, int page = 1)
+        {
+             
+            string username = User.Identity.Name.ToString();
+            var query = (from kd in db.kiemduyetbaidangs
+                         join bd in db.BaiDangs on kd.IdBaiDang equals bd.IdBaiDang
+                         join nct in db.NguoiChoThues on bd.IdNguoiChoThue equals nct.IdNguoiChoThue
+                         join nd in db.NguoiDungs on nct.IdNguoiDung equals nd.IdNguoiDung
+                         where nd.TenTaiKhoan == username
+                         select kd);
+           
             int NoOfRecordPerPage = 12;
             int NoOfPages = (int)Math.Ceiling((double)query.Count() / NoOfRecordPerPage);
             int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;

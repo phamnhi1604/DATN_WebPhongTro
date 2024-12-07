@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Web_PhongTro.Models.kiemduyetbaidang>
+
+@{ViewBag.Title = "Thông báo";
+    Layout = "~/Areas/NguoiChoThue/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="activity" id="posts">
+    <div class="title">
+        <i class="uil uil-package"></i>
+        <span class="text">Thông báo</span>
+    </div>
+    <div class="activity-data">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td colspan="8">
+                        @*@using (Html.BeginForm("PhanHoi", "AdminHome", FormMethod.Post, new { id = "post-search-form" }))
+                        {
+                            <select class="form-select" name="postsearchType" id="post-search-type" required>
+                                <option value="name">Tìm theo tên</option>
+                            </select>
+                            <input class="form-control" type="text" placeholder="Tìm kiếm..." name="postsearchInput" id="post-search-input" required>
+                            <button type="submit" class="btn btn-light" id="btn-search-post">
+                                <i class="fa fa-search" style="color: #3557ff;"></i>
+                                Tìm kiếm
+                            </button>}
+                        <button class="btn btn-light" id="btn-add-post">
+                            <i class="fa fa-plus-square" style="color: #3557ff;"></i>
+                            Thêm bài đăng mới
+                        </button>*@
+                    </td>
+
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    @*<th>Tên người phản hồi</th>*@
+
+                    <th>
+                        Nội dung
+                        <div>
+                            @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiaGoc",sortType = "DESC", page = ViewBag.Page})" class="fa fa-solid fa-sort-up"></a>*@
+                            @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiaGoc",sortType = "ASC", page = ViewBag.Page})" class="fa fa-solid fa-sort-down"></a>*@
+                        </div>
+                    </th>
+                    <!--<th>
+                            Giảm giá
+                            <div>-->
+                    @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiamGia",sortType = "DESC", page = ViewBag.Page})" class="fa fa-solid fa-sort-up"></a>*@
+                    @*<a href="@Url.Action("GetAll","posts", new { sortCol = "GiamGia",sortType = "ASC", page = ViewBag.Page})" class="fa fa-solid fa-sort-down"></a>*@
+                    <!--</div>
+                    </th>-->
+
+
+                    <th>Ngày phản hồi</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="post-table-body">
+                @{ int stt = ViewBag.STT;}
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@(stt++)</td>
+
+                        @*<td>@string.Format("{0:N0}", item.Gia) đ</td>*@
+                        @*<td>@item.</td>*@
+
+                        <td>
+                            <a href="@Url.Action("GetBaiDangById", "BaiDang", new { area = "", id = item.BaiDang.IdBaiDang })" target="_blank">@item.NoiDung</a>
+                        </td>
+                        <td>@item.ngayduyet</td>
+
+                        <td>
+                            <button type="button" class="edit-post-btn" data-post-id="@item"><i class="fa fa-wrench"></i></button>
+                            @*<button type="button" class="delete-post-btn" data-post-id="@item"><i class="fa fa-trash"></i></button>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+@section scriptsFooter {
+    <script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>
+}
+

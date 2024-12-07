@@ -172,7 +172,6 @@ namespace Web_PhongTro.Areas.Admin.Controllers
             {
                 try
                 {
-                    
 
                     var tk = db.NguoiDungs.Where(x => x.IdNguoiDung == idND).FirstOrDefault();
 
