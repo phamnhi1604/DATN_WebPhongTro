@@ -179,7 +179,6 @@ header {
             background-color: #0056b3;
         }
 
-css
 /* Thiết lập phần "Giá cho thuê" */
 .form-group.row {
     display: flex;
@@ -262,11 +261,11 @@ css
     margin-top: 20px;
 }
 
-    .uploaded-images img {
-        width: 100%;
-        height: auto;
-        border: 1px solid #ccc;
-    }
+.uploaded-images img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+}
 
 .uploaded-images {
     display: flex;
@@ -304,7 +303,18 @@ css
     height: 100%;
     z-index: 999;
 }
-.frm-post .close-btn {
+#frmUpdtBaiDang {
+    display: none;
+    background: rgba(255, 255, 255, 0.8);
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+.close-btn {
     font-size: 3rem;
     position: absolute;
     right: 10px;

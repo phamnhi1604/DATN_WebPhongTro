@@ -34,8 +34,8 @@ namespace Web_PhongTro.Controllers
                      {
                          BaiDang = baiDang,
                          noidungPT = pt,
-                         diachiPT = dc
-                         //Gia = db.func_GiaBaiDang(BaiDang.IdBaiDang)
+                         diachiPT = dc,
+                         slyt = db.YeuThiches.Count(yt => yt.IdBaiDang == baiDang.IdBaiDang)
                      });
 
 

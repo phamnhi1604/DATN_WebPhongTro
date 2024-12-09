@@ -98,6 +98,8 @@
       <Column Name="MatKhau" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="IdVaiTro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TonTai" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ResetPasswordOtp" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="OtpGeneratedAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="NguoiDung_YeuThich" Member="YeuThiches" ThisKey="IdNguoiDung" OtherKey="IdNguoiDung" Type="YeuThich" />
       <Association Name="NguoiDung_KiemDuyetVien" Member="KiemDuyetViens" ThisKey="IdNguoiDung" OtherKey="IdNguoiDung" Type="KiemDuyetVien" />
       <Association Name="NguoiDung_NguoiChoThue" Member="NguoiChoThues" ThisKey="IdNguoiDung" OtherKey="IdNguoiDung" Type="NguoiChoThue" />

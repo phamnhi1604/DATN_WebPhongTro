@@ -37,7 +37,7 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    @*<th>Tên người phản hồi</th>*@
+                    <th>Tên bài đăng</th>
 
                     <th>
                         Nội dung
@@ -68,11 +68,11 @@
                         <td>@(stt++)</td>
 
                         @*<td>@string.Format("{0:N0}", item.Gia) đ</td>*@
-                        @*<td>@item.</td>*@
 
                         <td>
-                            <a href="@Url.Action("GetBaiDangById", "BaiDang", new { area = "", id = item.BaiDang.IdBaiDang })" target="_blank">@item.NoiDung</a>
+                            <a href="@Url.Action("GetBaiDangById", "BaiDang", new { area = "", id = item.BaiDang.IdBaiDang })" target="_blank">@item.BaiDang.TieuDe</a>
                         </td>
+                        <td>@item.NoiDung</td>
                         <td>@item.ngayduyet</td>
 
                         <td>

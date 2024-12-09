@@ -23,7 +23,9 @@
 
             <button type="button" id="btnLoginSubmit">Đăng nhập</button>
             <div style="display: flex; flex-direction: column">
-                <a class="hover-login" href="#">Quên mật khẩu?</a>
+                @*<a class="hover-login" href="#">Quên mật khẩu?</a>*@
+                <a class="hover-login" href="@Url.Action("ResetPassword", "Account")">Quên mật khẩu?</a>
+
                 <div class="hover-login" sstyle="display: flex; align-items: center;">
                     <label style="margin-right: 6px; color: #959898; font-weight: 500;font-size:13px ">hoặc</label>
                     @Html.ActionLink("Đăng ký", "RegisterV")

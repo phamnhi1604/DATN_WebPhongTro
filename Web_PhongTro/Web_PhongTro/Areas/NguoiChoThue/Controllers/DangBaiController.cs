@@ -80,9 +80,6 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
             return View(viewModel);
         }
 
-
-
-
         public ActionResult GetDanhSachDanhMuc()
         {
             var danhMucList = db.DanhMucs.Select(d => new SelectListItem
@@ -98,11 +95,23 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
 
             return View(model);
         }
+        public PartialViewResult ThemPhongTro()
+        {
+            return PartialView();
+        }
+        public PartialViewResult SuaPhongTro()
+        {
+            return PartialView();
+        }
         public PartialViewResult DangBai()
         {
             return PartialView();
         }
 
+        public PartialViewResult SuaBaiDang()
+        {
+            return PartialView();
+        }
         [HttpPost]
         public ActionResult UploadImage(HttpPostedFileBase imageFile)
         {

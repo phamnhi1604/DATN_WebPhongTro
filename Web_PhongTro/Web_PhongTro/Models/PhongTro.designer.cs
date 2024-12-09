@@ -2159,6 +2159,10 @@ namespace Web_PhongTro.Models
 		
 		private bool _TonTai;
 		
+		private string _ResetPasswordOtp;
+		
+		private System.Nullable<System.DateTime> _OtpGeneratedAt;
+		
 		private EntitySet<YeuThich> _YeuThiches;
 		
 		private EntitySet<KiemDuyetVien> _KiemDuyetViens;
@@ -2183,6 +2187,10 @@ namespace Web_PhongTro.Models
     partial void OnIdVaiTroChanged();
     partial void OnTonTaiChanging(bool value);
     partial void OnTonTaiChanged();
+    partial void OnResetPasswordOtpChanging(string value);
+    partial void OnResetPasswordOtpChanged();
+    partial void OnOtpGeneratedAtChanging(System.Nullable<System.DateTime> value);
+    partial void OnOtpGeneratedAtChanged();
     #endregion
 		
 		public NguoiDung()
@@ -2295,6 +2303,46 @@ namespace Web_PhongTro.Models
 					this._TonTai = value;
 					this.SendPropertyChanged("TonTai");
 					this.OnTonTaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResetPasswordOtp", DbType="NVarChar(6)")]
+		public string ResetPasswordOtp
+		{
+			get
+			{
+				return this._ResetPasswordOtp;
+			}
+			set
+			{
+				if ((this._ResetPasswordOtp != value))
+				{
+					this.OnResetPasswordOtpChanging(value);
+					this.SendPropertyChanging();
+					this._ResetPasswordOtp = value;
+					this.SendPropertyChanged("ResetPasswordOtp");
+					this.OnResetPasswordOtpChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OtpGeneratedAt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> OtpGeneratedAt
+		{
+			get
+			{
+				return this._OtpGeneratedAt;
+			}
+			set
+			{
+				if ((this._OtpGeneratedAt != value))
+				{
+					this.OnOtpGeneratedAtChanging(value);
+					this.SendPropertyChanging();
+					this._OtpGeneratedAt = value;
+					this.SendPropertyChanged("OtpGeneratedAt");
+					this.OnOtpGeneratedAtChanged();
 				}
 			}
 		}

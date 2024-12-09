@@ -20,7 +20,7 @@ namespace Web_PhongTro.Controllers
                          join diachi in db.DiaChis on phongTro.IdDiaChi equals diachi.IdDiaChi
                          join baiDang in db.BaiDangs on phongTro.IdPhongTro equals baiDang.IdPhongTro 
                          where baiDang.TrangThai == "1"
-                         orderby baiDang.NgayDang descending
+                         orderby baiDang.IdBaiDang descending
                          select new BaiDangVM
                          {
                              noidungPT = phongTro,
@@ -92,67 +92,73 @@ namespace Web_PhongTro.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateInfo(NguoiThueVM nt)
+        public ActionResult UpdateInfo(NguoiThue model, string currentPassword, string password, string confirmPassword)
         {
-            if (ModelState.IsValid)
+            if (model == null)
             {
-                try
-                {
-                    string username = User.Identity.Name;
-
-                    // Log debug
-                    System.Diagnostics.Debug.WriteLine("Update for user: " + username);
-
-                    var nguoiDung = db.NguoiDungs.FirstOrDefault(x => x.TenTaiKhoan == username);
-
-                    if (nguoiDung != null)
-                    {
-                        var nguoiThue = db.NguoiThues.FirstOrDefault(x => x.IdNguoiDung == nguoiDung.IdNguoiDung);
-
-                        if (nguoiThue != null)
-                        {
-                            if (!string.IsNullOrEmpty(nt.TenKhachHang))
-                                nguoiThue.TenKhachHang = nt.TenKhachHang;
-
-                            if (!string.IsNullOrEmpty(nt.SoDienThoai))
-                                nguoiThue.SoDienThoai = nt.SoDienThoai;
-
-                            if (!string.IsNullOrEmpty(nt.Email))
-                                nguoiThue.Email = nt.Email;
-
-                            if (!string.IsNullOrEmpty(nt.DiaChi))
-                                nguoiThue.DiaChi = nt.DiaChi;
-
-                            if (!string.IsNullOrEmpty(nt.Password) && nt.Password == nt.ConfirmPassword)
-                            {
-                                nguoiDung.MatKhau = nt.Password;
-                            }
-
-                            db.SubmitChanges(); // LINQ to SQL
-
-                            // Thông báo thành công và chuyển hướng
-                            TempData["SuccessMessage"] = "Cập nhật thông tin thành công.";
-                            return RedirectToAction("Info");
-                        }
-
-                        TempData["ErrorMessage"] = "Không tìm thấy thông tin người thuê.";
-                        return RedirectToAction("Info");
-                    }
-
-                    TempData["ErrorMessage"] = "Không tìm thấy thông tin người dùng.";
-                    return RedirectToAction("Info");
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine("Error: " + ex.Message);
-                    TempData["ErrorMessage"] = "Đã xảy ra lỗi: " + ex.Message;
-                    return RedirectToAction("Info");
-                }
+                ViewBag.ErrorMessage = "Dữ liệu không hợp lệ.";
+                return View("Info", new NguoiThue());
             }
 
-            TempData["ErrorMessage"] = "Dữ liệu không hợp lệ.";
-            return RedirectToAction("Info");
+            string username = User.Identity.Name;
+
+            // Tìm người dùng hiện tại
+            var user = db.NguoiDungs.FirstOrDefault(u => u.TenTaiKhoan == username);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = "Người dùng không tồn tại.";
+                return View("Info", model);
+            }
+
+            // Kiểm tra mật khẩu hiện tại nếu thay đổi mật khẩu
+            if (!string.IsNullOrEmpty(password))
+            {
+                if (user.MatKhau != currentPassword)
+                {
+                    ViewBag.ErrorMessage = "Mật khẩu hiện tại không chính xác.";
+                    return View("Info", model);
+                }
+
+                if (password != confirmPassword)
+                {
+                    ViewBag.ErrorMessage = "Mật khẩu mới và xác nhận mật khẩu không khớp.";
+                    return View("Info", model);
+                }
+
+                // Lưu mật khẩu mới (nên mã hóa ở đây nếu cần)
+                user.MatKhau = password;
+            }
+
+            // Tìm thông tin người thuê
+            var nguoiChoThue = db.NguoiThues.FirstOrDefault(n => n.IdNguoiDung == user.IdNguoiDung);
+
+            if (nguoiChoThue == null)
+            {
+                ViewBag.ErrorMessage = "Thông tin người thuê không tồn tại.";
+                return View("Info", model);
+            }
+
+            // Cập nhật thông tin
+            nguoiChoThue.TenKhachHang = model.TenKhachHang ?? nguoiChoThue.TenKhachHang;
+            nguoiChoThue.SoDienThoai = model.SoDienThoai ?? nguoiChoThue.SoDienThoai;
+            nguoiChoThue.Email = model.Email ?? nguoiChoThue.Email;
+            nguoiChoThue.DiaChi = model.DiaChi ?? nguoiChoThue.DiaChi;
+
+            // Lưu thay đổi
+            try
+            {
+                db.SubmitChanges();
+                TempData["SuccessMessage"] = "Cập nhật thông tin thành công.";
+                return RedirectToAction("Info");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "Đã xảy ra lỗi khi lưu dữ liệu: " + ex.Message;
+                return View("Info", model);
+            }
         }
+
 
 
         [HttpPost]

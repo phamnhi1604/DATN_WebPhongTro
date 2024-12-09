@@ -534,7 +534,7 @@ nav.close~.dashboard .top {
 .dash-content .activity-data table thead th div i{
     cursor: pointer;
 }
-#btn-add-product,
+#btn-add-post,
 #btn-add-order,
 #btn-add-customer {
     background-color: var(--panel-color);
@@ -578,8 +578,8 @@ nav.close~.dashboard .top {
     height: 140px;
 }
 
-.add-product,
-.edit-product  {
+.add-post,
+.edit-post  {
     display: none;
     justify-content: center;
     align-items: center;
@@ -643,11 +643,11 @@ nav.close~.dashboard .top {
     transition: .2s ease;
 }
 
-.add-product .container {
+.add-post .container {
     width: 50rem;
     margin-top: 2rem;
 }
-.edit-product .container {
+.edit-post .container {
     margin-top: 5rem;
 }
 .add-customer .container,
@@ -655,8 +655,8 @@ nav.close~.dashboard .top {
     width: 33rem;
     transform: translateY(40%);
 }
-#add-product-form,
-#edit-product-form,
+#add-post-form,
+#edit-post-form,
 #add-customer-form,
 #edit-customer-form {
     background-color: #cdcdcd;
@@ -664,15 +664,15 @@ nav.close~.dashboard .top {
     border-radius: 7px;
 }
 
-.add-product.active,
-.edit-product.active,
+.add-post.active,
+.edit-post.active,
 .add-customer.active,
 .edit-customer.active  {
     display: block;
 }
 
-.add-product .close-btn,
-.edit-product .close-btn,
+.add-post .close-btn,
+.edit-post .close-btn,
 .add-customer .close-btn,
 .edit-customer .close-btn{
     font-size: 3rem;
@@ -687,7 +687,7 @@ nav.close~.dashboard .top {
     }
 
     nav.close {
-        width: 250px;
+        width: 250px;   
     }
 
     nav .logo_name {

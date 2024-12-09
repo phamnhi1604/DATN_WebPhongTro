@@ -1,0 +1,95 @@
+﻿
+<div id="frmUpdtBaiDang" class="frm-updtPost">
+    <div class="close-btn">×</div>
+
+    <div class="ad-info">
+        <form asp-action="SaveDiaChi" asp-controller="DangBai" method="post"> 
+            <div class="form-group row mt-5">
+                <div class="col-md-12">
+                    <h3>Thông tin mô tả</h3>
+                </div>
+            </div>
+
+            @Html.Action("GetDanhSachPhongTro", "DangBai")
+            <div class="form-group row">
+                <label for="post_title" class="col-md-12 col-form-label">Tiêu đề</label>
+                <div class="col-md-12">
+                    <input type="text" class="form-control js-title" name="tieu_de" id="post_title" value="" minlength="30" maxlength="120" required="" data-msg-required="Tiêu đề không được để trống" data-msg-minlength="Tiêu đề quá ngắn" data-msg-maxlength="Tiêu đề quá dài">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="post_content" class="col-md-12 col-form-label">Nội dung mô tả</label>
+                <div class="col-md-12">
+                    <textarea class="form-control js-content" name="noi_dung" id="post_content" rows="10" required="" minlength="30" data-msg-required="Bạn chưa nhập nội dung" data-msg-minlength="Nội dung tối thiểu 100 kí tự"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                
+                <div class="form-group row">
+                    <label for="post_acreage" class="col-md-12 col-form-label">Ảnh bìa</label>
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <label for="imageFile">Chọn ảnh:</label>
+                        <input type="file" id="imageFile" name="imageFile" accept="image/*" />
+                    </form>
+                </div>
+                <div class="form-group row mt-5">
+                    <div class="col-md-12">
+                        <h3>Hình ảnh</h3>
+                    </div>
+                </div>
+                <div class="image-upload-container">
+                    <div class="image-upload-box">
+                        <label for="DanhSachAnh" class="image-upload-label">
+                            <i class="fas fa-plus"></i>
+                            <i class="bi bi-images"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                                <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z" />
+                            </svg>
+                            <span>Thêm ảnh</span>
+                        </label>
+
+
+                        <input type="file" id="DanhSachAnh" class="image-upload-input form-control-file" name="DanhSachAnh" accept="image/*" multiple>
+                    </div>
+                    <div class="uploaded-images">
+                        <!-- Các hình ảnh được tải lên sẽ được hiển thị ở đây -->
+                    </div>
+                </div>
+
+                <div class="form-group row mt-5">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary mt-3" id="btn-tieptuc">Lưu</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+
+
+    document.getElementById('post_content').addEventListener('input', function () {
+        // Lấy giá trị từ textarea
+        let content = this.value;
+
+        // Thay thế ký tự xuống dòng (\n) bằng \\n
+        this.value = content.replace(/\n/g, '\\n');
+    });
+
+    
+    let closeBtn = document.querySelector('.frm-updtPost .close-btn');
+    let frmPost = document.getElementById('frmPost');
+    let frmUpdtPost = document.getElementById('frmUpdtBaiDang');
+
+    closeBtn.addEventListener('click', function () {
+        frmUpdtPost.classList.remove('active');
+    })
+
+
+</script>
+@section scriptsfooter {
+    @*<script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>*@
+
+}

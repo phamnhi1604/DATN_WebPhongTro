@@ -9,14 +9,15 @@
           type="image/x-icon" />
     <title>Dashboard người dùng</title>
     <link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/Css/baidang.css">
-    <link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/Css/Thongtin.css">
+    @*<link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/Css/Thongtin.css">*@
 
     @Html.Raw("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.8/css/line.min.css\">")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="~/Content/Css/Bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/Css/style.css">
     <link rel="stylesheet" href="~/Contents/Css/Bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/Areas/Admin/Contents/style.css">
+    @*<link rel="stylesheet" href="~/Areas/Admin/Contents/style.css">*@
+    @*<link rel="stylesheet" href="~/Areas/NguoiChoThue/Content/Css/style.css">*@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -64,13 +65,13 @@
                 </li>
                 <li>
                     <a href="@Url.Action("DanhSachPhongTro","NCTHome")">
-                        <i class="uil uil-files-landscapes"></i>
+                        <i class="fa-solid fa-building"></i>
                         <span class="link-name">Phòng trọ</span>
                     </a>
                 </li>
                 <li>
                     <a href="@Url.Action("ThongBao","NCTHome")">
-                        <i class="uil uil-files-landscapes"></i>
+                        <i class="fa-regular fa-bell"></i>
                         <span class="link-name">Thông báo duyệt bài</span>
                     </a>
                 </li>

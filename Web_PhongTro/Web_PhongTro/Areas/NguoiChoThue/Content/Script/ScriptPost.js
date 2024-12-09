@@ -209,14 +209,30 @@
 
     let btnAddpost = document.querySelector('#btn-add-post');
     let frmPost = document.querySelector('.frm-post');
-    let closeBtn = document.querySelector('.frm-post .close-btn');
+    let frmUpdtPost = document.querySelector('.frm-updtPost');
+    let btnUpdtposts = document.getElementsByClassName('edit-post-btn'); // HTMLCollection
+    for (let i = 0; i < btnUpdtposts.length; i++) {
+        btnUpdtposts[i].addEventListener('click', function () {
+            let frmUpdtPost = document.querySelector('.frm-updtPost');
+            if (frmUpdtPost) {
+                frmUpdtPost.classList.add('active');
+                console.log("Button clicked:", btnUpdtposts[i]);
+            }
+        });
+    }
 
-    btnAddpost.addEventListener('click', function () {
+    let closeBtn = document.querySelector('.close-btn');
+
+    //btnUpdtpost.addEventListener('click', function () {
+    //    frmUpdtPost.classList.add('active');
+    //});
+    btnAddpost.addEventListener('click', function () {  
         frmPost.classList.add('active');
     });
 
     closeBtn.addEventListener('click', function () {
         frmPost.classList.remove('active');
+        frmUpdtPost.classList.remove('active');
     });
 
 

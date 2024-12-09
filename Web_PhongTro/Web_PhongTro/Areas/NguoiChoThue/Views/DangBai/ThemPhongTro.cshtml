@@ -1,0 +1,119 @@
+﻿
+<div id="frmThemBaiDang" class="frm-post">
+    <div class="close-btn">×</div>
+
+    <div class="ad-info">
+        <form asp-action="SaveDiaChi" asp-controller="DangBai" method="post">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Địa chỉ cho thuê</h1>
+                    </div>
+                </div>
+                @Html.Action("DanhSachDiaChi", "DangBai")
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="street_number" class="col-form-label">Số nhà</label>
+                        <input type="text" class="form-control js-input-street-number" name="street_number" id="street_number" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mt-5">
+                <div class="col-md-12">
+                    <h3>Thông tin mô tả</h3>
+                </div>
+            </div>
+            @Html.Action("GetDanhSachDanhMuc", "DangBai")
+            <div class="form-group row">
+                <label for="post_content" class="col-md-12 col-form-label">Nội dung tiêu đề</label>
+                <div class="col-md-12">
+                    <textarea class="form-control js-content" name="noi_dung" id="post_content" rows="10" required="" minlength="100" data-msg-required="Bạn chưa nhập nội dung" data-msg-minlength="Nội dung tối thiểu 100 kí tự"></textarea>
+                </div>
+            </div>
+            @*  @Html.Action("ThongTinLienHe", "DangBai")*@
+            <div class="form-group row">
+                <div class="form-group row">
+                    <label for="giachothue" class="col-md-12 col-form-label">Giá cho thuê</label>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input id="giachothue" name="gia" pattern="[0-9.]+" type="text" class="form-control js-gia-cho-thue" required="" data-msg-required="Bạn chưa nhập giá phòng" data-msg-min="Giá phòng chưa đúng">
+                            <div class="input-group-append">
+                                <span class="input-group-text">đồng/tháng</span>
+                            </div>
+                        </div>
+                    </div>
+                    <label for="text_giachothue" id="text_giachothue" class="col-sm-12 control-label js-number-text" style="color: red;"></label>
+                </div>
+                <div class="form-group row">
+                    <label for="post_acreage" class="col-md-12 col-form-label">Diện tích</label>
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <input id="post_acreage" type="number" attern="[0-9.]+" name="dien_tich" max="1000" class="form-control valid" required="" data-msg-required="Bạn chưa nhập diện tích" aria-invalid="false">
+                            <div class="input-group-append">
+                                <span class="input-group-text">m<sup>2</sup></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row mt-5">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary mt-3" id="btn-tieptuc">Tiếp tục</button>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $('#btn-tieptuc').click(function () {
+                                // Lấy dữ liệu từ form
+                                var baiDangData = {
+                                    IdNguoiChoThue: $('#nguoiChoThue').val(), ThanhPho: $('#province_id').val(),
+                                    Quan: $('#district_id').val(),
+                                    Phuong: $('#phuongxa').val(),
+                                    Duong: $('#street_number').val(),
+                                    LoaiChuyenMuc: $('#post_cat').val(),
+                                    MoTa: $('#post_content').val(),
+                                    DienTich: $('#post_acreage').val(),
+                                    GiaPhong: $('#giachothue').val(),
+                                };
+
+                                console.log(baiDangData)
+
+                                // Gửi Ajax request để lưu bài đăng
+                                $.ajax({
+                                    url: '/DangBai/PhongTro', // Đường dẫn đến action ThemBai trong controller
+                                    type: 'POST',
+                                    data: baiDangData,
+                                    success: function (response) {
+                                        if (response.success) {
+                                            alert(response.message);
+                                            $('form').trigger("reset");
+                                            location.reload();
+                                        } else {
+                                            alert(response.message);
+                                        }
+                                    },
+                                    error: function (xhr, status, error) {
+                                        console.log('Lỗi:', error);
+                                        alert('Đã xảy ra lỗi khi thêm bài đăng.');
+                                    }
+                                });
+                            });
+                        });
+
+                    </script>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+
+
+
+
+
+</script>
+@section scriptsFooter {
+    @*<script src="~/Areas/NguoiChoThue/Content/Script/ScriptPost.js"></script>*@
+}

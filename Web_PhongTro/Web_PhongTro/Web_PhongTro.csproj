@@ -302,10 +302,12 @@
     <Content Include="Areas\NguoiChoThue\Views\DangBai\GetDanhSachDanhMuc.cshtml" />
     <Content Include="Areas\NguoiChoThue\Views\DangBai\GetDanhSachPhongTro.cshtml" />
     <Content Include="Areas\NguoiChoThue\Views\DangBai\ThongTinLienHe.cshtml" />
-    <Content Include="Areas\NguoiChoThue\Views\NCTHome\EditPartial.cshtml" />
     <Content Include="Areas\KiemDuyetVien\Views\KDVHome\PhanHoi.cshtml" />
     <Content Include="Areas\NguoiChoThue\Views\NCTHome\DanhSachPhongTro.cshtml" />
     <Content Include="Areas\NguoiChoThue\Views\NCTHome\ThongBao.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\DangBai\ThemPhongTro.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\DangBai\SuaPhongTro.cshtml" />
+    <Content Include="Areas\NguoiChoThue\Views\DangBai\SuaBaiDang.cshtml" />
     <None Include="Models\PhongTro.dbml.layout">
       <DependentUpon>PhongTro.dbml</DependentUpon>
     </None>
@@ -335,6 +337,7 @@
     <Content Include="Views\BaiDang\GetDsBaiDangByQuan.cshtml" />
     <Content Include="Views\BaiDang\GetDsBaiDangByGia.cshtml" />
     <Content Include="Views\BaiDang\GetDsBaiDangByDienTich.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
