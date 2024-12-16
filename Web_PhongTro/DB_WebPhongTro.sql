@@ -585,3 +585,8 @@ BEGIN
     RETURN @SoLuongYeuThich;
 END;
 SELECT dbo.func_SoLuongYeuThich(1) AS SoLuongYeuThich;
+alter table Phongtro add diachi nvarchar(255)
+
+ALTER TABLE NguoiDung
+ADD ResetPasswordOtp NVARCHAR(6) NULL,
+    OtpGeneratedAt DATETIME NULL;

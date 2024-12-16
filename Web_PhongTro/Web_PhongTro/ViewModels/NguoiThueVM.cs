@@ -10,19 +10,6 @@ namespace Web_PhongTro.ViewModels
 {
     public class NguoiThueVM
     {
-        //public string Password { get; set; } // Mật khẩu mới (nếu có)
-        //public string ConfirmPassword { get; set; } // Xác nhận mật khẩu mới (nếu có)
-
-        //public NguoiThue NguoiThue { get; set; }
-
-        //public NguoiDung nguoiDung { get; set; }
-
-
-        //public NguoiThueVM() { }
-
-
-
-        // Dữ liệu từ bảng NguoiThue
         public long IdNguoiThue { get; set; }
         public string TenKhachHang { get; set; }
         public string SoDienThoai { get; set; }
@@ -37,22 +24,18 @@ namespace Web_PhongTro.ViewModels
 
         public NguoiThueVM() { }
 
-        // Constructor để khởi tạo từ các đối tượng cơ sở dữ liệu
         public NguoiThueVM(NguoiThue nguoiThue, NguoiDung nguoiDung)
         {
-            // Từ bảng NguoiThue
             IdNguoiThue = nguoiThue.IdNguoiThue;
             TenKhachHang = nguoiThue.TenKhachHang;
             SoDienThoai = nguoiThue.SoDienThoai;
             Email = nguoiThue.Email;
             DiaChi = nguoiThue.DiaChi;
 
-            // Từ bảng NguoiDung
             IdNguoiDung = nguoiDung.IdNguoiDung;
             TenTaiKhoan = nguoiDung.TenTaiKhoan;
         }
 
-        // Method cập nhật thông tin từ ViewModel vào NguoiThue
         public void UpdateNguoiThue(NguoiThue nguoiThue)
         {
             nguoiThue.TenKhachHang = this.TenKhachHang;

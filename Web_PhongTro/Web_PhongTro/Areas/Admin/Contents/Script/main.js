@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     $('#logoutButton').on('click', function () {
         $.ajax({
-            url: '/Account/Logout',
+            url: '~/Account/Logout',
             type: 'POST',
             dataType: 'json',
             success: function (result) {
@@ -47,6 +47,12 @@
         }
     });
 
+    let frmAdd = document.querySelector('.frm-addAcc');
+    let closeBtnAdd = document.querySelector('.close-btn');
+    closeBtnAdd.addEventListener('click', function () {
+        frmAdd.classList.remove('active');
+    });
+ 
     
 
 });

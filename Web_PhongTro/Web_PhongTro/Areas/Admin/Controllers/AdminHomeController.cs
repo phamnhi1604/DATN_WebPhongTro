@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Web_PhongTro.Models;
 using Web_PhongTro.ViewModels;
 
@@ -105,6 +106,75 @@ namespace Web_PhongTro.Areas.Admin.Controllers
             query = query.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage);
             return View(query);
         }
+
+        public PartialViewResult TaoTKKDVPartial()
+        {
+            return PartialView();
+        }
+
+        public JsonResult addTKKDV(UserVM lg)
+        {
+            var res = new { success = false, message = "Tạo tài khoản thất bại" };
+            if (ModelState.IsValid)
+            {
+                bool existsUsername = db.NguoiDungs.Any(x => x.TenTaiKhoan == lg.Username);
+
+                if (existsUsername)
+                {
+                    return Json(new { success = false, message = "Tài khoản đã tồn tại" });
+                }
+
+                if (lg.Password != lg.ConfirmPassword)
+                {
+                    return Json(new { success = false, message = "Mật khẩu và xác nhận mật khẩu không khớp" });
+                }
+                try
+                {
+                    // Xác định vai trò
+                    //int roleId = lg.AccountType == "Người cho thuê" ? 3 : 4;
+
+                    // Tạo NguoiDung
+                    NguoiDung u = new NguoiDung()
+                    {
+                        TenTaiKhoan = lg.Username,
+                        MatKhau = lg.Password,
+                        IdVaiTro = 2,
+                        TonTai = true
+                    };
+
+                    db.NguoiDungs.InsertOnSubmit(u);
+                    db.SubmitChanges();
+
+                    // Lấy IdNguoiDung mới được tạo
+                    long newUserId = u.IdNguoiDung;
+
+                    // Thêm bản ghi vào bảng tương ứng
+                    
+                    //KiemDuyetVien kdv = new KiemDuyetVien()
+                    //{
+
+                    //}
+                    //db.KiemDuyetViens.InsertOnSubmit(kdv);
+
+                    return Json(new
+                    {
+                        success = true,
+                        message = "Đăng ký thành công"
+                    });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Đã xảy ra lỗi: " + ex.Message
+                    });
+                }
+            }
+
+            return Json(res);
+        }
+
         public ActionResult NguoiThue(string NhanVienSearchType, string NhanVienSearchInput, string sortCol, string sortType, int page = 1)
         {
             //IEnumerable<BaiDangVM> query = null;

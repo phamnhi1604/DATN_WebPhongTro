@@ -9,9 +9,15 @@ using Web_PhongTro.Models;
 using Web_PhongTro.ViewModels;
 using System.Net.Mail;
 using System.Net;
-
+using RestSharp;
+using RestSharp.Authenticators;
 namespace Web_PhongTro.Controllers
 {
+    public class MailgunConfig
+    {
+        public static string DomainName = "sandbox7ea2108ebba041b49e5e38b14673e05b.mailgun.org"; 
+        public static string ApiKey = "da554c25-e5e10de3";
+    }
     public class AccountController : Controller
     {
         PhongTroDataContext db = new PhongTroDataContext();
@@ -145,77 +151,7 @@ namespace Web_PhongTro.Controllers
                 return Json(new { success = false, validationErrors });
             }
         }
-        public ActionResult SendResetPasswordOtp(string email)
-        {
-            var emailLowerCase = email.ToLower();
-            // Tìm người dùng trong bảng NguoiChoThue dựa trên email
-            var nguoiChoThue = db.NguoiChoThues.FirstOrDefault(nct => nct.Email.ToLower() == emailLowerCase);
-            if (nguoiChoThue == null)
-            {
-                // Nếu không tìm thấy email trong NguoiChoThue, kiểm tra trong NguoiThue
-                var nguoiThue = db.NguoiThues.FirstOrDefault(nt => nt.Email.ToLower() == emailLowerCase);
-                if (nguoiThue == null)
-                {
-                    // Nếu không tìm thấy email trong cả hai bảng
-                    ModelState.AddModelError("", "Email không tồn tại.");
-                    return View();
-                }
-
-                // Tìm người dùng trong bảng NguoiDung liên kết với NguoiThue
-                var user = db.NguoiDungs.FirstOrDefault(u => u.IdNguoiDung == nguoiThue.IdNguoiDung);
-                if (user == null)
-                {
-                    ModelState.AddModelError("", "Không tìm thấy người dùng liên kết với email này.");
-                    return View();
-                }
-            }
-            else
-            {
-                // Nếu tìm thấy trong bảng NguoiChoThue, kiểm tra người dùng liên kết
-                var user = db.NguoiDungs.FirstOrDefault(u => u.IdNguoiDung == nguoiChoThue.IdNguoiDung);
-                if (user == null)
-                {
-                    ModelState.AddModelError("", "Không tìm thấy người dùng liên kết với email này.");
-                    return View();
-                }
-            }
-
-            // Tạo mã OTP ngẫu nhiên
-            string otp = new Random().Next(100000, 999999).ToString();
-            DateTime otpGeneratedAt = DateTime.Now;
-
-            // Lấy lại người dùng từ bảng NguoiDung theo IdNguoiDung
-            var currentUser = db.NguoiDungs.FirstOrDefault(u => u.IdNguoiDung == nguoiChoThue.IdNguoiDung);
-            if (currentUser == null)
-            {
-                ModelState.AddModelError("", "Không tìm thấy người dùng liên kết với email này.");
-                return View();
-            }
-
-            // Cập nhật OTP vào bảng Người Dùng
-            currentUser.ResetPasswordOtp = otp;
-            currentUser.OtpGeneratedAt = otpGeneratedAt;
-            db.SubmitChanges();
-
-            // Gửi OTP qua email (ví dụ sử dụng phương thức SendEmail)
-            SendEmail(emailLowerCase, otp);
-
-            return RedirectToAction("ResetPassword", "Account");
-        }
-
-
-
-        public void SendEmail(string toEmail, string otp)
-        {
-            string subject = "Mã OTP để đặt lại mật khẩu";
-            string body = $"Mã OTP của bạn là: {otp}. Mã OTP này sẽ hết hạn trong 10 phút.";
-
-            using (var client = new SmtpClient("smtp.example.com"))
-            {
-                var mailMessage = new MailMessage("no-reply@example.com", toEmail, subject, body);
-                client.Send(mailMessage);
-            }
-        }
+        
 
         public ActionResult ResetPassword()
         {
@@ -262,71 +198,109 @@ namespace Web_PhongTro.Controllers
 
             return RedirectToAction("LoginV", "Account");
         }
-        //[HttpPost]
+        [HttpPost]
         public JsonResult SendOtp(string email)
         {
-            // Tìm email trong bảng NguoiChoThue
+            // Kiểm tra email trong bảng NguoiChoThue
             var userChoThue = db.NguoiChoThues.SingleOrDefault(u => u.Email == email);
 
-            // Nếu không tìm thấy email trong bảng NguoiChoThue, kiểm tra trong bảng NguoiThue
             if (userChoThue == null)
             {
+                // Kiểm tra trong bảng NguoiThue nếu không tìm thấy
                 var userThue = db.NguoiThues.SingleOrDefault(u => u.Email == email);
 
                 if (userThue == null)
                 {
-                    // Nếu email không tồn tại trong cả hai bảng
                     return Json(new { success = false, message = "Email không tồn tại" });
                 }
 
-                // Nếu tìm thấy trong bảng NguoiThue, lấy IdNguoiDung và tiếp tục xử lý
+                // Xử lý OTP cho NguoiThue
+                string otp = new Random().Next(100000, 999999).ToString();
                 var nguoiDung = db.NguoiDungs.SingleOrDefault(u => u.IdNguoiDung == userThue.IdNguoiDung);
+
                 if (nguoiDung != null)
                 {
-                    // Lưu OTP vào bảng NguoiDung
-                    string otp = new Random().Next(100000, 999999).ToString();
                     nguoiDung.ResetPasswordOtp = otp;
                     nguoiDung.OtpGeneratedAt = DateTime.Now;
                     db.SubmitChanges();
 
-                    // Gửi mã OTP qua email
-                    SendOtpEmail(userThue.Email, otp);
+                    // Gửi email OTP
+                    SendEmail(userThue.Email, "Mã OTP để đặt lại mật khẩu", $"Mã OTP của bạn là: {otp}. Mã OTP sẽ hết hạn sau 10 phút.");
                 }
 
                 return Json(new { success = true });
             }
 
-            // Nếu tìm thấy trong bảng NguoiChoThue, lấy IdNguoiDung và tiếp tục xử lý
+            // Xử lý OTP cho NguoiChoThue
+            string otpChoThue = new Random().Next(100000, 999999).ToString();
             var nguoiDungChoThue = db.NguoiDungs.SingleOrDefault(u => u.IdNguoiDung == userChoThue.IdNguoiDung);
+
             if (nguoiDungChoThue != null)
             {
-                // Lưu OTP vào bảng NguoiDung
-                string otpChoThue = new Random().Next(100000, 999999).ToString();
                 nguoiDungChoThue.ResetPasswordOtp = otpChoThue;
                 nguoiDungChoThue.OtpGeneratedAt = DateTime.Now;
                 db.SubmitChanges();
 
-                // Gửi mã OTP qua email
-                SendOtpEmail(userChoThue.Email, otpChoThue);
+                // Gửi email OTP
+                SendEmail(userChoThue.Email, "Mã OTP để đặt lại mật khẩu", $"Mã OTP của bạn là: {otpChoThue}. Mã OTP sẽ hết hạn sau 10 phút.");
             }
 
             return Json(new { success = true });
         }
 
+        public static void SendEmail(string toEmail, string subject, string body)
+        {
+            string domainName = "sandbox7ea2108ebba041b49e5e38b14673e05b.mailgun.org"; // Tên miền Mailgun
+            string apiKey = "a4e1e7963568bac384682a86924b2879\r\n"; // API Key từ Mailgun
 
+            // Cấu hình RestClient
+            var options = new RestClientOptions($"https://api.mailgun.net/v3/{domainName}/messages")
+            {
+                Authenticator = new RestSharp.Authenticators.HttpBasicAuthenticator("api", apiKey)
+            };
+
+            var client = new RestClient(options);
+
+            // Tạo yêu cầu POST
+            var request = new RestRequest()
+            {
+                Method = Method.Post // Thiết lập phương thức HTTP
+            };
+
+            // Thêm các tham số vào yêu cầu
+            request.AddParameter("from", $"YourApp <mailgun@{domainName}>");
+            request.AddParameter("to", toEmail);
+            request.AddParameter("subject", subject);
+            request.AddParameter("text", body);
+
+            try
+            {
+                // Thực hiện yêu cầu
+                var response = client.Execute(request);
+                if (!response.IsSuccessful)
+                {
+                    throw new Exception($"Mailgun Error: {response.Content}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
         // Gửi email với mã OTP
         public void SendOtpEmail(string toEmail, string otp)
         {
             string subject = "Mã OTP để đặt lại mật khẩu";
             string body = $"Mã OTP của bạn là: {otp}. Mã OTP này sẽ hết hạn trong 10 phút.";
 
-            using (var client = new SmtpClient("smtp.gmail.com"))
+            using (var client = new SmtpClient("smtp.mailgun.org"))
             {
                 client.Port = 587;  // Cổng cho Gmail
                 client.EnableSsl = true;  // Bật SSL
-                client.Credentials = new NetworkCredential("your-email@gmail.com", "your-email-password");
+                client.Credentials = new NetworkCredential("postmaster@sandbox7ea2108ebba041b49e5e38b14673e05b.mailgun.org", "651439f60a58c5d8a1d4432593cd1561-da554c25-718e5d14");
+                //client.Credentials = new NetworkCredential(toEmail, otp);
 
-                var mailMessage = new MailMessage("your-email@gmail.com", toEmail, subject, body);
+                var mailMessage = new MailMessage("postmaster@sandbox7ea2108ebba041b49e5e38b14673e05b.mailgun.org", toEmail, subject, body);
 
                 try
                 {
@@ -450,13 +424,9 @@ namespace Web_PhongTro.Controllers
                 return Json(new
                 {
                     isAuthenticated = true,
-                    //isInRoleCus = roles.Contains("Khách thuê"),
                     isInRoleNCT = roles.Contains("Người cho thuê"),
                     isInRoleKDV = roles.Contains("Kiểm duyệt viên"),
                     isInRoleAdmin = roles.Contains("Admin"),
-                    //isInRoleKT = roles.Contains("Khách thuê") ,
-                    //isInRoleAdmin = !roles.Contains("Khách thuê") || !roles.Contains("Người cho thuê") || !roles.Contains("Kiểm duyệt viên"),
-
                     redirectUrlNCT = Url.Action("DashBoard", "NCTHome", new { area = "NguoiChoThue" }),
                     redirectUrlKDV = Url.Action("Dashboard", "KDVHome", new { area = "KiemDuyetVien" }),
                     redirectUrlKT = Url.Action("FavoritePostPartial", "FavoritePost"),
