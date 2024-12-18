@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Web_PhongTro.Areas.KiemDuyetVien;
 using Web_PhongTro.Models;
 using Web_PhongTro.ViewModels;
 
@@ -149,12 +150,12 @@ namespace Web_PhongTro.Areas.Admin.Controllers
                     long newUserId = u.IdNguoiDung;
 
                     // Thêm bản ghi vào bảng tương ứng
-                    
-                    //KiemDuyetVien kdv = new KiemDuyetVien()
-                    //{
 
-                    //}
-                    //db.KiemDuyetViens.InsertOnSubmit(kdv);
+                    Web_PhongTro.Models.KiemDuyetVien kdv = new Web_PhongTro.Models.KiemDuyetVien()
+                    {
+                        IdNguoiDung = newUserId
+                    };
+                    db.KiemDuyetViens.InsertOnSubmit(kdv);
 
                     return Json(new
                     {

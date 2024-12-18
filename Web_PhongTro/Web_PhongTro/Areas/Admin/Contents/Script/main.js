@@ -46,11 +46,14 @@
             console.log('Reset password action canceled.');
         }
     });
-
+    let btnAdd = document.querySelector('#btn-add-acc');
     let frmAdd = document.querySelector('.frm-addAcc');
     let closeBtnAdd = document.querySelector('.close-btn');
     closeBtnAdd.addEventListener('click', function () {
         frmAdd.classList.remove('active');
+    });
+    btnAdd.addEventListener('click', function () {
+        frmAdd.classList.add('active');
     });
  
     

@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\areas\\admin\\views\\adminhome\\nhanvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\areas\\admin\\views\\adminhome\\nhanvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|f:\\college\\hk7\\doantotnghiep\\code\\datn_webphongtro\\web_phongtro\\web_phongtro\\areas\\admin\\controllers\\adminhomecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|f:\\college\\hk7\\doantotnghiep\\code\\datn_webphongtro\\web_phongtro\\web_phongtro\\areas\\admin\\contents\\script\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\areas\\admin\\contents\\script\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\areas\\admin\\views\\adminhome\\nhanvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\areas\\admin\\views\\adminhome\\nhanvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\areas\\admin\\views\\adminhome\\taotkkdvpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\areas\\admin\\views\\adminhome\\taotkkdvpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\views\\account\\registerv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\views\\account\\registerv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\areas\\admin\\controllers\\adminhomecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\areas\\admin\\controllers\\adminhomecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\models\\phongtro.dbml||{B465B5AD-8799-4507-B90A-EE29ACF36AF9}|",
       "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\models\\phongtro.dbml||{B465B5AD-8799-4507-B90A-EE29ACF36AF9}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\areas\\admin\\contents\\script\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\areas\\admin\\contents\\script\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\areas\\admin\\views\\adminhome\\taotkkdvpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\areas\\admin\\views\\adminhome\\taotkkdvpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\areas\\nguoichothue\\content\\script\\scriptpost.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -63,10 +67,6 @@
       "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\controllers\\baidangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\views\\account\\loginv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\views\\account\\loginv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -81,10 +81,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\viewmodels\\nguoithuevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\viewmodels\\nguoithuevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\views\\account\\registerv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|solutionrelative:web_phongtro\\views\\account\\registerv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B7A1707-DE88-4B60-8029-15452456C503}|Web_PhongTro\\Web_PhongTro.csproj|F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\web_phongtro\\areas\\nguoichothue\\views\\dangbai\\suabaidang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -122,86 +118,96 @@
       "DocumentGroups": [
         {
           "DockedHeight": 194,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AdminHomeController.cs",
-              "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Controllers\\AdminHomeController.cs",
-              "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\Admin\\Controllers\\AdminHomeController.cs",
-              "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Controllers\\AdminHomeController.cs",
-              "RelativeToolTip": "Web_PhongTro\\Areas\\Admin\\Controllers\\AdminHomeController.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAYwBIBAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T21:01:32.858Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Web_PhongTro\\Controllers\\AccountController.cs",
-              "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Web_PhongTro\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAUwEwAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T20:28:20.941Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "NhanVien.cshtml",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\NhanVien.cshtml",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\NhanVien.cshtml",
               "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\NhanVien.cshtml",
               "RelativeToolTip": "Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\NhanVien.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAAHIAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-15T07:04:43.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-15T07:04:43.565Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "TaoTKKDVPartial.cshtml",
+              "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\TaoTKKDVPartial.cshtml",
+              "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\TaoTKKDVPartial.cshtml",
+              "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\TaoTKKDVPartial.cshtml",
+              "RelativeToolTip": "Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\TaoTKKDVPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-15T07:01:50.327Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "PhongTro.dbml",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Models\\PhongTro.dbml",
               "RelativeDocumentMoniker": "Web_PhongTro\\Models\\PhongTro.dbml",
               "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Models\\PhongTro.dbml",
               "RelativeToolTip": "Web_PhongTro\\Models\\PhongTro.dbml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001722|",
-              "WhenOpened": "2024-12-08T23:37:28.34Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TaoTKKDVPartial.cshtml",
-              "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\TaoTKKDVPartial.cshtml",
-              "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\TaoTKKDVPartial.cshtml",
-              "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\TaoTKKDVPartial.cshtml",
-              "RelativeToolTip": "Web_PhongTro\\Areas\\Admin\\Views\\AdminHome\\TaoTKKDVPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-15T07:01:50.327Z"
+              "WhenOpened": "2024-12-08T23:37:28.34Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "RegisterV.cshtml",
+              "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Views\\Account\\RegisterV.cshtml",
+              "RelativeDocumentMoniker": "Web_PhongTro\\Views\\Account\\RegisterV.cshtml",
+              "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Views\\Account\\RegisterV.cshtml",
+              "RelativeToolTip": "Web_PhongTro\\Views\\Account\\RegisterV.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-08T23:26:58.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "main.js",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Contents\\Script\\main.js",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\Admin\\Contents\\Script\\main.js",
               "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Contents\\Script\\main.js",
               "RelativeToolTip": "Web_PhongTro\\Areas\\Admin\\Contents\\Script\\main.js",
-              "ViewState": "AgIAABoAAAAAAAAAAAAIwDQAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAIwB4AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-12-15T07:06:50.738Z"
+              "WhenOpened": "2024-12-15T07:06:50.738Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Web_PhongTro\\Controllers\\AccountController.cs",
+              "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Web_PhongTro\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAwDcAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T20:28:20.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AdminHomeController.cs",
+              "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Controllers\\AdminHomeController.cs",
+              "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\Admin\\Controllers\\AdminHomeController.cs",
+              "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Controllers\\AdminHomeController.cs",
+              "RelativeToolTip": "Web_PhongTro\\Areas\\Admin\\Controllers\\AdminHomeController.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAgwG4AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-14T21:01:32.858Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ScriptPost.js",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\NguoiChoThue\\Content\\Script\\ScriptPost.js",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\NguoiChoThue\\Content\\Script\\ScriptPost.js",
@@ -213,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Script.js",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\Admin\\Contents\\Script\\Script.js",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\Admin\\Contents\\Script\\Script.js",
@@ -225,7 +231,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "DashBoard.cshtml",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\NguoiChoThue\\Views\\NCTHome\\DashBoard.cshtml",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\NguoiChoThue\\Views\\NCTHome\\DashBoard.cshtml",
@@ -249,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "DangBaiController.cs",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\NguoiChoThue\\Controllers\\DangBaiController.cs",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\NguoiChoThue\\Controllers\\DangBaiController.cs",
@@ -261,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "_Layout_Info.cshtml",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Views\\Shared\\_Layout_Info.cshtml",
               "RelativeDocumentMoniker": "Web_PhongTro\\Views\\Shared\\_Layout_Info.cshtml",
@@ -273,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "BaiDangController.cs",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Controllers\\BaiDangController.cs",
               "RelativeDocumentMoniker": "Web_PhongTro\\Controllers\\BaiDangController.cs",
@@ -285,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "_Deal.cshtml",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Views\\Shared\\_Deal.cshtml",
               "RelativeDocumentMoniker": "Web_PhongTro\\Views\\Shared\\_Deal.cshtml",
@@ -297,7 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ResetPassword.cshtml",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Views\\Account\\ResetPassword.cshtml",
               "RelativeDocumentMoniker": "Web_PhongTro\\Views\\Account\\ResetPassword.cshtml",
@@ -309,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "FavoritePostController.cs",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Controllers\\FavoritePostController.cs",
               "RelativeDocumentMoniker": "Web_PhongTro\\Controllers\\FavoritePostController.cs",
@@ -318,18 +324,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-09T23:35:44.799Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "LoginV.cshtml",
-              "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Views\\Account\\LoginV.cshtml",
-              "RelativeDocumentMoniker": "Web_PhongTro\\Views\\Account\\LoginV.cshtml",
-              "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Views\\Account\\LoginV.cshtml",
-              "RelativeToolTip": "Web_PhongTro\\Views\\Account\\LoginV.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-08T23:26:53.405Z"
             },
             {
               "$type": "Document",
@@ -369,19 +363,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "RegisterV.cshtml",
-              "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Views\\Account\\RegisterV.cshtml",
-              "RelativeDocumentMoniker": "Web_PhongTro\\Views\\Account\\RegisterV.cshtml",
-              "ToolTip": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Views\\Account\\RegisterV.cshtml",
-              "RelativeToolTip": "Web_PhongTro\\Views\\Account\\RegisterV.cshtml",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAwwBkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-08T23:26:58.73Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 21,
               "Title": "DangBai.cshtml",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\NguoiChoThue\\Views\\DangBai\\DangBai.cshtml",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\NguoiChoThue\\Views\\DangBai\\DangBai.cshtml",
@@ -393,7 +375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "SuaBaiDang.cshtml",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\NguoiChoThue\\Views\\DangBai\\SuaBaiDang.cshtml",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\NguoiChoThue\\Views\\DangBai\\SuaBaiDang.cshtml",
@@ -405,7 +387,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 23,
               "Title": "baidang.css",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\NguoiChoThue\\Content\\Css\\baidang.css",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\NguoiChoThue\\Content\\Css\\baidang.css",
@@ -417,7 +399,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 22,
               "Title": "style.css",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\NguoiChoThue\\Content\\Css\\style.css",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\NguoiChoThue\\Content\\Css\\style.css",
@@ -429,7 +411,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 24,
               "Title": "DanhSachPhongTro.cshtml",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\NguoiChoThue\\Views\\NCTHome\\DanhSachPhongTro.cshtml",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\NguoiChoThue\\Views\\NCTHome\\DanhSachPhongTro.cshtml",
@@ -441,7 +423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 25,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\NguoiChoThue\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\NguoiChoThue\\Views\\Shared\\_Layout.cshtml",
@@ -453,7 +435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 26,
               "Title": "Thongtin.css",
               "DocumentMoniker": "F:\\college\\hk7\\DoAnTotNghiep\\CODE\\DATN_WebPhongTro\\Web_PhongTro\\Web_PhongTro\\Areas\\NguoiChoThue\\Content\\Css\\Thongtin.css",
               "RelativeDocumentMoniker": "Web_PhongTro\\Areas\\NguoiChoThue\\Content\\Css\\Thongtin.css",
