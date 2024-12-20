@@ -18,12 +18,12 @@ namespace Web_PhongTro.ViewModels
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
-        [StringLength(255, MinimumLength = 6, ErrorMessage = "Mật khẩu phải lớn hơn 5 ký tự")]
+        [StringLength(255, MinimumLength = 8, ErrorMessage = "Mật khẩu phải lớn hơn 8 ký tự")]
         //[DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Mật khẩu xác nhận không khớp")]
-        [DataType(DataType.Password)]
+        //[DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 
         public string AccountType { get; set; }

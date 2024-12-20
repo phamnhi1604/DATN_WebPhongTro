@@ -14,6 +14,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.ViewModels
         public string Duong { get; set; }
         public int LoaiChuyenMuc { get; set; }
 
+        public string DiaChi { get; set; }
         public string NoiDung { get; set; }
         public List<long> IdPhong { get; set; }
         public List<PhongTro> MotaPT { get; set; }

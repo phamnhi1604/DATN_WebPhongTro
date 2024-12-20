@@ -1,26 +1,5 @@
 ﻿$(document).ready(function () {
 
-    //let closeBtnAdd = document.querySelector('.add-post .close-btn');
-    //let btnAddpost = document.querySelector('#btn-add-post');
-    //let frmPost = document.querySelector('.frm-post');
-
-    //closeBtnAdd.addEventListener('click', function () {
-    //    addpost.classList.remove('active');
-    //});
-    //let formAddpost = document.getElementById('btn-add-post');
-    //btnAddpost.addEventListener('click', function () {
-    //    frmPost.classList.add('active');
-    //});
-
-     
-
-
-    //let closeBtnEditPro = document.querySelector('.edit-post .close-btn');
-    //let editpost = document.querySelector('.edit-post');
-
-    //closeBtnEditPro.addEventListener('click', function () {
-    //    editpost.classList.remove('active');
-    //});
     $("#editParentpostTypeDropdown").change(function () {
         refreshClothesStyleDropdown($(this).val()).then(function () {
         });
@@ -29,33 +8,54 @@
     function getBaseFilename(filename) {
         return filename.replace(/^.*[\\\/]/, '');
     }
+    $('.hide-post-btn').click(function () {
 
+        var postId = $(this).data("post-id");
 
-    $('#btn-tieptuc').click(function () {
-        // Bước 1: Tải ảnh bìa
-        uploadCoverImage()
-            .then(function (coverImage) {
-                if (!coverImage) {
-                    alert("Không thể tải ảnh bìa, vui lòng thử lại.");
-                    return;
+        $.ajax({
+            url: '/DangBai/hidePost',
+            type: 'POST',
+            data: { IdBaiDang: postId },
+            success: function (response) {
+                if (response.success) {
+                    alert(response.message); // Thông báo thành công
+                    location.reload();
+
+                } else {
+                    alert(response.message); // Thông báo lỗi 
                 }
-
-                // Bước 2: Tải danh sách ảnh
-                uploadImageList().then(function (imageList) {
-                    if (!imageList) {
-                        alert("Không thể tải danh sách ảnh, vui lòng thử lại.");
-                        return;
-                    }
-
-                    // Bước 3: Tạo bài đăng
-                    createPost(coverImage, imageList);
-                });
-            })
-            .catch(function (error) {
-                console.error("Lỗi khi tải ảnh:", error);
-                alert("Đã xảy ra lỗi khi tải ảnh.");
-            });
+            },
+            error: function () {
+                alert('Đã xảy ra lỗi trong quá trình ẩn bài.');
+            }
+        });
     });
+
+    //$('#btn-add-baidang').click(function () {
+    //    // Bước 1: Tải ảnh bìa
+    //    uploadCoverImage()
+    //        .then(function (coverImage) {
+    //            if (!coverImage) {
+    //                alert("Không thể tải ảnh bìa, vui lòng thử lại.");
+    //                return;
+    //            }
+
+    //            // Bước 2: Tải danh sách ảnh
+    //            uploadImageList().then(function (imageList) {
+    //                if (!imageList) {
+    //                    alert("Không thể tải danh sách ảnh, vui lòng thử lại.");
+    //                    return;
+    //                }
+
+    //                // Bước 3: Tạo bài đăng
+    //                createPost(coverImage, imageList);
+    //            });
+    //        })
+    //        .catch(function (error) {
+    //            console.error("Lỗi khi tải ảnh:", error);
+    //            alert("Đã xảy ra lỗi khi tải ảnh.");
+    //        });
+    //});
 
     // Hàm tải ảnh bìa
     function uploadCoverImage() {

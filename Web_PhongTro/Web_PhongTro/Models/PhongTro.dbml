@@ -132,6 +132,13 @@
       <Association Name="NguoiThue_PhanHoi" Member="NguoiThue" ThisKey="IdNguoiThue" OtherKey="IdNguoiThue" Type="NguoiThue" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.VaiTro" Member="VaiTros">
+    <Type Name="VaiTro">
+      <Column Name="IdVaiTro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenVaiTro" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="VaiTro_NguoiDung" Member="NguoiDungs" ThisKey="IdVaiTro" OtherKey="IdVaiTro" Type="NguoiDung" />
+    </Type>
+  </Table>
   <Table Name="dbo.PhongTro" Member="PhongTros">
     <Type Name="PhongTro">
       <Column Name="IdPhongTro" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -142,17 +149,11 @@
       <Column Name="MoTa" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
       <Column Name="TrangThaiPhong" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="IdDanhMuc" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="diachi" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Association Name="PhongTro_BaiDang" Member="BaiDangs" ThisKey="IdPhongTro" OtherKey="IdPhongTro" Type="BaiDang" />
       <Association Name="DanhMuc_PhongTro" Member="DanhMuc" ThisKey="IdDanhMuc" OtherKey="IdDanhMuc" Type="DanhMuc" IsForeignKey="true" />
-      <Association Name="DiaChi_PhongTro" Member="DiaChi" ThisKey="IdDiaChi" OtherKey="IdDiaChi" Type="DiaChi" IsForeignKey="true" />
+      <Association Name="DiaChi_PhongTro" Member="DiaChi1" ThisKey="IdDiaChi" OtherKey="IdDiaChi" Type="DiaChi" IsForeignKey="true" />
       <Association Name="NguoiChoThue_PhongTro" Member="NguoiChoThue" ThisKey="IdNguoiChoThue" OtherKey="IdNguoiChoThue" Type="NguoiChoThue" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.VaiTro" Member="VaiTros">
-    <Type Name="VaiTro">
-      <Column Name="IdVaiTro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenVaiTro" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Association Name="VaiTro_NguoiDung" Member="NguoiDungs" ThisKey="IdVaiTro" OtherKey="IdVaiTro" Type="NguoiDung" />
     </Type>
   </Table>
   <Function Name="dbo.func_SoLuongYeuThich" Method="func_SoLuongYeuThich" IsComposable="true">

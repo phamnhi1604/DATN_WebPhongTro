@@ -80,6 +80,55 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
             return View(viewModel);
         }
 
+        public JsonResult hidePost(BaiDang baidang)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Tạo đối tượng YeuThich mới
+                    //BaiDang newP = new BaiDang
+                    //{
+                    //    IdBaiDang = baidang.IdBaiDang,
+                    //    TrangThai = "3"
+                    //};
+
+                    //// Thêm vào cơ sở dữ liệu
+                    //db.BaiDangs.InsertOnSubmit(newP);
+
+                    var bd = db.BaiDangs.Where(x => x.IdBaiDang == baidang.IdBaiDang).FirstOrDefault();
+
+                    if (bd != null)
+                    {
+                        bd.TrangThai = "3";
+                        db.SubmitChanges();
+
+                        return Json(new
+                        {
+                            success = true,
+                            message = "Đã ẩn bài đăng!"
+                        });
+                    }
+                    db.SubmitChanges();
+
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Đã xảy ra lỗi: " + ex.Message
+                    });
+                }
+            }
+
+            // Nếu ModelState không hợp lệ
+            return Json(new
+            {
+                success = false,
+                message = "Ẩn bài không thành công!"
+            });
+        }
         public ActionResult GetDanhSachDanhMuc()
         {
             var danhMucList = db.DanhMucs.Select(d => new SelectListItem
@@ -347,7 +396,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
 
         public JsonResult PhongTro(PhongTroViewModel model)
         {
-            var res = new { success = false, message = "Phòng Trọ đăng không thành công" };
+            var res = new { success = false, message = "Phòng Trọ thêm không thành công" };
 
             if (ModelState.IsValid)
             {
@@ -367,17 +416,16 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                         return Json(new { success = false, message = "Người cho thuê không tồn tại." });
                     }
 
-                    var diaChiMoi = new DiaChi
-                    {
-                        ThanhPho = model.ThanhPho,
-                        Quan = model.Quan,
-                        Phuong = model.Phuong,
-                        Duong = model.Duong,
-                        QuocGia = "Việt Nam"
-                    };
-                    db.DiaChis.InsertOnSubmit(diaChiMoi);
-                    db.SubmitChanges();
+                    var diaChi = db.DiaChis.FirstOrDefault(dc =>
+                         dc.ThanhPho == model.ThanhPho &&
+                         dc.Quan == model.Quan &&
+                         dc.Phuong == model.Phuong);
 
+                    // Kiểm tra nếu địa chỉ không tồn tại
+                    if (diaChi == null)
+                    {
+                        return Json(new { success = false, message = "Địa chỉ không tồn tại." });
+                    }
                     // Kiểm tra danh mục
                     var danhMuc = db.DanhMucs.FirstOrDefault(dm => dm.IdDanhMuc == model.LoaiChuyenMuc);
                     if (danhMuc == null)
@@ -392,7 +440,8 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                         DienTich = model.DienTich,
                         GiaPhong = model.GiaPhong,
                         MoTa = model.MoTa,
-                        IdDiaChi = diaChiMoi.IdDiaChi,
+                        diachi = model.DiaChi,
+                        IdDiaChi = diaChi.IdDiaChi,
                         TrangThaiPhong = "Con_trong" // Hoặc trạng thái mặc định
                     };
                     db.PhongTros.InsertOnSubmit(phongTroMoi);
@@ -436,6 +485,7 @@ namespace Web_PhongTro.Areas.NguoiChoThue.Controllers
                 return Json(new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
             }
         }
+
 
 
         public JsonResult Delete(int id)

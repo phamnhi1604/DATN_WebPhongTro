@@ -54,12 +54,13 @@
                         <td>@item.diachiPT.Phuong @item.diachiPT.Quan</td>
                         <td>@item.slyt</td> 
                         <td>
-                            @(item.BaiDang.TrangThai == "1" ? "Đã duyệt" : (item.BaiDang.TrangThai == "2" ? "Đã từ chối" : "Đang chờ duyệt"))
-                        </td> 
+                            @(item.BaiDang.TrangThai == "1" ? "Đã duyệt" : (item.BaiDang.TrangThai == "2" ? "Đã từ chối" : (item.BaiDang.TrangThai == "3" ? "Đã ẩn" : "Đang chờ duyệt")))
+                        </td>
 
                         <td>
                             <button type="button" class="edit-post-btn" data-post-id="@item.BaiDang.IdBaiDang"><i class="fa fa-wrench"></i></button>
-                            <button type="button" class="delete-post-btn" data-post-id="@item.BaiDang.IdBaiDang"><i class="fa fa-trash"></i></button>
+                            @*<button type="button" class="delete-post-btn" data-post-id="@item.BaiDang.IdBaiDang"><i class="fa fa-trash"></i></button>*@
+                            <button type="button" class="hide-post-btn" data-post-id="@item.BaiDang.IdBaiDang"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
                 }
